@@ -50,3 +50,49 @@ body {
   opacity: 1;
   transform: translateX(0);
 }
+
+#componentesBtn,
+#closeModalBtn,
+.modal-trigger {
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.modal-overlay:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  color: #333;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+  transform: scale(1);
+}
