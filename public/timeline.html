@@ -18,234 +18,7 @@
     <div class="fixed inset-0 bg-main-background -z-10"></div>
 
     <div class="relative min-h-screen flex flex-col">
-      <header class="w-full py-4 px-8 md:px-14 z-20">
-        <nav class="flex justify-between items-center">
-          <div>
-            <a href="index.html"
-              ><img
-                src="images/logo_fatec.png"
-                alt="Logo da Fatec"
-                class="h-14 w-auto"
-            /></a>
-          </div>
-
-          <ul class="hidden md:flex items-center space-x-10 text-xl">
-            <li>
-              <a
-                href="timeline.html"
-                class="transition-all duration-300 hover:text-gray-300 transition-colors font-bold text-white border-b-2 border-white"
-                >Linha do Tempo</a
-              >
-            </li>
-            <li class="relative">
-              <button
-                id="componentesBtn"
-                class="hover:text-gray-300 transition-colors flex items-center"
-              >
-                Componentes
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-              <div
-                id="componentesDropdown"
-                class="hidden absolute top-full mt-3 right-0 bg-black/50 backdrop-blur-md border-2 border-white rounded-lg w-64"
-              >
-                <ul class="text-lg text-center">
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 rounded-t-lg transition-all duration-300"
-                      >Placa-Mãe</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >Processador</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >RAM</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >HDD/SSD</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >Fonte</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >Gabinete</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 transition-all duration-300"
-                      >Mídias</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block py-2 px-4 hover:bg-white/10 rounded-b-lg transition-all duration-300"
-                      >Periféricos</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a
-                href="membros.html"
-                class="transition-all duration-300 hover:text-gray-300 transition-colors"
-                >Membros</a
-              >
-            </li>
-          </ul>
-
-          <div class="md:hidden">
-            <button
-              id="mobileMenuBtn"
-              class="text-white focus:outline-none z-40 transition-all duration-300"
-            >
-              <svg
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      <div
-        id="mobileMenu"
-        class="hidden md:hidden fixed inset-0 bg-black bg-opacity-90 z-30 flex flex-col items-center justify-center"
-      >
-        <button
-          id="closeMobileMenuBtn"
-          class="absolute top-6 right-8 text-white focus:outline-none transition-all duration-300"
-        >
-          <svg
-            class="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-        <ul class="text-2xl text-center space-y-6">
-          <li>
-            <a
-              href="timeline.html"
-              class="transition-all duration-300 hover:text-gray-300 transition-colors font-bold text-white border-b-2 border-white"
-              >Linha do Tempo</a
-            >
-          </li>
-          <li>
-            <button
-              id="mobileComponentesBtn"
-              class="transition-all duration-300 hover:text-gray-300 transition-colors w-full text-center"
-            >
-              Componentes
-            </button>
-            <div
-              id="mobileComponentesSubmenu"
-              class="transition-all duration-300 hidden mt-4 space-y-4 text-xl font-light"
-            >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Placa-Mãe</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Processador</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >RAM</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >HDD/SSD</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Fonte</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Gabinete</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Mídias</a
-              >
-              <a
-                href="#"
-                class="transition-all duration-300 block hover:text-gray-300 transition-colors"
-                >Periféricos</a
-              >
-            </div>
-          </li>
-          <li>
-            <a
-              href="membros.html"
-              class="transition-all duration-300 hover:text-gray-300 transition-colors"
-              >Membros</a
-            >
-          </li>
-        </ul>
-      </div>
+      <div id="header-placeholder"></div>
 
       <main class="container mx-auto px-6 py-12 flex-grow fade-in">
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">
@@ -277,22 +50,31 @@
               class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               data-title="ENIAC"
               data-year="1946"
-              data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=ENIAC"
+              data-image-src="https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg"
               data-image-alt="Imagem detalhada do Computador ENIAC"
-              data-image-source="Wikipedia"
-              data-description="O ENIAC (Electronic Numerical Integrator and Computer) foi o primeiro computador eletrônico digital de grande escala. Desenvolvido durante a Segunda Guerra Mundial, ocupava uma sala inteira e foi fundamental para cálculos balísticos. Sua arquitetura, embora primitiva para os padrões de hoje, estabeleceu as bases para a computação moderna."
+              data-image-source="Wikimedia Commons"
+              data-description='O desenvolvimento do ENIAC, iniciado em 1943 na Universidade da Pensilvânia, foi uma resposta direta a uma necessidade crítica da Segunda Guerra Mundial: a automação dos cálculos de tabelas de trajetória balística para a artilharia do Exército dos EUA. Antes dele, esses complexos cálculos diferenciais eram realizados manualmente por equipes de "computadoras" humanas, em sua maioria mulheres, em um processo que podia levar horas ou dias e era suscetível a erros. Projetado pelos engenheiros John Eckert e John Mauchly, o ENIAC representou um salto quântico na capacidade de processamento. Era uma máquina monumental, pesando 30 toneladas e ocupando uma área de 180 metros quadrados. Seu funcionamento dependia de aproximadamente 18.000 válvulas a vácuo, componentes que consumiam cerca de 160 kW de potência, o suficiente para alimentar uma pequena cidade. Com a capacidade de realizar 5.000 adições por segundo, era mil vezes mais rápido que qualquer dispositivo eletromecânico da época.
+
+                                A programação do ENIAC, no entanto, era um processo físico e laborioso. Diferente dos computadores modernos, ele não possuía um programa armazenado em memória. Para cada novo problema, uma equipe de programadoras precisava reconfigurar manualmente uma complexa teia de cabos, relés e interruptores, um trabalho que podia levar dias para ser concluído. As respostas eram então interpretadas a partir de uma sequência de lâmpadas que se acendiam. Embora tenha se tornado totalmente operacional apenas após o fim da guerra, o ENIAC provou a viabilidade da computação eletrônica em grande escala, sendo utilizado em projetos cruciais como os cálculos para a bomba de hidrogênio e previsões meteorológicas. Desativado em 1955, seu legado não reside em sua longevidade, mas em seu papel como o "big bang" da era digital, o ancestral de todas as máquinas computacionais que se seguiram.
+
+                                A história do ENIAC revela uma dinâmica fundamental sobre o progresso tecnológico. Embora revolucionário, sua arquitetura de programa externo já estava conceitualmente obsoleta no momento de sua inauguração. O conceito de "programa armazenado", onde as instruções residem na mesma memória que os dados, já havia sido delineado para seu sucessor, o EDVAC. Essa ideia, que define a arquitetura dos computadores modernos, foi uma consequência direta das lições aprendidas com as limitações do próprio ENIAC. Assim, o maior triunfo do ENIAC foi provar que a computação eletrônica era possível, catalisando imediatamente a busca por um design muito superior e tornando-se obsoleto pelas ideias que ele mesmo inspirou.
+
+                                Adicionalmente, a história do ENIAC expõe uma dimensão social crucial sobre a valorização do trabalho na tecnologia nascente. A engenharia de hardware, realizada por Eckert e Mauchly, foi celebrada como o trabalho intelectual principal. Em contrapartida, a tarefa de traduzir equações matemáticas complexas em configurações físicas para a máquina — a essência da programação de software — foi delegada a uma equipe de seis mulheres, cujo papel foi historicamente subestimado e classificado como uma tarefa clerical de "operação". Essa segregação inicial de papéis revela que a história da computação não é apenas sobre tecnologia, mas também sobre como o trabalho foi categorizado, valorizado e atribuído, muitas vezes com base em gênero.'
             >
               <img
-                src="https://placehold.co/600x400/2d3748/ffffff?text=ENIAC"
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg"
                 alt="Imagem do Computador ENIAC"
                 class="w-full h-auto rounded-md"
               />
               <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Exemplo.com
+                Fonte: Wikimedia Commons
               </p>
               <h3 class="font-bold text-xl mb-1">ENIAC</h3>
               <p class="text-sm">
-                1946 - O primeiro computador eletrônico de grande escala.
+                O primeiro computador digital eletrônico, programável e de uso
+                geral do mundo, um colosso de 30 toneladas desenvolvido para
+                fins militares que inaugurou a era da computação em larga
+                escala.
               </p>
             </button>
           </div>
@@ -314,18 +96,18 @@
               class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               data-title="Intel 4004"
               data-year="1971"
-              data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=Intel+4004"
-              data-image-alt="Imagem detalhada do processador Intel 4004"
-              data-image-source="Intel Museum"
+              data-image-src="https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg"
+              data-image-alt="Imagem do processador Intel 4004"
+              data-image-source="Wikimedia Commons"
               data-description="Lançado pela Intel, o 4004 foi o primeiro microprocessador comercialmente disponível no mundo. Ele integrou todos os componentes de uma CPU em um único chip de silício, uma inovação que pavimentou o caminho para o desenvolvimento dos computadores pessoais e da eletrônica embarcada."
             >
               <img
-                src="https://placehold.co/600x400/2d3748/ffffff?text=Intel+4004"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg"
                 alt="Imagem do processador Intel 4004"
                 class="w-full h-auto rounded-md"
               />
               <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Exemplo.com
+                Fonte: Wikimedia Commons
               </p>
               <h3 class="font-bold text-xl mb-1">Intel 4004</h3>
               <p class="text-sm">
@@ -352,7 +134,7 @@
               data-title="Apple I"
               data-year="1976"
               data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=Apple+I"
-              data-image-alt="Imagem detalhada do computador Apple I"
+              data-image-alt="Imagem do computador Apple I"
               data-image-source="Wikimedia Commons"
               data-description="Criado por Steve Wozniak e Steve Jobs na garagem de Jobs, o Apple I foi um dos primeiros computadores pessoais vendidos como um kit montado. Embora simples, foi um marco importante na história da computação pessoal e o primeiro produto da Apple Inc."
             >
@@ -389,7 +171,7 @@
               data-title="IBM PC"
               data-year="1981"
               data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=IBM+PC"
-              data-image-alt="Imagem detalhada do IBM PC"
+              data-image-alt="Imagem do IBM PC"
               data-image-source="Oldcomputermuseum.com"
               data-description="O IBM Personal Computer (modelo 5150) foi o computador que definiu o padrão da indústria e popularizou a arquitetura x86. Seu sucesso levou à criação de um vasto ecossistema de hardware e software compatíveis, conhecidos como 'clones de PC', que dominaram o mercado por décadas."
             >
