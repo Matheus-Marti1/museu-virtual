@@ -3,21 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linha do Tempo - Museu Virtual de Hardware</title>
-
+    <title>Linha do Tempo (Vue.js) - Museu Virtual de Hardware</title>
     <link href="./css/styles.css" rel="stylesheet" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body class="text-white">
     <div class="fixed inset-0 bg-main-background -z-10"></div>
 
-    <div class="relative min-h-screen flex flex-col">
+    <div id="app" class="relative min-h-screen flex flex-col">
       <div id="header-placeholder"></div>
 
       <main class="container mx-auto px-6 py-12 flex-grow fade-in">
@@ -25,236 +24,219 @@
           Linha do Tempo
         </h1>
 
-        <div
-          class="relative wrap overflow-hidden p-10 md:p-10 h-full timeline-container"
-        >
+        <div class="relative wrap overflow-hidden p-10 md:p-10 h-full">
           <div
             class="absolute hidden md:block border-2 border-white/30 h-full"
             style="left: 50%"
           ></div>
 
           <div
-            class="mb-8 md:flex justify-between items-center w-full timeline-item right"
+            v-for="(item, index) in timelineItems"
+            :key="item.title"
+            class="mb-8 md:flex justify-between items-center w-full"
+            :class="{ 'md:flex-row-reverse': index % 2 !== 0 }"
           >
             <div class="hidden md:block order-1 w-5/12"></div>
             <div class="z-20 hidden md:flex items-center order-1">
-              <div class="w-8 h-0.5"></div>
+              <div
+                class="w-8 h-0.5"
+                :class="{ 'bg-white/50': index % 2 !== 0 }"
+              ></div>
               <div
                 class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
               >
-                <span class="font-bold text-white text-xl">1946</span>
+                <span class="font-bold text-white text-xl"
+                  >{{ item.year }}</span
+                >
               </div>
-              <div class="w-8 h-0.5 bg-white/50"></div>
-            </div>
-            <button
-              class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              data-title="ENIAC"
-              data-year="1946"
-              data-image-src="https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg"
-              data-image-alt="Imagem detalhada do Computador ENIAC"
-              data-image-source="Wikimedia Commons"
-              data-description='O desenvolvimento do ENIAC, iniciado em 1943 na Universidade da Pensilvânia, foi uma resposta direta a uma necessidade crítica da Segunda Guerra Mundial: a automação dos cálculos de tabelas de trajetória balística para a artilharia do Exército dos EUA. Antes dele, esses complexos cálculos diferenciais eram realizados manualmente por equipes de "computadoras" humanas, em sua maioria mulheres, em um processo que podia levar horas ou dias e era suscetível a erros. Projetado pelos engenheiros John Eckert e John Mauchly, o ENIAC representou um salto quântico na capacidade de processamento. Era uma máquina monumental, pesando 30 toneladas e ocupando uma área de 180 metros quadrados. Seu funcionamento dependia de aproximadamente 18.000 válvulas a vácuo, componentes que consumiam cerca de 160 kW de potência, o suficiente para alimentar uma pequena cidade. Com a capacidade de realizar 5.000 adições por segundo, era mil vezes mais rápido que qualquer dispositivo eletromecânico da época.
-
-                                A programação do ENIAC, no entanto, era um processo físico e laborioso. Diferente dos computadores modernos, ele não possuía um programa armazenado em memória. Para cada novo problema, uma equipe de programadoras precisava reconfigurar manualmente uma complexa teia de cabos, relés e interruptores, um trabalho que podia levar dias para ser concluído. As respostas eram então interpretadas a partir de uma sequência de lâmpadas que se acendiam. Embora tenha se tornado totalmente operacional apenas após o fim da guerra, o ENIAC provou a viabilidade da computação eletrônica em grande escala, sendo utilizado em projetos cruciais como os cálculos para a bomba de hidrogênio e previsões meteorológicas. Desativado em 1955, seu legado não reside em sua longevidade, mas em seu papel como o "big bang" da era digital, o ancestral de todas as máquinas computacionais que se seguiram.
-
-                                A história do ENIAC revela uma dinâmica fundamental sobre o progresso tecnológico. Embora revolucionário, sua arquitetura de programa externo já estava conceitualmente obsoleta no momento de sua inauguração. O conceito de "programa armazenado", onde as instruções residem na mesma memória que os dados, já havia sido delineado para seu sucessor, o EDVAC. Essa ideia, que define a arquitetura dos computadores modernos, foi uma consequência direta das lições aprendidas com as limitações do próprio ENIAC. Assim, o maior triunfo do ENIAC foi provar que a computação eletrônica era possível, catalisando imediatamente a busca por um design muito superior e tornando-se obsoleto pelas ideias que ele mesmo inspirou.
-
-                                Adicionalmente, a história do ENIAC expõe uma dimensão social crucial sobre a valorização do trabalho na tecnologia nascente. A engenharia de hardware, realizada por Eckert e Mauchly, foi celebrada como o trabalho intelectual principal. Em contrapartida, a tarefa de traduzir equações matemáticas complexas em configurações físicas para a máquina — a essência da programação de software — foi delegada a uma equipe de seis mulheres, cujo papel foi historicamente subestimado e classificado como uma tarefa clerical de "operação". Essa segregação inicial de papéis revela que a história da computação não é apenas sobre tecnologia, mas também sobre como o trabalho foi categorizado, valorizado e atribuído, muitas vezes com base em gênero.'
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg"
-                alt="Imagem do Computador ENIAC"
-                class="w-full h-auto rounded-md"
-              />
-              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Wikimedia Commons
-              </p>
-              <h3 class="font-bold text-xl mb-1">ENIAC</h3>
-              <p class="text-sm">
-                O primeiro computador digital eletrônico, programável e de uso
-                geral do mundo, um colosso de 30 toneladas desenvolvido para
-                fins militares que inaugurou a era da computação em larga
-                escala.
-              </p>
-            </button>
-          </div>
-
-          <div
-            class="mb-8 md:flex justify-between md:flex-row-reverse items-center w-full timeline-item left"
-          >
-            <div class="hidden md:block order-1 w-5/12"></div>
-            <div class="z-20 hidden md:flex items-center order-1">
-              <div class="w-8 h-0.5 bg-white/50"></div>
               <div
-                class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
-              >
-                <span class="font-bold text-white text-xl">1971</span>
-              </div>
-              <div class="w-8 h-0.5"></div>
+                class="w-8 h-0.5"
+                :class="{ 'bg-white/50': index % 2 === 0 }"
+              ></div>
             </div>
-            <button
-              class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              data-title="Intel 4004"
-              data-year="1971"
-              data-image-src="https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg"
-              data-image-alt="Imagem do processador Intel 4004"
-              data-image-source="Wikimedia Commons"
-              data-description="Lançado pela Intel, o 4004 foi o primeiro microprocessador comercialmente disponível no mundo. Ele integrou todos os componentes de uma CPU em um único chip de silício, uma inovação que pavimentou o caminho para o desenvolvimento dos computadores pessoais e da eletrônica embarcada."
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg"
-                alt="Imagem do processador Intel 4004"
-                class="w-full h-auto rounded-md"
-              />
-              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Wikimedia Commons
-              </p>
-              <h3 class="font-bold text-xl mb-1">Intel 4004</h3>
-              <p class="text-sm">
-                1971 - O primeiro microprocessador comercialmente disponível.
-              </p>
-            </button>
-          </div>
 
-          <div
-            class="mb-8 md:flex justify-between items-center w-full timeline-item right"
-          >
-            <div class="hidden md:block order-1 w-5/12"></div>
-            <div class="z-20 hidden md:flex items-center order-1">
-              <div class="w-8 h-0.5"></div>
-              <div
-                class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
-              >
-                <span class="font-bold text-white text-xl">1976</span>
-              </div>
-              <div class="w-8 h-0.5 bg-white/50"></div>
-            </div>
             <button
+              @click="openModal(item)"
               class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              data-title="Apple I"
-              data-year="1976"
-              data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=Apple+I"
-              data-image-alt="Imagem do computador Apple I"
-              data-image-source="Wikimedia Commons"
-              data-description="Criado por Steve Wozniak e Steve Jobs na garagem de Jobs, o Apple I foi um dos primeiros computadores pessoais vendidos como um kit montado. Embora simples, foi um marco importante na história da computação pessoal e o primeiro produto da Apple Inc."
             >
               <img
-                src="https://placehold.co/600x400/2d3748/ffffff?text=Apple+I"
-                alt="Imagem do computador Apple I"
+                :src="item.imageCard"
+                :alt="'Imagem de ' + item.title"
                 class="w-full h-auto rounded-md"
               />
               <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Exemplo.com
+                Fonte: {{ item.source }}
               </p>
-              <h3 class="font-bold text-xl mb-1">Apple I</h3>
-              <p class="text-sm">
-                1976 - Um dos primeiros computadores pessoais.
-              </p>
-            </button>
-          </div>
-
-          <div
-            class="mb-8 md:flex justify-between md:flex-row-reverse items-center w-full timeline-item left"
-          >
-            <div class="hidden md:block order-1 w-5/12"></div>
-            <div class="z-20 hidden md:flex items-center order-1">
-              <div class="w-8 h-0.5 bg-white/50"></div>
-              <div
-                class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
-              >
-                <span class="font-bold text-white text-xl">1981</span>
-              </div>
-              <div class="w-8 h-0.5"></div>
-            </div>
-            <button
-              class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              data-title="IBM PC"
-              data-year="1981"
-              data-image-src="https://placehold.co/800x500/2d3748/ffffff?text=IBM+PC"
-              data-image-alt="Imagem do IBM PC"
-              data-image-source="Oldcomputermuseum.com"
-              data-description="O IBM Personal Computer (modelo 5150) foi o computador que definiu o padrão da indústria e popularizou a arquitetura x86. Seu sucesso levou à criação de um vasto ecossistema de hardware e software compatíveis, conhecidos como 'clones de PC', que dominaram o mercado por décadas."
-            >
-              <img
-                src="https://placehold.co/600x400/2d3748/ffffff?text=IBM+PC"
-                alt="Imagem do IBM PC"
-                class="w-full h-auto rounded-md"
-              />
-              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: Exemplo.com
-              </p>
-              <h3 class="font-bold text-xl mb-1">IBM PC</h3>
-              <p class="text-sm">
-                1981 - O computador que popularizou a arquitetura x86.
-              </p>
+              <h3 class="font-bold text-xl mb-1">{{ item.title }}</h3>
+              <p class="text-sm">{{ item.shortDescription }}</p>
             </button>
           </div>
         </div>
       </main>
-    </div>
 
-    <div id="timelineModal" class="modal-overlay hidden">
-      <div class="modal-content">
-        <button
-          id="closeModalBtn"
-          class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors z-10"
-        >
-          <svg
-            class="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-        <div class="flex items-center mb-4">
-          <h2 id="modalTitle" class="text-3xl font-bold"></h2>
-          <span
-            id="modalYear"
-            class="ml-4 text-2xl font-semibold text-gray-500"
-          ></span>
-        </div>
-        <img
-          id="modalImage"
-          src=""
-          alt=""
-          class="w-full h-auto max-h-80 object-cover rounded-lg mb-1"
-        />
-        <p
-          id="modalImageSource"
-          class="text-xs italic text-gray-600 mb-4 text-right"
-        ></p>
-        <p id="modalDescription" class="text-gray-700 leading-relaxed"></p>
-      </div>
-    </div>
-
-    <button
-      id="backToTopBtn"
-      class="hidden fixed bottom-8 right-8 bg-white/30 p-3 rounded-full text-white hover:bg-white/50 transition-all duration-300 z-50"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+      <div
+        v-if="isModalOpen"
+        @click.self="closeModal"
+        class="modal-overlay"
+        :class="{
+          'modal-entering': modalState === 'entering',
+          'modal-visible': modalState === 'visible',
+          'modal-leaving': modalState === 'leaving'
+        }"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 15l7-7 7 7"
-        />
-      </svg>
-    </button>
+        <div class="modal-content">
+          <button
+            @click="closeModal"
+            class="modal-trigger absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors z-10"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+          <div class="flex items-center mb-4">
+            <h2 class="text-3xl font-bold">{{ selectedItem.title }}</h2>
+            <span class="ml-4 text-2xl font-semibold text-gray-500"
+              >({{ selectedItem.year }})</span
+            >
+          </div>
+          <img
+            :src="selectedItem.imageModal"
+            :alt="'Imagem detalhada de ' + selectedItem.title"
+            class="w-full h-auto max-h-80 object-cover rounded-lg mb-1"
+          />
+          <p class="text-xs italic text-gray-600 mb-4 text-right">
+            Fonte: {{ selectedItem.source }}
+          </p>
+          <div v-html="formattedDescription"></div>
+        </div>
+      </div>
 
+      <!-- Back to Top Button -->
+      <button
+        id="backToTopBtn"
+        class="hidden fixed bottom-8 right-8 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold p-4 rounded-full shadow-lg border border-white/20 transition-all duration-300 hover:scale-110 z-50 cursor-pointer"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <script type="module">
+      import { timelineItems } from "./js/timeline-data.js";
+      const { createApp, ref, computed, onMounted } = Vue;
+
+      createApp({
+        setup() {
+          const isModalOpen = ref(false);
+          const selectedItem = ref(null);
+          const modalState = ref("hidden"); // 'hidden', 'entering', 'visible', 'leaving'
+
+          const formattedDescription = computed(() => {
+            if (!selectedItem.value) return "";
+            return selectedItem.value.longDescription
+              .split("\n")
+              .filter((p) => p.trim() !== "")
+              .map((p) => `<p class="mb-4">${p.trim()}</p>`)
+              .join("");
+          });
+
+          const openModal = (item) => {
+            selectedItem.value = item;
+            isModalOpen.value = true;
+            modalState.value = "entering";
+            document.body.style.overflow = "hidden";
+
+            // Trigger visible state after a small delay
+            setTimeout(() => {
+              modalState.value = "visible";
+            }, 10);
+          };
+
+          const closeModal = () => {
+            modalState.value = "leaving";
+
+            // Hide modal after animation completes
+            setTimeout(() => {
+              isModalOpen.value = false;
+              modalState.value = "hidden";
+              document.body.style.overflow = "";
+            }, 200);
+          };
+
+          onMounted(async () => {
+            const response = await fetch("header.html");
+            if (response.ok) {
+              document.getElementById("header-placeholder").innerHTML =
+                await response.text();
+
+              if (window.initializeHeaderFunctionality) {
+                window.initializeHeaderFunctionality();
+              } else {
+                setTimeout(() => {
+                  if (window.initializeHeaderFunctionality) {
+                    window.initializeHeaderFunctionality();
+                  }
+                }, 100);
+              }
+            }
+
+            // Initialize Vue-compatible features after DOM is ready
+            setTimeout(() => {
+              if (window.initializeVueCompatibleFeatures) {
+                window.initializeVueCompatibleFeatures();
+              }
+            }, 200);
+
+            // Add keyboard event listener for Escape key
+            const handleKeydown = (event) => {
+              if (event.key === "Escape" && isModalOpen.value) {
+                closeModal();
+              }
+            };
+
+            document.addEventListener("keydown", handleKeydown);
+
+            // Cleanup event listener on unmount
+            return () => {
+              document.removeEventListener("keydown", handleKeydown);
+            };
+          });
+
+          return {
+            timelineItems,
+            isModalOpen,
+            selectedItem,
+            modalState,
+            formattedDescription,
+            openModal,
+            closeModal,
+          };
+        },
+      }).mount("#app");
+    </script>
     <script src="./js/main.js" defer></script>
   </body>
 </html>

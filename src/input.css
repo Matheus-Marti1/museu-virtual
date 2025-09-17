@@ -46,6 +46,36 @@ body {
   transform: translateX(0);
 }
 
+/* Vue.js timeline animation classes */
+.timeline-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.timeline-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Ensure modal-trigger keeps its transitions */
+.modal-trigger {
+  transition: all 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.modal-trigger.timeline-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.modal-trigger.timeline-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-trigger:hover {
+  transform: scale(1.05) translateY(0);
+}
+
 #componentesBtn,
 #closeModalBtn,
 .modal-trigger {
@@ -90,4 +120,38 @@ body {
 
 .modal-overlay:not(.hidden) .modal-content {
   transform: scale(1);
+}
+
+/* Enhanced modal animations */
+.modal-entering {
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.modal-entering .modal-content {
+  transform: scale(0.9) translateY(-20px);
+  opacity: 0;
+}
+
+.modal-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-visible .modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.3s ease;
+}
+
+.modal-leaving {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-leaving .modal-content {
+  transform: scale(0.95) translateY(-10px);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
