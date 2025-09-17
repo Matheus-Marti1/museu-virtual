@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Utility function to load external HTML components
   const loadComponent = async (selector, url) => {
     const element = document.querySelector(selector);
     if (!element) return;
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Cache DOM elements for better performance
   const getDOMElements = () => ({
     componentesBtn: document.getElementById("componentesBtn"),
     componentesDropdown: document.getElementById("componentesDropdown"),
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ),
   });
 
-  // Handle active navigation styling
   const setActiveNavigation = () => {
     const currentPageFile =
       window.location.pathname.split("/").pop() || "index.html";
@@ -41,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(".nav-link, .nav-component-link")
       .forEach((link) => {
         if (link.getAttribute("href") === effectivePage) {
-          // Add active styles to current page link
           link.classList.add(
             "font-bold",
             "text-white",
@@ -49,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "border-white"
           );
 
-          // Handle dropdown menu highlighting
           const isInDropdown =
             link.closest("#componentesDropdown") ||
             link.closest("#mobileComponentesSubmenu");
@@ -67,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
-            // Special styling for component links in dropdown
             if (link.classList.contains("nav-component-link")) {
               link.classList.add("bg-white/10");
               link.classList.remove("border-b-2", "border-white");
@@ -77,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   };
 
-  // Setup dropdown menu functionality
   const setupDropdownMenu = (elements) => {
     if (elements.componentesBtn && elements.componentesDropdown) {
       elements.componentesBtn.addEventListener("click", (event) => {
@@ -85,14 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
         elements.componentesDropdown.classList.toggle("hidden");
       });
 
-      // Close dropdown when clicking outside
       window.addEventListener("click", () => {
         elements.componentesDropdown?.classList.add("hidden");
       });
     }
   };
 
-  // Setup mobile menu functionality
   const setupMobileMenu = (elements) => {
     const {
       mobileMenuBtn,
@@ -121,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Main header initialization function
   const initializeHeaderFunctionality = () => {
     const elements = getDOMElements();
     setActiveNavigation();
@@ -129,11 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setupMobileMenu(elements);
   };
 
-  // Setup timeline animation with Intersection Observer
   const setupTimelineAnimation = () => {
-    // Function to setup observer for timeline items
     const setupObserver = () => {
-      // Check for timeline items with different possible selectors
       const timelineItems = document.querySelectorAll(
         ".timeline-item, .modal-trigger"
       );
@@ -144,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              // For Vue.js timeline, add custom visibility class
               if (entry.target.classList.contains("modal-trigger")) {
                 entry.target.classList.remove("timeline-hidden");
                 entry.target.classList.add("timeline-visible");
@@ -157,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       timelineItems.forEach((item, index) => {
-        // Set initial state for Vue.js timeline items
         if (item.classList.contains("modal-trigger")) {
           item.classList.add("timeline-hidden");
         }
@@ -167,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return true;
     };
 
-    // Try immediately, then retry with delays for Vue.js rendering
     if (!setupObserver()) {
       setTimeout(() => {
         if (!setupObserver()) {
@@ -177,14 +161,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Enhanced initialization for Vue.js compatibility
   const initializeVueCompatibleFeatures = () => {
     setupTimelineAnimation();
     setupBackToTop();
     setupModal();
   };
 
-  // Setup back to top button functionality
   const setupBackToTop = () => {
     const backToTopBtn = document.getElementById("backToTopBtn");
     if (!backToTopBtn) return;
@@ -200,7 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Modal functionality
   const setupModal = () => {
     const modal = document.getElementById("timelineModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
@@ -208,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!modal || !closeModalBtn || modalTriggers.length === 0) return;
 
-    // Cache modal elements for better performance
     const modalElements = {
       title: document.getElementById("modalTitle"),
       year: document.getElementById("modalYear"),
@@ -226,7 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
       modalElements.image.alt = data.imageAlt;
       modalElements.imageSource.textContent = `Fonte: ${data.imageSource}`;
 
-      // Format description with paragraphs
       const formattedDescription = data.description
         .split("\n")
         .filter((p) => p.trim() !== "")
@@ -244,19 +223,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     };
 
-    // Event listeners
     modalTriggers.forEach((trigger) => {
       trigger.addEventListener("click", () => openModal(trigger));
     });
 
     closeModalBtn.addEventListener("click", closeModal);
 
-    // Close modal on backdrop click
     modal.addEventListener("click", (event) => {
       if (event.target === modal) closeModal();
     });
 
-    // Close modal on Escape key
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !modal.classList.contains("hidden")) {
         closeModal();
@@ -264,20 +240,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Main application initialization
   const initializeApp = async () => {
-    // Load header component
     await loadComponent("#header-placeholder", "header.html");
 
-    // Initialize all functionalities
     initializeHeaderFunctionality();
     initializeVueCompatibleFeatures();
   };
 
-  // Initialize the application
   initializeApp();
 
-  // Export functions for external use (especially Vue.js)
   window.initializeHeaderFunctionality = initializeHeaderFunctionality;
   window.initializeVueCompatibleFeatures = initializeVueCompatibleFeatures;
   window.setupTimelineAnimation = setupTimelineAnimation;
