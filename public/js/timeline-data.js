@@ -1,3 +1,15 @@
+/* Template:
+  {
+    year: "",
+    title: "",
+    shortDescription: "",
+    imageCard: "",
+    imageModal: "",
+    source: "",
+    longDescription: ``,
+  },
+*/
+
 export const timelineItems = [
   {
     year: "1937",
@@ -9,9 +21,34 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
     source: "Ik T from Kanagawa, Japan, CC BY 2.0, via Wikimedia Commons",
     longDescription: `Em 1937, o professor de física John Atanasoff e o estudante graduado Clifford Berry fizeram a primeira concepção do que seria o então Computador Atanasoff-Berry.
-                                O Computador Atanasoff-Berry (ABC, em inglês), foi o primeiro computador eletrônico digital. O dispositivo foi feito para desempenhar uma função específica: para resolver sistemas de equações linear simultâneas.
-                                Como ele tinha uma função fixa, sem a possibilidade de mudar o seu programa, o ABC não era um computador de propósito geral. Porém, ele introduziu várias ideias que são fundamentais para computadores modernos, notavelmente usando binário para fazer aritmética, e o uso de eletrônicos ao invés de componentes mecânicos.
-                                O ABC foi completado em 1942.`,
+                      O Computador Atanasoff-Berry (ABC, em inglês), foi o primeiro computador eletrônico digital. O dispositivo foi feito para desempenhar uma função específica: para resolver sistemas de equações linear simultâneas.
+                      Como ele tinha uma função fixa, sem a possibilidade de mudar o seu programa, o ABC não era um computador de propósito geral. Porém, ele introduziu várias ideias que são fundamentais para computadores modernos, notavelmente usando binário para fazer aritmética, e o uso de eletrônicos ao invés de componentes mecânicos.
+                      O ABC foi completado em 1942.`,
+  },
+  {
+    year: "1941",
+    title: "1941 - Konrad Zuse constrói o Z3",
+    shortDescription:
+      "Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
+    source: "DomenikaBo, CC BY-SA 4.0, via Wikimedia Commons",
+    longDescription: `Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.`,
+  },
+  {
+    year: "1944",
+    title: "1944 - Harvard Mark I",
+    shortDescription:
+      "Em 7 de agosto de 1944, o Harvard Mark I, também conhecido como IBM Automatic Sequence Controlled Calculator (ASCC), é concluído.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/1/11/Harvard_Mark_I_Computer_-_Left_Segment.jpg",
+    source:
+      "Daderot at English Wikipedia., CC BY-SA 3.0, via Wikimedia Commons",
+    longDescription: `Projetado por Howard Aiken e construído pela IBM , o Harvard Mark I foi o primeiro computador digital de larga escala dos EUA capaz de executar cálculos longos automaticamente. Também conhecido como Calculadora Automática de Sequência Controlada (ASCC) da IBM , é considerado por alguns como a primeira calculadora universal.`,
   },
   {
     year: "1946",
@@ -22,12 +59,109 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg",
     imageModal:
       "https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg",
-    source: "U.S. Army",
+    source: "Wikimedia Commons",
     longDescription: `Em 14 de Fevereiro de 1946, John Mauchly e J. Presper Eckert anunciaram publicamente o ENIAC na Universidade de Pennsylvania.
-                                O ENIAC, que significa “Eletronic Numerical Integrator And Computer” (Integrador Numérico Eletrônico e Computador), foi o primeiro computador eletrônico digital de propósito geral.
-                                A imprensa dos EUA na época descreveu o ENIAC como:
-                                “Uma nova máquina que tem expectativa de revolucionar as matemáticas de engenharia e mudar muitos dos nossos métodos de design industrial”
-                                O ENIAC calculava 5000 operações por segundo, ocupava mais de 92 metros quadrados de espaço, pesava 30 toneladas, e usava 18000 tubos de vácuo. Ele era em volta de 1000 vezes mais rápido do que outras máquinas da época.`,
+                      O ENIAC, que significa “Eletronic Numerical Integrator And Computer” (Integrador Numérico Eletrônico e Computador), foi o primeiro computador eletrônico digital de propósito geral.
+                      A imprensa dos EUA na época descreveu o ENIAC como:
+                      “Uma nova máquina que tem expectativa de revolucionar as matemáticas de engenharia e mudar muitos dos nossos métodos de design industrial”
+                      O ENIAC calculava 5000 operações por segundo, ocupava mais de 92 metros quadrados de espaço, pesava 30 toneladas, e usava 18000 tubos de vácuo. Ele era em volta de 1000 vezes mais rápido do que outras máquinas da época.`,
+  },
+  {
+    year: "1946",
+    title: "1946 - Tubo Williams-Kilburn",
+    shortDescription:
+      "1946 - O tubo Williams-Kilburn, o primeiro RAM, é patenteado",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/3/34/Williams-Kliburn_Tube%2C_Manchester_Mark_I.agr.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/3/34/Williams-Kliburn_Tube%2C_Manchester_Mark_I.agr.jpg",
+    source: "ArnoldReinhold, CC BY-SA 4.0, via Wikimedia Commons",
+    longDescription: `O tubo Williams-Kilburn, o primeiro RAM, é patenteado`,
+  },
+  {
+    year: "1948",
+    title: "1948 - Manchester Baby roda seu primeiro programa",
+    shortDescription:
+      "O Manchester Baby, o primeiro computador com programa armazenado do mundo, executa seu primeiro programa",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/3/3c/Manchester_baby_head_on.JPG",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/3/3c/Manchester_baby_head_on.JPG",
+    source: "Geni, CC BY-SA 4.0, via Wikimedia Commons",
+    longDescription: `Em 21 de junho de 1948, na Universidade de Manchester, um computador recém-construído executou com sucesso seu primeiro programa. O computador era a Máquina Experimental de Pequena Escala, também conhecida como "Bebê de Manchester" e "Protótipo Mark 1".`,
+  },
+  {
+    year: "1949",
+    title: "1949 - EDSAC",
+    shortDescription:
+      "O EDSAC, um dos primeiros computadores a armazenar programas, é concluído.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/2/22/EDSAC_%2819%29.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/2/22/EDSAC_%2819%29.jpg",
+    source:
+      "Copyright Computer Laboratory, University of Cambridge. Reproduced by permission.",
+    longDescription: `A Calculadora Automática de Armazenamento Eletrônico com Atraso (EDSAC) foi o primeiro computador prático de programa armazenado a operar um serviço de computação regular.`,
+  },
+  {
+    year: "1950",
+    title: "1950 - Elliott 152",
+    shortDescription: "O computador Elliott 152 é completado",
+    imageCard: "",
+    imageModal: "",
+    source: "Wikimedia Commons",
+    longDescription: `O computador Elliott 152 foi um dos primeiros computadores a utilizar transistores em vez de válvulas. Ele foi projetado para ser um computador de uso geral e foi amplamente utilizado em universidades e instituições de pesquisa.`,
+  },
+  {
+    year: "1952",
+    title: "1952 - Grace Hopper desenvolve o primeiro compilador",
+    shortDescription: "O primeiro compilador é desenvolvido por Grace Hopper.",
+    imageCard: "",
+    imageModal: "",
+    source: "Wikimedia Commons",
+    longDescription: `O primeiro compilador foi desenvolvido por Grace Hopper na década de 1950. Ele foi projetado para traduzir código fonte escrito em uma linguagem de programação de alto nível para uma linguagem de máquina que o computador pudesse entender. Hopper é frequentemente chamada de "mãe do COBOL" por seu papel no desenvolvimento dessa linguagem de programação.`,
+  },
+  {
+    year: "1953",
+    title: "1953 - IBM 650",
+    shortDescription: "A IBM anuncia o computador Modelo 650",
+    imageCard: "",
+    imageModal: "",
+    source: "",
+    longDescription: `Em 2 de julho de 1953, a IBM anunciou sua série 650 de computadores.
+                      A máquina foi o primeiro computador comercial produzido em massa pela IBM . Mais de 2.000 unidades foram vendidas, apesar da previsão inicial de mercado de que apenas 50 máquinas seriam instaladas.`,
+  },
+  {
+    year: "1954",
+    title: "1954 - FORTRAN",
+    shortDescription:
+      "O primeiro compilador de linguagem de programação de alto nível é desenvolvido.",
+    imageCard: "",
+    imageModal: "",
+    source: "",
+    longDescription: `O FORTRAN (Formula Translation) foi o primeiro compilador de linguagem de programação de alto nível a ser desenvolvido. Criado por uma equipe da IBM liderada por John Backus, o FORTRAN foi projetado para facilitar a programação de cálculos científicos e de engenharia. Sua introdução marcou o início da programação de alto nível e teve um impacto duradouro na forma como os programadores escrevem código até hoje.`,
+  },
+  {
+    year: "1958",
+    title: "1958 - Jack Kilby inventa o circuito integrado",
+    shortDescription: "O primeiro circuito integrado é inventado.",
+    imageCard:
+      "https://www.thestoryoftexas.com/upload/images/artifact-spotlight/2014-12-12%20microchip/as_microchip_gallery1.jpg",
+    imageModal:
+      "https://www.thestoryoftexas.com/upload/images/artifact-spotlight/2014-12-12%20microchip/as_microchip_gallery3.jpg",
+    source: "Texas State History Museum and Texas Instruments",
+    longDescription: `Em 1958, Jack Kilby, um engenheiro da Texas Instruments, inventou o primeiro circuito integrado. Essa inovação permitiu que múltiplos componentes eletrônicos fossem miniaturizados e integrados em um único chip de silício, revolucionando a eletrônica e pavimentando o caminho para o desenvolvimento de computadores mais compactos e poderosos.`,
+  },
+  {
+    year: "1960",
+    title: "DEC PDP-1",
+    shortDescription: "O primeiro computador minicomputador é lançado.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/2/23/Spacewar%21-PDP-1-20070512.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/2/23/Spacewar%21-PDP-1-20070512.jpg",
+    source: "Joi Ito from Inbamura, Japan, CC BY 2.0, via Wikimedia Commons",
+    longDescription: `O DEC PDP-1, lançado em 1960, foi um dos primeiros minicomputadores da história. Ele foi projetado para ser mais acessível e menor do que os computadores mainframe da época, permitindo que mais instituições, como universidades e laboratórios de pesquisa, tivessem acesso à computação. O PDP-1 é frequentemente lembrado por seu papel na popularização da programação interativa e do tempo compartilhado.`,
   },
   {
     year: "1971",
@@ -70,6 +204,6 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/b/b9/Apple-lisa-1.jpg",
     source: "Timothy Colegrove, CC BY-SA 4.0, via Wikimedia Commons",
     longDescription: `O Apple Lisa foi uma máquina de 16-bit, baseado no Motorola 68000, que vinha com um HD Winchester de 5Mb e 1Mb de RAM. O computador tinha uma tela monocromática embutida e um drive duplo de disquetes de 5.25 polegadas. Ele foi lançado nos EUA em 19 de janeiro de 1983.
-                                Foi o primeiro computador pessoal a utilizar uma Interface Gráfica de Usuário (GUI). Até esse ponto, todos os computadores eram controlados digitando comandos com o teclado. O Lisa vinha com um mouse, permitindo que o usuário apontasse e clicasse em ícones, janelas e menus.`,
+                      Foi o primeiro computador pessoal a utilizar uma Interface Gráfica de Usuário (GUI). Até esse ponto, todos os computadores eram controlados digitando comandos com o teclado. O Lisa vinha com um mouse, permitindo que o usuário apontasse e clicasse em ícones, janelas e menus.`,
   },
 ];
