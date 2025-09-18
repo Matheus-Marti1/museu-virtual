@@ -11,12 +11,17 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+      [v-cloak] {
+        display: none !important;
+      }
+    </style>
   </head>
   <body class="text-white">
     <div class="fixed inset-0 bg-main-background -z-10"></div>
 
-    <div id="app" class="relative min-h-screen flex flex-col">
+    <div id="app" class="relative min-h-screen flex flex-col" v-cloak>
       <div id="header-placeholder"></div>
 
       <main class="container mx-auto px-6 py-12 flex-grow fade-in">
@@ -91,6 +96,7 @@
 
       <div
         v-if="isModalOpen"
+        v-show="selectedItem"
         @click.self="closeModal"
         class="modal-overlay"
         :class="{
