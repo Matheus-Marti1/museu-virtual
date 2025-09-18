@@ -37,7 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelectorAll(".nav-link, .nav-component-link")
       .forEach((link) => {
-        if (link.getAttribute("href") === effectivePage) {
+        link.classList.remove(
+          "font-bold",
+          "text-white",
+          "border-b-2",
+          "border-white",
+          "bg-white/30",
+          "ring-2",
+          "ring-white/50"
+        );
+        
+        const href = link.getAttribute("href");
+        const linkFile = href ? href.split("/").pop() : "";
+        
+        if (linkFile === effectivePage) {
           link.classList.add(
             "font-bold",
             "text-white",
@@ -62,7 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
-            if (link.classList.contains("nav-component-link")) {
+            if (link.closest("#mobileComponentesSubmenu")) {
+              link.classList.add("bg-white/30", "ring-2", "ring-white/50");
+              link.classList.remove("border-b-2", "border-white", "bg-white/10");
+            } else if (link.classList.contains("nav-component-link")) {
               link.classList.add("bg-white/10");
               link.classList.remove("border-b-2", "border-white");
             }
@@ -93,23 +109,82 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileComponentesSubmenu,
     } = elements;
 
+    const closeMobileComponentesBtn = document.getElementById("closeMobileComponentesBtn");
+    const mobileComponentesIcon = document.getElementById("mobileComponentesIcon");
+
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.remove("pointer-events-none");
+        mobileMenu.classList.remove("opacity-0", "scale-95");
+        mobileMenu.classList.add("opacity-100", "scale-100");
+        document.body.style.overflow = "hidden";
       });
     }
 
     if (closeMobileMenuBtn && mobileMenu) {
       closeMobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.add("opacity-0", "scale-95");
+        mobileMenu.classList.remove("opacity-100", "scale-100");
+        
+        setTimeout(() => {
+          mobileMenu.classList.add("pointer-events-none");
+          document.body.style.overflow = "";
+        }, 300);
       });
     }
 
     if (mobileComponentesBtn && mobileComponentesSubmenu) {
       mobileComponentesBtn.addEventListener("click", () => {
-        mobileComponentesSubmenu.classList.toggle("hidden");
+        if (mobileComponentesIcon) {
+          mobileComponentesIcon.style.transform = "rotate(90deg)";
+        }
+        
+        mobileComponentesSubmenu.classList.remove("pointer-events-none");
+        mobileComponentesSubmenu.classList.remove("opacity-0", "translate-x-full");
+        mobileComponentesSubmenu.classList.add("opacity-100", "translate-x-0");
+        
+        mobileMenu.classList.add("-translate-x-full");
       });
     }
+
+    if (closeMobileComponentesBtn && mobileComponentesSubmenu && mobileMenu) {
+      closeMobileComponentesBtn.addEventListener("click", () => {
+        if (mobileComponentesIcon) {
+          mobileComponentesIcon.style.transform = "rotate(0deg)";
+        }
+        
+        mobileComponentesSubmenu.classList.add("opacity-0", "translate-x-full");
+        mobileComponentesSubmenu.classList.remove("opacity-100", "translate-x-0");
+        
+        mobileMenu.classList.remove("-translate-x-full");
+        
+        setTimeout(() => {
+          mobileComponentesSubmenu.classList.add("pointer-events-none");
+        }, 300);
+      });
+    }
+
+    const componentLinks = document.querySelectorAll('.nav-component-link');
+    componentLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu) {
+          mobileMenu.classList.add("opacity-0", "scale-95");
+          mobileMenu.classList.remove("opacity-100", "scale-100");
+          setTimeout(() => {
+            mobileMenu.classList.add("pointer-events-none");
+            document.body.style.overflow = "";
+          }, 300);
+        }
+        
+        if (mobileComponentesSubmenu) {
+          mobileComponentesSubmenu.classList.add("opacity-0", "translate-x-full");
+          mobileComponentesSubmenu.classList.remove("opacity-100", "translate-x-0");
+          setTimeout(() => {
+            mobileComponentesSubmenu.classList.add("pointer-events-none");
+          }, 300);
+        }
+      });
+    });
   };
 
   const initializeHeaderFunctionality = () => {

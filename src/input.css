@@ -175,3 +175,81 @@ body {
   color: #5b21b6;
   text-decoration-color: #5b21b6;
 }
+
+@media (max-width: 768px) {
+  .timeline-mobile {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .timeline-item-mobile {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-year-indicator {
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    z-index: 10;
+  }
+  
+  .timeline-card-mobile {
+    margin-left: 5rem;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .modal-trigger {
+    position: relative;
+    z-index: 10;
+  }
+  
+  @media (max-width: 767px) {
+    .modal-trigger {
+      margin-left: 5rem !important;
+      width: calc(100% - 5rem) !important;
+      padding-left: 1.5rem !important;
+    }
+  }
+  
+  .timeline-line-mobile {
+    z-index: 0;
+  }
+  
+  .modal-trigger.mobile-card {
+    padding-left: 5rem;
+    z-index: 10;
+  }
+
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+    max-height: calc(100vh - 4rem);
+    margin-top: 1rem;
+  }
+  
+  .modal-content .modal-trigger {
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    z-index: 110 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0.25rem !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+  }
+  
+  .modal-content .modal-trigger svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+}

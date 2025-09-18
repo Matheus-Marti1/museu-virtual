@@ -14,7 +14,7 @@ export const timelineItems = [
   {
     year: "1937",
     title: "Computador Atanasoff-Berry",
-    shortDescription: "1937 - O primeiro computador eletrônico digital.",
+    shortDescription: "O primeiro computador eletrônico digital.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
     imageModal:
@@ -27,7 +27,7 @@ export const timelineItems = [
   },
   {
     year: "1941",
-    title: "1941 - Konrad Zuse constrói o Z3",
+    title: "Konrad Zuse constrói o Z3",
     shortDescription:
       "Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.",
     imageCard:
@@ -39,7 +39,7 @@ export const timelineItems = [
   },
   {
     year: "1944",
-    title: "1944 - Harvard Mark I",
+    title: "Harvard Mark I",
     shortDescription:
       "Em 7 de agosto de 1944, o Harvard Mark I, também conhecido como IBM Automatic Sequence Controlled Calculator (ASCC), é concluído.",
     imageCard:
@@ -53,7 +53,7 @@ export const timelineItems = [
     year: "1946",
     title: "ENIAC",
     shortDescription:
-      "1946 - O primeiro computador eletrônico de grande escala.",
+      "O primeiro computador eletrônico de grande escala.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg",
     imageModal:
@@ -67,9 +67,9 @@ export const timelineItems = [
   },
   {
     year: "1946",
-    title: "1946 - Tubo Williams-Kilburn",
+    title: "Tubo Williams-Kilburn",
     shortDescription:
-      "1946 - O tubo Williams-Kilburn, o primeiro RAM, é patenteado",
+      "O tubo Williams-Kilburn, o primeiro RAM, é patenteado",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/3/34/Williams-Kliburn_Tube%2C_Manchester_Mark_I.agr.jpg",
     imageModal:
@@ -79,7 +79,7 @@ export const timelineItems = [
   },
   {
     year: "1948",
-    title: "1948 - Manchester Baby roda seu primeiro programa",
+    title: "Manchester Baby roda seu primeiro programa",
     shortDescription:
       "O Manchester Baby, o primeiro computador com programa armazenado do mundo, executa seu primeiro programa",
     imageCard:
@@ -91,7 +91,7 @@ export const timelineItems = [
   },
   {
     year: "1949",
-    title: "1949 - EDSAC",
+    title: "EDSAC",
     shortDescription:
       "O EDSAC, um dos primeiros computadores a armazenar programas, é concluído.",
     imageCard:
@@ -104,7 +104,7 @@ export const timelineItems = [
   },
   {
     year: "1950",
-    title: "1950 - Elliott 152",
+    title: "Elliott 152",
     shortDescription: "O computador Elliott 152 é completado",
     imageCard: "",
     imageModal: "",
@@ -113,7 +113,7 @@ export const timelineItems = [
   },
   {
     year: "1952",
-    title: "1952 - Grace Hopper desenvolve o primeiro compilador",
+    title: "Grace Hopper desenvolve o primeiro compilador",
     shortDescription: "O primeiro compilador é desenvolvido por Grace Hopper.",
     imageCard: "",
     imageModal: "",
@@ -122,7 +122,7 @@ export const timelineItems = [
   },
   {
     year: "1953",
-    title: "1953 - IBM 650",
+    title: "IBM 650",
     shortDescription: "A IBM anuncia o computador Modelo 650",
     imageCard: "",
     imageModal: "",
@@ -132,7 +132,7 @@ export const timelineItems = [
   },
   {
     year: "1954",
-    title: "1954 - FORTRAN",
+    title: "FORTRAN",
     shortDescription:
       "O primeiro compilador de linguagem de programação de alto nível é desenvolvido.",
     imageCard: "",
@@ -142,7 +142,7 @@ export const timelineItems = [
   },
   {
     year: "1958",
-    title: "1958 - Jack Kilby inventa o circuito integrado",
+    title: "Jack Kilby inventa o circuito integrado",
     shortDescription: "O primeiro circuito integrado é inventado.",
     imageCard:
       "https://www.thestoryoftexas.com/upload/images/artifact-spotlight/2014-12-12%20microchip/as_microchip_gallery1.jpg",
@@ -164,7 +164,7 @@ export const timelineItems = [
   },
   {
     year: "1965",
-    title: "1965 - Lei de Moore",
+    title: "Lei de Moore",
     shortDescription: "A Lei de Moore é formulada.",
     imageCard: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
     imageModal: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
@@ -173,7 +173,7 @@ export const timelineItems = [
   },
   {
     year: "1968",
-    title: "1968 - Intel é fundada",
+    title: "Intel é fundada",
     shortDescription: "A Intel é fundada por Robert Noyce e Gordon Moore.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg",
@@ -184,7 +184,7 @@ export const timelineItems = [
   },
   {
     year: "1969",
-    title: "1969 - ARPANET",
+    title: "ARPANET",
     shortDescription: "A ARPANET, precursora da internet, é criada.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/6/6f/Arpanet_map_1971.png",
@@ -195,7 +195,7 @@ export const timelineItems = [
   },
   {
     year: "1970",
-    title: "1970 - Intel 1103",
+    title: "Intel 1103",
     shortDescription: "O primeiro chip de memória DRAM comercialmente disponível do mundo.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_C1103.jpg",
@@ -209,7 +209,7 @@ export const timelineItems = [
     year: "1971",
     title: "Intel 4004",
     shortDescription:
-      "1971 - O primeiro microprocessador comercialmente disponível.",
+      "O primeiro microprocessador comercialmente disponível.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg",
     imageModal:
@@ -220,7 +220,7 @@ export const timelineItems = [
   {
     year: "1976",
     title: "Apple I",
-    shortDescription: "1976 - Um dos primeiros computadores pessoais.",
+    shortDescription: "Um dos primeiros computadores pessoais.",
     imageCard: "https://placehold.co/600x400/2d3748/ffffff?text=Apple+I",
     imageModal: "https://placehold.co/800x500/2d3748/ffffff?text=Apple+I",
     source: "Wikimedia Commons",
@@ -229,7 +229,7 @@ export const timelineItems = [
   {
     year: "1981",
     title: "IBM PC",
-    shortDescription: "1981 - O computador que popularizou a arquitetura x86.",
+    shortDescription: "O computador que popularizou a arquitetura x86.",
     imageCard: "https://placehold.co/600x400/2d3748/ffffff?text=IBM+PC",
     imageModal: "https://placehold.co/800x500/2d3748/ffffff?text=IBM+PC",
     source: "Oldcomputermuseum.com",
@@ -239,7 +239,7 @@ export const timelineItems = [
     year: "1983",
     title: "Apple Lisa",
     shortDescription:
-      "1983 - O primeiro computador pessoal com uma interface gráfica.",
+      "O primeiro computador pessoal com uma interface gráfica.",
     imageCard:
       "https://upload.wikimedia.org/wikipedia/commons/b/b9/Apple-lisa-1.jpg",
     imageModal:
