@@ -19,7 +19,7 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
     imageModal:
       "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
-    source: "Ik T from Kanagawa, Japan, CC BY 2.0, via Wikimedia Commons",
+    source: '<a href="https://commons.wikimedia.org/wiki/File:Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_(30781535612).jpg">Ik T from Kanagawa, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `Em 1937, o professor de física John Atanasoff e o estudante graduado Clifford Berry fizeram a primeira concepção do que seria o então Computador Atanasoff-Berry.
                       O Computador Atanasoff-Berry (ABC, em inglês), foi o primeiro computador eletrônico digital. O dispositivo foi feito para desempenhar uma função específica: para resolver sistemas de equações linear simultâneas.
                       Como ele tinha uma função fixa, sem a possibilidade de mudar o seu programa, o ABC não era um computador de propósito geral. Porém, ele introduziu várias ideias que são fundamentais para computadores modernos, notavelmente usando binário para fazer aritmética, e o uso de eletrônicos ao invés de componentes mecânicos.
@@ -34,7 +34,7 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
     imageModal:
       "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
-    source: "DomenikaBo, CC BY-SA 4.0, via Wikimedia Commons",
+    source: '<a href="https://commons.wikimedia.org/wiki/File:Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg">DomenikaBo</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.`,
   },
   {
@@ -46,8 +46,7 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg",
     imageModal:
       "https://upload.wikimedia.org/wikipedia/commons/1/11/Harvard_Mark_I_Computer_-_Left_Segment.jpg",
-    source:
-      "Daderot at English Wikipedia., CC BY-SA 3.0, via Wikimedia Commons",
+    source: '<a href="https://commons.wikimedia.org/wiki/File:Harvard_Mark_I_Computer_-_Left_Segment.jpg">Daderot at English Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons',
     longDescription: `Projetado por Howard Aiken e construído pela IBM , o Harvard Mark I foi o primeiro computador digital de larga escala dos EUA capaz de executar cálculos longos automaticamente. Também conhecido como Calculadora Automática de Sequência Controlada (ASCC) da IBM , é considerado por alguns como a primeira calculadora universal.`,
   },
   {
@@ -162,6 +161,49 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/2/23/Spacewar%21-PDP-1-20070512.jpg",
     source: "Joi Ito from Inbamura, Japan, CC BY 2.0, via Wikimedia Commons",
     longDescription: `O DEC PDP-1, lançado em 1960, foi um dos primeiros minicomputadores da história. Ele foi projetado para ser mais acessível e menor do que os computadores mainframe da época, permitindo que mais instituições, como universidades e laboratórios de pesquisa, tivessem acesso à computação. O PDP-1 é frequentemente lembrado por seu papel na popularização da programação interativa e do tempo compartilhado.`,
+  },
+  {
+    year: "1965",
+    title: "1965 - Lei de Moore",
+    shortDescription: "A Lei de Moore é formulada.",
+    imageCard: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
+    imageModal: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
+    source: "José Maria Silveira Neto, Public domain, via Wikimedia Commons",
+    longDescription: `A Lei de Moore, formulada por Gordon Moore, cofundador da Intel, é uma observação de que o número de transistores em um chip de computador dobra aproximadamente a cada dois anos, levando a um aumento exponencial na capacidade de processamento e uma redução nos custos. Essa previsão tem se mostrado verdadeira por várias décadas e é um dos principais motores da evolução da tecnologia da informação.`,
+  },
+  {
+    year: "1968",
+    title: "1968 - Intel é fundada",
+    shortDescription: "A Intel é fundada por Robert Noyce e Gordon Moore.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg",
+    source: "Intel, Public domain, via Wikimedia Commons",
+    longDescription: `A Intel Corporation foi fundada em 1968 por Robert Noyce e Gordon Moore, dois pioneiros da indústria de semicondutores. A empresa rapidamente se destacou no desenvolvimento de microprocessadores e memórias, tornando-se uma das principais forças na revolução dos computadores pessoais e na evolução da tecnologia da informação.`,
+  },
+  {
+    year: "1969",
+    title: "1969 - ARPANET",
+    shortDescription: "A ARPANET, precursora da internet, é criada.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/6/6f/Arpanet_map_1971.png",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/6/6f/Arpanet_map_1971.png",
+    source: "Wikimedia Commons",
+    longDescription: `A ARPANET, ou Advanced Research Projects Agency Network, foi criada em 1969 como um projeto do Departamento de Defesa dos EUA. Ela é considerada a precursora da internet moderna, permitindo a comunicação entre diferentes redes de computadores. A ARPANET introduziu conceitos fundamentais, como o roteamento de pacotes e a arquitetura cliente-servidor, que ainda são utilizados na internet de hoje.`,
+  },
+  {
+    year: "1970",
+    title: "1970 - Intel 1103",
+    shortDescription: "O primeiro chip de memória DRAM comercialmente disponível do mundo.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_C1103.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_C1103.jpg",
+    source: '<a href="https://commons.wikimedia.org/wiki/File:Intel_C1103.jpg">Stelo.xyz, Pttn, or Thomas Nguyen</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
+    longDescription: `O Intel 1103, lançado em outubro de 1970, foi o primeiro chip de memória dinâmica de acesso aleatório (DRAM) disponível comercialmente do mundo. Ele revolucionou a indústria de computadores, permitindo a criação de sistemas mais compactos e eficientes. O 1103 foi amplamente utilizado em computadores pessoais e estações de trabalho durante a década de 1970.
+    Com uma memória de 1 kilobit, ele tinha uma capacidade significativamente maior do que as memórias anteriores, que eram baseadas em núcleos magnéticos ou outros tipos de tecnologia.`,
   },
   {
     year: "1971",

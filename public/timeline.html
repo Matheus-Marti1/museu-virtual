@@ -64,8 +64,7 @@
                 :alt="'Imagem de ' + item.title"
                 class="w-full h-auto rounded-md"
               />
-              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: {{ item.source }}
+              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right" v-html="'Fonte: ' + item.source">
               </p>
               <h3 class="font-bold text-xl mb-1">{{ item.title }}</h3>
               <p class="text-sm">{{ item.shortDescription }}</p>
@@ -115,8 +114,7 @@
             :alt="'Imagem detalhada de ' + selectedItem.title"
             class="w-full h-auto max-h-80 object-cover rounded-lg mb-1"
           />
-          <p class="text-xs italic text-gray-600 mb-4 text-right">
-            Fonte: {{ selectedItem.source }}
+          <p class="text-xs italic text-gray-600 mb-4 text-right" v-html="'Fonte: ' + selectedItem.source">
           </p>
           <div v-html="formattedDescription"></div>
         </div>
