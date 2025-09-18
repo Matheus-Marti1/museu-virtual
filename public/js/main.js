@@ -240,8 +240,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const adjustLinksForSubfolder = () => {
+    const isInSubfolder = window.location.pathname.includes('/componentes/');
+    
+    if (isInSubfolder) {
+      document.querySelectorAll('a[href^="componentes/"]').forEach(link => {
+        const href = link.getAttribute('href');
+        link.setAttribute('href', href.replace('componentes/', ''));
+      });
+      
+      document.querySelectorAll('a[href="index.html"]').forEach(link => {
+        link.setAttribute('href', '../index.html');
+      });
+      
+      document.querySelectorAll('a[href="timeline.html"]').forEach(link => {
+        link.setAttribute('href', '../timeline.html');
+      });
+      
+      document.querySelectorAll('a[href="membros.html"]').forEach(link => {
+        link.setAttribute('href', '../membros.html');
+      });
+      
+      document.querySelectorAll('img[src="images/logo_fatec.png"]').forEach(img => {
+        img.setAttribute('src', '../images/logo_fatec.png');
+      });
+    }
+  };
+
   const initializeApp = async () => {
-    await loadComponent("#header-placeholder", "header.html");
+    const isInSubfolder = window.location.pathname.includes('/componentes/');
+    const headerPath = isInSubfolder ? "../header.html" : "header.html";
+    
+    await loadComponent("#header-placeholder", headerPath);
+    
+    adjustLinksForSubfolder();
 
     initializeHeaderFunctionality();
     initializeVueCompatibleFeatures();
