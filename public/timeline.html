@@ -16,6 +16,19 @@
       [v-cloak] {
         display: none !important;
       }
+      .timeline-image {
+        max-height: 250px;
+        width: 100%;
+        object-fit: contain;
+      }
+      .modal-image {
+        max-height: 70vh;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+        display: block;
+      }
     </style>
   </head>
   <body class="text-white">
@@ -40,58 +53,86 @@
           ></div>
 
           <div
-            v-for="(item, index) in timelineItems"
-            :key="item.title"
-            class="mb-8 md:flex justify-between items-center w-full relative"
-            :class="{ 'md:flex-row-reverse': index % 2 !== 0 }"
+            v-for="(yearGroup, yearIndex) in groupedTimelineItems"
+            :key="yearGroup.year"
+            class="mb-12 relative"
           >
-            <div class="hidden md:block order-1 w-5/12"></div>
-
-            <div class="z-20 hidden md:flex items-center order-1">
+            <!-- Linha conectora do ano -->
+            <div class="z-20 hidden md:flex items-center justify-center mb-8">
+              <div class="w-32 h-0.5 bg-white/50"></div>
               <div
-                class="w-8 h-0.5"
-                :class="{ 'bg-white/50': index % 2 !== 0 }"
-              ></div>
-              <div
-                class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
+                class="flex items-center justify-center w-24 h-24 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
               >
                 <span class="font-bold text-white text-xl"
-                  >{{ item.year }}</span
+                  >{{ yearGroup.year }}</span
                 >
               </div>
-              <div
-                class="w-8 h-0.5"
-                :class="{ 'bg-white/50': index % 2 === 0 }"
-              ></div>
+              <div class="w-32 h-0.5 bg-white/50"></div>
             </div>
 
-            <div class="z-10 md:hidden flex items-center absolute left-0 top-6">
+            <!-- Ano para mobile -->
+            <div class="z-10 md:hidden flex items-center mb-6">
               <div
                 class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
               >
                 <span class="font-bold text-white text-sm"
-                  >{{ item.year }}</span
+                  >{{ yearGroup.year }}</span
                 >
               </div>
-              <div class="w-6 h-0.5 bg-white/50"></div>
+              <div class="w-24 h-0.5 bg-white/50"></div>
             </div>
 
-            <button
-              @click="openModal(item)"
-              class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 ml-20 md:ml-0 pl-6 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl z-10 relative"
+            <!-- Itens do mesmo ano -->
+            <div
+              v-for="(item, itemIndex) in yearGroup.items"
+              :key="item.title"
+              class="mb-6 md:flex justify-between items-center w-full relative"
+              :class="{ 'md:flex-row-reverse': yearIndex % 2 !== 0 }"
             >
-              <img
-                :src="item.imageCard"
-                :alt="'Imagem de ' + item.title"
-                class="w-full h-auto rounded-md"
-              />
-              <p
-                class="text-xs italic text-gray-600 mt-1 mb-3 text-right"
-                v-html="'Fonte: ' + item.source"
-              ></p>
-              <h3 class="font-bold text-xl mb-1">{{ item.title }}</h3>
-              <p class="text-sm">{{ item.shortDescription }}</p>
-            </button>
+              <div class="hidden md:block order-1 w-5/12"></div>
+
+              <!-- Conectores laterais para desktop -->
+              <div class="z-20 hidden md:flex items-center order-1">
+                <div
+                  class="w-8 h-0.5"
+                  :class="{ 'bg-white/30': yearIndex % 2 !== 0 }"
+                ></div>
+                <div
+                  class="flex items-center justify-center w-4 h-4 bg-white/70 rounded-full"
+                ></div>
+                <div
+                  class="w-8 h-0.5"
+                  :class="{ 'bg-white/30': yearIndex % 2 === 0 }"
+                ></div>
+              </div>
+
+              <!-- Conector para mobile -->
+              <div class="z-10 md:hidden absolute top-6 left-8">
+                <div class="flex items-center">
+                  <div
+                    class="flex items-center justify-center w-3 h-3 bg-white/70 rounded-full -ml-1.5"
+                  ></div>
+                  <div class="w-16 h-0.5 bg-white/30 ml-1.5"></div>
+                </div>
+              </div>
+
+              <button
+                @click="openModal(item)"
+                class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 md:ml-0 pl-6 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl z-10 relative"
+              >
+                <img
+                  :src="item.imageCard"
+                  :alt="'Imagem de ' + item.title"
+                  class="timeline-image rounded-md"
+                />
+                <p
+                  class="text-xs italic text-gray-600 mt-1 mb-3 text-right"
+                  v-html="'Fonte: ' + getCardSource(item)"
+                ></p>
+                <h3 class="font-bold text-xl mb-1">{{ item.title }}</h3>
+                <p class="text-sm">{{ item.shortDescription }}</p>
+              </button>
+            </div>
           </div>
         </div>
       </main>
@@ -136,11 +177,11 @@
           <img
             :src="selectedItem.imageModal"
             :alt="'Imagem detalhada de ' + selectedItem.title"
-            class="w-full h-auto max-h-80 object-cover rounded-lg mb-1"
+            class="modal-image rounded-lg mb-1"
           />
           <p
             class="text-xs italic text-gray-600 mb-4 text-right"
-            v-html="'Fonte: ' + selectedItem.source"
+            v-html="'Fonte: ' + getModalSource(selectedItem)"
           ></p>
           <div v-html="formattedDescription"></div>
         </div>
@@ -185,6 +226,32 @@
               .map((p) => `<p class="mb-4">${p.trim()}</p>`)
               .join("");
           });
+
+          const groupedTimelineItems = computed(() => {
+            const grouped = {};
+
+            timelineItems.forEach((item) => {
+              if (!grouped[item.year]) {
+                grouped[item.year] = {
+                  year: item.year,
+                  items: [],
+                };
+              }
+              grouped[item.year].items.push(item);
+            });
+
+            return Object.values(grouped).sort(
+              (a, b) => parseInt(a.year) - parseInt(b.year)
+            );
+          });
+
+          const getCardSource = (item) => {
+            return item.sourceCard || item.source || "";
+          };
+
+          const getModalSource = (item) => {
+            return item.sourceModal || item.source || "";
+          };
 
           const openModal = (item) => {
             selectedItem.value = item;
@@ -245,10 +312,13 @@
 
           return {
             timelineItems,
+            groupedTimelineItems,
             isModalOpen,
             selectedItem,
             modalState,
             formattedDescription,
+            getCardSource,
+            getModalSource,
             openModal,
             closeModal,
           };

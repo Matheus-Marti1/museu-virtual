@@ -5,7 +5,8 @@
     shortDescription: "",
     imageCard: "",
     imageModal: "",
-    source: "",
+    sourceCard: "",
+    sourceModal: "",
     longDescription: ``,
   },
 */
@@ -48,7 +49,9 @@ export const timelineItems = [
       "https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg",
     imageModal:
       "https://upload.wikimedia.org/wikipedia/commons/1/11/Harvard_Mark_I_Computer_-_Left_Segment.jpg",
-    source:
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Harvard_Mark_I_Computer_-_Input-Output_Details.jpg">Daderot at English Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons',
+    sourceModal:
       '<a href="https://commons.wikimedia.org/wiki/File:Harvard_Mark_I_Computer_-_Left_Segment.jpg">Daderot at English Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons',
     longDescription: `Projetado por Howard Aiken e construído pela IBM , o Harvard Mark I foi o primeiro computador digital de larga escala dos EUA capaz de executar cálculos longos automaticamente. Também conhecido como Calculadora Automática de Sequência Controlada (ASCC) da IBM , é considerado por alguns como a primeira calculadora universal.`,
   },
@@ -229,6 +232,19 @@ export const timelineItems = [
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_4004.jpg">LucaDetomi at it.wikipedia</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons',
     longDescription: `Lançado pela Intel, o 4004 foi o primeiro microprocessador comercialmente disponível no mundo. Ele integrou todos os componentes de uma CPU em um único chip de silício, uma inovação que pavimentou o caminho para o desenvolvimento dos computadores pessoais e da eletrônica embarcada.`,
+  },
+  {
+    year: "1976",
+    title: "Apple é fundada",
+    shortDescription:
+      "Steve Wozniak, Steve Jobs, e Ronald Wayne fundam a Apple Computer Inc.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg">Rob Janoff</a>, Public domain, via Wikimedia Commons',
+    longDescription: ``,
   },
   {
     year: "1976",
