@@ -12,24 +12,6 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <style>
-      [v-cloak] {
-        display: none !important;
-      }
-      .timeline-image {
-        max-height: 250px;
-        width: 100%;
-        object-fit: contain;
-      }
-      .modal-image {
-        max-height: 70vh;
-        width: auto;
-        max-width: 100%;
-        object-fit: contain;
-        margin: 0 auto;
-        display: block;
-      }
-    </style>
   </head>
   <body class="text-white">
     <div class="fixed inset-0 bg-main-background -z-10"></div>
@@ -41,6 +23,47 @@
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">
           Linha do Tempo
         </h1>
+
+        <nav aria-label="Navegação por anos" class="mb-10 year-nav-sticky">
+          <div ref="yearNavWrapperEl" class="year-nav-wrapper relative border border-white/10 bg-white/5 backdrop-blur-md rounded-xl">
+            <button
+              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -left-1 z-10 items-center justify-center w-9 h-9 rounded-full backdrop-blur-md border border-white/25 bg-white/10 text-white transition hover:scale-105 hover:bg-white/20 hover:border-white/40"
+              type="button"
+              aria-label="Rolar anos para a esquerda"
+              v-show="canScrollLeft"
+              @click="scrollNav(-1)"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div ref="yearNavEl" class="year-nav overflow-x-auto scroll-smooth cursor-grab flex gap-3 md:gap-4 items-center py-2 pl-10 pr-10 md:pl-12 md:pr-12" :class="{ 'pl-12 md:pl-16': !canScrollLeft, 'pr-12 md:pr-16': !canScrollRight }">
+              <button
+                v-for="year in years"
+                :key="'nav-' + year"
+                type="button"
+                @click="scrollToYear(year)"
+                class="whitespace-nowrap border border-white/25 bg-white/10 text-white rounded-full px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base shadow-sm transition transform hover:-translate-y-0.5 hover:bg-white/20 hover:border-white/40"
+                :data-year="year"
+                :class="{ 'bg-white/30 border-white/60 text-gray-900 font-bold': activeYear === year }"
+              >
+                {{ year }}
+              </button>
+            </div>
+
+            <button
+              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-1 z-10 items-center justify-center w-9 h-9 rounded-full backdrop-blur-md border border-white/25 bg-white/10 text-white transition hover:scale-105 hover:bg-white/20 hover:border-white/40"
+              type="button"
+              aria-label="Rolar anos para a direita"
+              v-show="canScrollRight"
+              @click="scrollNav(1)"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <div class="absolute inset-y-0 left-0 w-12 pointer-events-none transition-opacity bg-gradient-to-r from-black/70 to-transparent" :class="{ hidden: !canScrollLeft }"></div>
+            <div class="absolute inset-y-0 right-0 w-12 pointer-events-none transition-opacity bg-gradient-to-l from-black/70 to-transparent" :class="{ hidden: !canScrollRight }"></div>
+          </div>
+        </nav>
 
         <div class="relative wrap overflow-hidden p-10 md:p-10 h-full">
           <div
@@ -55,9 +78,9 @@
           <div
             v-for="(yearGroup, yearIndex) in groupedTimelineItems"
             :key="yearGroup.year"
-            class="mb-12 relative"
+            class="mb-12 relative year-anchor"
+            :id="'year-' + yearGroup.year"
           >
-            <!-- Linha conectora do ano -->
             <div class="z-20 hidden md:flex items-center justify-center mb-8">
               <div class="w-32 h-0.5 bg-white/50"></div>
               <div
@@ -70,7 +93,6 @@
               <div class="w-32 h-0.5 bg-white/50"></div>
             </div>
 
-            <!-- Ano para mobile -->
             <div class="z-10 md:hidden flex items-center mb-6">
               <div
                 class="flex items-center justify-center w-16 h-16 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
@@ -82,7 +104,6 @@
               <div class="w-24 h-0.5 bg-white/50"></div>
             </div>
 
-            <!-- Itens do mesmo ano -->
             <div
               v-for="(item, itemIndex) in yearGroup.items"
               :key="item.title"
@@ -91,7 +112,6 @@
             >
               <div class="hidden md:block order-1 w-5/12"></div>
 
-              <!-- Conectores laterais para desktop -->
               <div class="z-20 hidden md:flex items-center order-1">
                 <div
                   class="w-8 h-0.5"
@@ -106,7 +126,6 @@
                 ></div>
               </div>
 
-              <!-- Conector para mobile -->
               <div class="z-10 md:hidden absolute top-6 left-8">
                 <div class="flex items-center">
                   <div
@@ -210,13 +229,18 @@
 
     <script type="module">
       import { timelineItems } from "./js/timeline-data.js";
-      const { createApp, ref, computed, onMounted } = Vue;
+  const { createApp, ref, computed, onMounted, nextTick, watch } = Vue;
 
       createApp({
         setup() {
           const isModalOpen = ref(false);
           const selectedItem = ref(null);
           const modalState = ref("hidden");
+          const activeYear = ref(null);
+          const yearNavEl = ref(null);
+          const yearNavWrapperEl = ref(null);
+          const canScrollLeft = ref(false);
+          const canScrollRight = ref(false);
 
           const formattedDescription = computed(() => {
             if (!selectedItem.value) return "";
@@ -225,6 +249,12 @@
               .filter((p) => p.trim() !== "")
               .map((p) => `<p class="mb-4">${p.trim()}</p>`)
               .join("");
+          });
+
+          const years = computed(() => {
+            const set = new Set();
+            timelineItems.forEach((i) => set.add(i.year));
+            return Array.from(set).sort((a, b) => parseInt(a) - parseInt(b));
           });
 
           const groupedTimelineItems = computed(() => {
@@ -251,6 +281,43 @@
 
           const getModalSource = (item) => {
             return item.sourceModal || item.source || "";
+          };
+
+          const scrollToYear = (year) => {
+            const el = document.getElementById(`year-${year}`);
+            if (!el) return;
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            activeYear.value = year;
+            history.replaceState(null, "", `#year-${year}`);
+            centerActiveYear("smooth");
+          };
+
+          const updateScrollShadows = () => {
+            const el = yearNavEl.value;
+            if (!el) return;
+            canScrollLeft.value = el.scrollLeft > 2;
+            canScrollRight.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+          };
+
+          const scrollNav = (dir) => {
+            const el = yearNavEl.value;
+            if (!el) return;
+            const amount = Math.max(200, el.clientWidth * 0.8) * (dir < 0 ? -1 : 1);
+            el.scrollBy({ left: amount, behavior: "smooth" });
+            setTimeout(updateScrollShadows, 200);
+          };
+
+          const centerActiveYear = (behavior = "auto") => {
+            const container = yearNavEl.value;
+            if (!container || !activeYear.value) return;
+            const btn = container.querySelector(`[data-year="${activeYear.value}"]`);
+            if (!btn) return;
+            const btnRect = btn.getBoundingClientRect();
+            const contRect = container.getBoundingClientRect();
+            const current = container.scrollLeft;
+            const offset = btn.offsetLeft - (contRect.width / 2 - btnRect.width / 2);
+            container.scrollTo({ left: Math.max(0, offset), behavior });
+            setTimeout(updateScrollShadows, 150);
           };
 
           const openModal = (item) => {
@@ -305,20 +372,85 @@
 
             document.addEventListener("keydown", handleKeydown);
 
+            await nextTick();
+            updateScrollShadows();
+            const el = yearNavEl.value;
+            if (el) {
+              el.addEventListener("scroll", updateScrollShadows, { passive: true });
+            }
+            window.addEventListener("resize", updateScrollShadows);
+
+            const computeOffsets = () => {
+              const headerEl = document.getElementById("header-placeholder");
+              const headerFirst = headerEl && headerEl.firstElementChild ? headerEl.firstElementChild : headerEl;
+              const headerH = headerFirst ? headerFirst.getBoundingClientRect().height : 72;
+              document.documentElement.style.setProperty("--header-offset", `${Math.round(headerH)}px`);
+              const navWrap = yearNavWrapperEl.value;
+              const navH = navWrap ? navWrap.getBoundingClientRect().height : 52;
+              document.documentElement.style.setProperty("--year-nav-height", `${Math.round(navH)}px`);
+            };
+            computeOffsets();
+            window.addEventListener("resize", computeOffsets);
+
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    if (id && id.startsWith("year-")) {
+                      activeYear.value = id.replace("year-", "");
+                    }
+                  }
+                });
+              },
+              {
+                root: null,
+                rootMargin: "-60% 0px -35% 0px",
+                threshold: [0, 0.25, 0.5, 0.75, 1],
+              }
+            );
+            document.querySelectorAll('.year-anchor[id^="year-"]').forEach((el) =>
+              observer.observe(el)
+            );
+
+            if (location.hash && location.hash.startsWith("#year-")) {
+              const target = document.querySelector(location.hash);
+              if (target) {
+                setTimeout(() => {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => centerActiveYear("smooth"), 150);
+                }, 100);
+              }
+            }
+
             return () => {
               document.removeEventListener("keydown", handleKeydown);
+              if (el) el.removeEventListener("scroll", updateScrollShadows);
+              window.removeEventListener("resize", updateScrollShadows);
             };
+          });
+
+          watch(activeYear, () => {
+            centerActiveYear("smooth");
           });
 
           return {
             timelineItems,
             groupedTimelineItems,
+            years,
             isModalOpen,
             selectedItem,
             modalState,
+            activeYear,
+            yearNavEl,
+            yearNavWrapperEl,
+            canScrollLeft,
+            canScrollRight,
             formattedDescription,
             getCardSource,
             getModalSource,
+            scrollToYear,
+            scrollNav,
             openModal,
             closeModal,
           };

@@ -254,6 +254,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", toggleVisibility);
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash && window.location.hash.startsWith("#year-")) {
+        const cleanUrl = window.location.pathname + window.location.search;
+        history.replaceState(null, "", cleanUrl);
+      }
     });
   };
 
