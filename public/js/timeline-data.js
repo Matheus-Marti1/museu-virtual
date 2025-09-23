@@ -338,4 +338,14 @@ export const timelineItems = [
     longDescription: `O Apple Lisa foi uma máquina de 16-bit, baseado no Motorola 68000, que vinha com um HD Winchester de 5Mb e 1Mb de RAM. O computador tinha uma tela monocromática embutida e um drive duplo de disquetes de 5.25 polegadas. Ele foi lançado nos EUA em 19 de janeiro de 1983.
                       Foi o primeiro computador pessoal a utilizar uma Interface Gráfica de Usuário (GUI). Até esse ponto, todos os computadores eram controlados digitando comandos com o teclado. O Lisa vinha com um mouse, permitindo que o usuário apontasse e clicasse em ícones, janelas e menus.`,
   },
+  {
+    year: "1983",
+    title: "Microsoft anuncia o Windows",
+    shortDescription: "O sistema operacional com interface gráfica da Microsoft.",
+    imageCard: "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
+    imageModal: "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Windows_1.0_screenshot.png",
+    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
+    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_Windows_1.0_screenshot.png">Rezonansowy, Microsoft</a>, Public domain, via Wikimedia Commons',
+    longDescription: `Em 10 de novembro de 1983, a Microsoft anunciou o Windows, um sistema operacional com interface gráfica. O Windows foi projetado para funcionar como uma camada sobre o MS-DOS, oferecendo uma interface mais amigável e facilitando a multitarefa. A primeira versão do Windows, lançada em 1985, incluía recursos como janelas redimensionáveis, menus suspensos e suporte para mouse, marcando o início de uma nova era na computação pessoal.`,
+  },
 ];
