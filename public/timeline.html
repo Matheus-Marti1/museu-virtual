@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   </head>
   <body class="text-white">
@@ -27,15 +26,13 @@
         <nav aria-label="Navegação por anos" class="mb-10 year-nav-sticky">
           <div
             ref="yearNavWrapperEl"
-            class="year-nav-wrapper relative border border-white/10 bg-white/5 backdrop-blur-md rounded-xl"
-          >
+            class="year-nav-wrapper relative border border-white/10 bg-white/5 backdrop-blur-md rounded-xl">
             <button
               class="hidden md:flex absolute top-1/2 -translate-y-1/2 -left-1 z-10 items-center justify-center w-9 h-9 rounded-full backdrop-blur-md border border-white/25 bg-white/10 text-white transition hover:scale-105 hover:bg-white/20 hover:border-white/40 cursor-pointer"
               type="button"
               aria-label="Rolar anos para a esquerda"
               v-show="canScrollLeft"
-              @click="scrollNav(-1)"
-            >
+              @click="scrollNav(-1)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -44,8 +41,7 @@
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+                stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
@@ -53,8 +49,7 @@
             <div
               ref="yearNavEl"
               class="year-nav overflow-x-auto scroll-smooth cursor-grab flex gap-3 md:gap-4 items-center py-2 pl-10 pr-10 md:pl-12 md:pr-12"
-              :class="{ 'pl-12 md:pl-16': !canScrollLeft, 'pr-12 md:pr-16': !canScrollRight }"
-            >
+              :class="{ 'pl-12 md:pl-16': !canScrollLeft, 'pr-12 md:pr-16': !canScrollRight }">
               <button
                 v-for="year in years"
                 :key="'nav-' + year"
@@ -62,8 +57,7 @@
                 @click="scrollToYear(year)"
                 class="whitespace-nowrap cursor-pointer border border-white/25 bg-white/10 text-white rounded-full px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base shadow-sm transition transform hover:-translate-y-0.5 hover:bg-white/20 hover:border-white/40"
                 :data-year="year"
-                :class="{ 'bg-white/30 border-white/60 text-gray-900 font-bold': activeYear === year }"
-              >
+                :class="{ 'bg-white/30 border-white/60 text-gray-900 font-bold': activeYear === year }">
                 {{ year }}
               </button>
             </div>
@@ -73,8 +67,7 @@
               type="button"
               aria-label="Rolar anos para a direita"
               v-show="canScrollRight"
-              @click="scrollNav(1)"
-            >
+              @click="scrollNav(1)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -83,46 +76,39 @@
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+                stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
 
             <div
               class="absolute inset-y-0 left-0 w-12 pointer-events-none transition-opacity bg-gradient-to-r from-black/70 to-transparent"
-              :class="{ hidden: !canScrollLeft }"
-            ></div>
+              :class="{ hidden: !canScrollLeft }"></div>
             <div
               class="absolute inset-y-0 right-0 w-12 pointer-events-none transition-opacity bg-gradient-to-l from-black/70 to-transparent"
-              :class="{ hidden: !canScrollRight }"
-            ></div>
+              :class="{ hidden: !canScrollRight }"></div>
           </div>
         </nav>
 
         <div class="relative mx-auto max-w-5xl px-4 sm:px-6">
           <div
             class="absolute left-1/2 top-0 -ml-px h-full w-0.5 bg-white/20"
-            aria-hidden="true"
-          ></div>
+            aria-hidden="true"></div>
 
           <div
             v-for="(yearGroup, yearIndex) in groupedTimelineItems"
             :key="yearGroup.year"
             class="relative year-anchor"
-            :id="'year-' + yearGroup.year"
-          >
+            :id="'year-' + yearGroup.year">
             <div
               class="z-20 flex items-center"
               :class="[
                 yearIndex % 2 === 0
                   ? 'justify-start'
                   : 'md:justify-end',
-              ]"
-            >
+              ]">
               <h2
-                class="w-20 rounded-full border border-white/30 bg-gray-900/80 px-4 py-2 text-center text-sm font-semibold text-white backdrop-blur-sm"
-              >
+                class="w-20 rounded-full border border-white/30 bg-gray-900/80 px-4 py-2 text-center text-sm font-semibold text-white backdrop-blur-sm">
                 {{ yearGroup.year }}
               </h2>
             </div>
@@ -136,21 +122,22 @@
                   yearIndex % 2 === 0
                     ? 'md:flex-row'
                     : 'md:flex-row-reverse',
-                ]"
-              >
+                ]">
                 <button
                   @click="openModal($event, item)"
                   class="modal-trigger group w-full cursor-pointer rounded-xl border border-white/10 bg-black/20 p-4 text-left shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/30 hover:shadow-2xl md:w-[calc(50%-2.5rem)]"
-                >
+                  :class="{
+                    'timeline-hidden': true,
+                    'timeline-hidden-left': yearIndex % 2 === 0,
+                    'timeline-hidden-right': yearIndex % 2 !== 0
+                  }">
                   <img
                     :src="item.imageCard"
                     :alt="'Imagem de ' + item.title"
-                    class="mb-3 w-full rounded-lg object-cover timeline-image"
-                  />
+                    class="mb-3 w-full rounded-lg object-cover timeline-image" />
                   <p
                     class="mb-3 text-right text-xs italic text-gray-400"
-                    v-html="'Fonte: ' + getCardSource(item)"
-                  ></p>
+                    v-html="'Fonte: ' + getCardSource(item)"></p>
                   <h3 class="mb-1 text-lg font-bold text-white">
                     {{ item.title }}
                   </h3>
@@ -165,8 +152,7 @@
                     yearIndex % 2 === 0
                       ? 'right-full mr-4 md:left-1/2 md:-ml-2.5 md:mr-0'
                       : 'right-full mr-4 md:right-auto md:left-1/2 md:-ml-2.5',
-                  ]"
-                >
+                  ]">
                   <div class="h-2 w-2 rounded-full bg-white"></div>
                 </div>
               </div>
@@ -184,29 +170,24 @@
           'modal-entering': modalState === 'entering',
           'modal-visible': modalState === 'visible',
           'modal-leaving': modalState === 'leaving',
-        }"
-      >
+        }">
         <div
-          class="modal-content relative mx-4 my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl border border-white/20 bg-gray-900/80 p-6 text-gray-300 shadow-2xl backdrop-blur-lg sm:p-8"
-        >
+          class="modal-content relative mx-4 my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl border border-white/20 bg-gray-900/80 p-6 text-gray-300 shadow-2xl backdrop-blur-lg sm:p-8">
           <button
             @click="closeModal"
             class="absolute right-4 top-4 z-20 cursor-pointer rounded-full p-2 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
-            aria-label="Fechar modal"
-          >
+            aria-label="Fechar modal">
             <svg
               class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
+                d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
           <div class="pr-12 mb-2">
@@ -220,36 +201,30 @@
           <img
             :src="selectedItem.imageModal"
             :alt="'Imagem detalhada de ' + selectedItem.title"
-            class="modal-image my-4 rounded-lg"
-          />
+            class="modal-image my-4 rounded-lg" />
           <p
             class="mb-4 text-right text-xs italic text-gray-400"
-            v-html="'Fonte: ' + getModalSource(selectedItem)"
-          ></p>
+            v-html="'Fonte: ' + getModalSource(selectedItem)"></p>
           <div
             class="prose prose-invert max-w-none text-gray-300"
-            v-html="formattedDescription"
-          ></div>
+            v-html="formattedDescription"></div>
         </div>
       </div>
 
       <button
         id="backToTopBtn"
-        class="hidden fixed bottom-8 right-8 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold p-4 rounded-full shadow-lg border border-white/20 transition-all duration-300 hover:scale-110 z-50 cursor-pointer"
-      >
+        class="hidden fixed bottom-8 right-8 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold p-4 rounded-full shadow-lg border border-white/20 transition-all duration-300 hover:scale-110 z-50 cursor-pointer">
         <svg
           class="w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          ></path>
+            d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
       </button>
     </div>
