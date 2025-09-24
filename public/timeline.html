@@ -367,10 +367,16 @@
           const scrollToYear = (year) => {
             const el = document.getElementById(`year-${year}`);
             if (!el) return;
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+
             activeYear.value = year;
+
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+
             history.replaceState(null, "", `#year-${year}`);
-            centerActiveYear("smooth");
+
+            setTimeout(() => {
+              centerActiveYear("smooth");
+            }, 300);
           };
 
           const updateScrollShadows = debounce(() => {
@@ -396,20 +402,40 @@
             });
           };
 
+          let navButtonsCache = null;
           const centerActiveYear = (behavior = "auto") => {
             const container = yearNavEl.value;
             if (!container || !activeYear.value) return;
-            const btn = container.querySelector(
-              `[data-year="${activeYear.value}"]`
-            );
+
+            if (!navButtonsCache) {
+              navButtonsCache = new Map();
+              container.querySelectorAll("[data-year]").forEach((btn) => {
+                navButtonsCache.set(btn.dataset.year, btn);
+              });
+            }
+
+            const btn = navButtonsCache.get(activeYear.value);
             if (!btn) return;
-            const btnRect = btn.getBoundingClientRect();
-            const contRect = container.getBoundingClientRect();
-            const current = container.scrollLeft;
-            const offset =
-              btn.offsetLeft - (contRect.width / 2 - btnRect.width / 2);
-            container.scrollTo({ left: Math.max(0, offset), behavior });
-            setTimeout(updateScrollShadows, 150);
+
+            const containerScrollLeft = container.scrollLeft;
+            const containerWidth = container.clientWidth;
+            const btnOffsetLeft = btn.offsetLeft;
+            const btnWidth = btn.offsetWidth;
+
+            const targetScrollLeft =
+              btnOffsetLeft - (containerWidth - btnWidth) / 2;
+            const maxScrollLeft = container.scrollWidth - containerWidth;
+            const finalScrollLeft = Math.max(
+              0,
+              Math.min(targetScrollLeft, maxScrollLeft)
+            );
+
+            if (Math.abs(containerScrollLeft - finalScrollLeft) > 10) {
+              container.scrollTo({ left: finalScrollLeft, behavior });
+              if (behavior !== "auto") {
+                setTimeout(updateScrollShadows, 150);
+              }
+            }
           };
 
           const openModal = (event, item) => {
@@ -505,6 +531,48 @@
               passive: true,
             });
 
+            let yearElementsCache = null;
+            const cacheYearElements = () => {
+              if (!yearElementsCache) {
+                yearElementsCache = Array.from(
+                  document.querySelectorAll('.year-anchor[id^="year-"]')
+                );
+              }
+              return yearElementsCache;
+            };
+
+            const optimizedYearDetection = debounce(() => {
+              const yearElements = cacheYearElements();
+              if (yearElements.length === 0) return;
+
+              const viewportHeight = window.innerHeight;
+              const scrollTop = window.pageYOffset;
+              const viewportCenter = scrollTop + viewportHeight * 0.4;
+
+              let closestYear = null;
+              let minDistance = Infinity;
+
+              for (let i = 0; i < yearElements.length; i++) {
+                const el = yearElements[i];
+                const rect = el.getBoundingClientRect();
+                const elementTop = rect.top + scrollTop;
+                const distance = Math.abs(viewportCenter - elementTop);
+
+                if (distance < minDistance) {
+                  minDistance = distance;
+                  closestYear = el.id.slice(5);
+                }
+              }
+
+              if (closestYear && closestYear !== activeYear.value) {
+                activeYear.value = closestYear;
+              }
+            }, 100);
+
+            window.addEventListener("scroll", optimizedYearDetection, {
+              passive: true,
+            });
+
             const computeOffsets = () => {
               const headerEl = document.getElementById("header-placeholder");
               const headerFirst =
@@ -532,30 +600,59 @@
 
             const observer = new IntersectionObserver(
               (entries) => {
-                requestAnimationFrame(() => {
-                  for (let i = 0; i < entries.length; i++) {
-                    const entry = entries[i];
-                    if (entry.isIntersecting) {
-                      const id = entry.target.id;
-                      if (id && id.startsWith("year-")) {
-                        activeYear.value = id.slice(5);
-                        break;
-                      }
+                const updateActiveYear = () => {
+                  let bestEntry = null;
+                  let maxRatio = 0;
+
+                  for (const entry of entries) {
+                    if (
+                      entry.isIntersecting &&
+                      entry.intersectionRatio > maxRatio
+                    ) {
+                      bestEntry = entry;
+                      maxRatio = entry.intersectionRatio;
                     }
                   }
-                });
+
+                  if (bestEntry) {
+                    const newYear = bestEntry.target.id.slice(5);
+                    if (activeYear.value !== newYear) {
+                      activeYear.value = newYear;
+                    }
+                  }
+                };
+
+                if (window.requestIdleCallback) {
+                  requestIdleCallback(updateActiveYear);
+                } else {
+                  updateActiveYear();
+                }
               },
               {
                 root: null,
-                rootMargin: "-60% 0px -35% 0px",
-                threshold: [0.25],
+                rootMargin: "-30% 0px -30% 0px",
+                threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
               }
             );
 
-            const yearElements = document.querySelectorAll(
-              '.year-anchor[id^="year-"]'
-            );
-            yearElements.forEach((el) => observer.observe(el));
+            setTimeout(() => {
+              const yearElements = document.querySelectorAll(
+                '.year-anchor[id^="year-"]'
+              );
+              if (yearElements.length > 0) {
+                yearElements.forEach((el) => observer.observe(el));
+
+                const currentHash = location.hash;
+                if (currentHash && currentHash.startsWith("#year-")) {
+                  activeYear.value = currentHash.slice(6);
+                } else {
+                  const firstYear = yearElements[0]?.id?.slice(5);
+                  if (firstYear) {
+                    activeYear.value = firstYear;
+                  }
+                }
+              }
+            }, 100);
 
             if (location.hash && location.hash.startsWith("#year-")) {
               const target = document.querySelector(location.hash);
@@ -571,16 +668,32 @@
               document.removeEventListener("keydown", handleKeydown);
               if (el) el.removeEventListener("scroll", updateScrollShadows);
               window.removeEventListener("resize", debouncedResize);
+              window.removeEventListener("scroll", optimizedYearDetection);
+              window.removeEventListener("resize", computeOffsets);
               if (observer) observer.disconnect();
+
+              yearElementsCache = null;
+              navButtonsCache = null;
+              if (centerTimeout) {
+                clearTimeout(centerTimeout);
+                centerTimeout = null;
+              }
             };
           });
 
-          watch(
-            activeYear,
-            debounce(() => {
-              centerActiveYear("smooth");
-            }, 100)
-          );
+          let centerTimeout = null;
+          watch(activeYear, (newYear, oldYear) => {
+            if (newYear && newYear !== oldYear) {
+              if (centerTimeout) {
+                clearTimeout(centerTimeout);
+              }
+
+              centerTimeout = setTimeout(() => {
+                centerActiveYear("smooth");
+                centerTimeout = null;
+              }, 50);
+            }
+          });
 
           return {
             timelineItems,

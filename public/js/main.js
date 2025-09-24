@@ -126,29 +126,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setupDropdownMenu = (elements) => {
     if (elements.componentesBtn && elements.componentesDropdown) {
-      elements.componentesBtn.replaceWith(
-        elements.componentesBtn.cloneNode(true)
-      );
-      const newBtn = document.getElementById("componentesBtn");
+      const btn = elements.componentesBtn;
+      const dropdown = elements.componentesDropdown;
 
-      newBtn.addEventListener("click", (event) => {
+      if (btn._clickHandler) {
+        btn.removeEventListener("click", btn._clickHandler);
+      }
+      if (btn._outsideClickHandler) {
+        document.removeEventListener("click", btn._outsideClickHandler);
+      }
+
+      const clickHandler = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        elements.componentesDropdown.classList.toggle("hidden");
-      });
+        dropdown.classList.toggle("hidden");
+      };
 
-      const handleOutsideClick = (event) => {
-        if (
-          !newBtn.contains(event.target) &&
-          !elements.componentesDropdown.contains(event.target)
-        ) {
-          elements.componentesDropdown.classList.add("hidden");
+      const outsideClickHandler = (event) => {
+        if (!btn.contains(event.target) && !dropdown.contains(event.target)) {
+          dropdown.classList.add("hidden");
         }
       };
 
-      document.addEventListener("click", handleOutsideClick);
+      btn.addEventListener("click", clickHandler);
+      document.addEventListener("click", outsideClickHandler, {
+        passive: true,
+      });
 
-      newBtn._outsideClickHandler = handleOutsideClick;
+      btn._clickHandler = clickHandler;
+      btn._outsideClickHandler = outsideClickHandler;
     }
   };
 
@@ -169,19 +175,24 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (mobileMenuBtn && mobileMenu) {
-      const newMobileMenuBtn = mobileMenuBtn.cloneNode(true);
-      mobileMenuBtn.parentNode.replaceChild(newMobileMenuBtn, mobileMenuBtn);
+      if (mobileMenuBtn._clickHandler) {
+        mobileMenuBtn.removeEventListener("click", mobileMenuBtn._clickHandler);
+      }
 
-      newMobileMenuBtn.addEventListener("click", (event) => {
+      const clickHandler = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        mobileMenu.classList.remove("pointer-events-none");
-        mobileMenu.classList.remove("opacity-0", "scale-95");
+        mobileMenu.classList.remove(
+          "pointer-events-none",
+          "opacity-0",
+          "scale-95"
+        );
         mobileMenu.classList.add("opacity-100", "scale-100");
         document.body.style.overflow = "hidden";
-      });
+      };
 
-      elements.mobileMenuBtn = newMobileMenuBtn;
+      mobileMenuBtn.addEventListener("click", clickHandler);
+      mobileMenuBtn._clickHandler = clickHandler;
     }
 
     if (closeMobileMenuBtn && mobileMenu) {
