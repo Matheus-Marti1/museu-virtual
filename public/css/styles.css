@@ -1322,6 +1322,27 @@ body {
   .year-nav::-webkit-scrollbar {
     display: none;
   }
+  .timeline-item {
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  }
+  .timeline-hidden {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    pointer-events: none;
+  }
+  .timeline-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    pointer-events: auto;
+  }
+  @media (min-width: 768px) {
+    .timeline-item-left.timeline-hidden {
+      transform: translateX(-80px) scale(0.95);
+    }
+    .timeline-item-right.timeline-hidden {
+      transform: translateX(80px) scale(0.95);
+    }
+  }
 }
 .timeline-image {
   max-height: 250px;

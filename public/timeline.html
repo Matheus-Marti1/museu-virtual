@@ -131,11 +131,11 @@
               <div
                 v-for="(item, itemIndex) in yearGroup.items"
                 :key="item.title"
-                class="relative mb-12 flex items-start"
+                class="relative mb-12 flex items-start timeline-item"
                 :class="[
                   yearIndex % 2 === 0
-                    ? 'md:flex-row'
-                    : 'md:flex-row-reverse',
+                    ? 'md:flex-row timeline-item-left'
+                    : 'md:flex-row-reverse timeline-item-right',
                 ]"
               >
                 <button
