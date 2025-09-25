@@ -1,14 +1,16 @@
 /* Template:
+
   {
     year: "",
     title: "",
     shortDescription: "",
     imageCard: "",
     imageModal: "",
-    sourceCard: "",
-    sourceModal: "",
+    sourceCard: '',
+    sourceModal: '',
     longDescription: ``,
   },
+
 */
 
 export const timelineItems = [
@@ -122,18 +124,24 @@ export const timelineItems = [
     year: "1952",
     title: "Grace Hopper desenvolve o primeiro compilador",
     shortDescription: "O primeiro compilador é desenvolvido por Grace Hopper.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg">Flickr: Grace Hopper and UNIVAC</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg">Flickr: Grace Hopper and UNIVAC</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `O primeiro compilador foi desenvolvido por Grace Hopper na década de 1950. Ele foi projetado para traduzir código fonte escrito em uma linguagem de programação de alto nível para uma linguagem de máquina que o computador pudesse entender. Hopper é frequentemente chamada de "mãe do COBOL" por seu papel no desenvolvimento dessa linguagem de programação.`,
   },
   {
     year: "1953",
     title: "IBM 650",
     shortDescription: "A IBM anuncia o computador Modelo 650",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:IBM_650_EMMA.jpg">Mahlum</a>, Public domain, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:IBM_650_EMMA.jpg">Mahlum</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 2 de julho de 1953, a IBM anunciou sua série 650 de computadores.
                       A máquina foi o primeiro computador comercial produzido em massa pela IBM . Mais de 2.000 unidades foram vendidas, apesar da previsão inicial de mercado de que apenas 50 máquinas seriam instaladas.`,
   },
@@ -142,9 +150,12 @@ export const timelineItems = [
     title: "FORTRAN",
     shortDescription:
       "O primeiro compilador de linguagem de programação de alto nível é desenvolvido.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:Fortran_acs_cover.jpeg">original uploader was en:User:Muhandis</a>, Public domain, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:Fortran_acs_cover.jpeg">original uploader was en:User:Muhandis</a>, Public domain, via Wikimedia Commons',
     longDescription: `O FORTRAN (Formula Translation) foi o primeiro compilador de linguagem de programação de alto nível a ser desenvolvido. Criado por uma equipe da IBM liderada por John Backus, o FORTRAN foi projetado para facilitar a programação de cálculos científicos e de engenharia. Sua introdução marcou o início da programação de alto nível e teve um impacto duradouro na forma como os programadores escrevem código até hoje.`,
   },
   {
@@ -249,19 +260,26 @@ export const timelineItems = [
     year: "1974",
     title: "Intel 8080",
     shortDescription: "O sucessor do Intel 8008.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:Intel_8080_open-closed.jpg">The Science Museum UK</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:Intel_8080_open-closed.jpg">The Science Museum UK</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons',
     longDescription: `Lançado pela Intel em 1974, o 8080 foi o sucessor do 8008 e um dos primeiros microprocessadores de 8 bits a se tornar amplamente utilizado. Ele foi fundamental para o desenvolvimento de computadores pessoais e sistemas embarcados, oferecendo maior desempenho e capacidade de processamento.`,
   },
   {
     year: "1975",
     title: "Microsoft é fundada",
     shortDescription: "A Microsoft foi fundada por Bill Gates e Paul Allen.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg">Microsoft</a>, Public domain, via Wikimedia Commons',
-    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg">Microsoft</a>, Public domain, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg">Microsoft</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg">Microsoft</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 4 de abril de 1975, Bill Gates e Paul Allen fundaram a Microsoft em Albuquerque, Novo México. A empresa começou desenvolvendo software para o Altair 8800, um dos primeiros microcomputadores. A Microsoft cresceu rapidamente, tornando-se uma das maiores e mais influentes empresas de tecnologia do mundo, conhecida por produtos como o sistema operacional Windows e o pacote de produtividade Office.`,
   },
   {
@@ -282,46 +300,65 @@ export const timelineItems = [
     year: "1976",
     title: "Apple I",
     shortDescription: "Um dos primeiros computadores pessoais.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/2/27/Apple_I.jpg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/e/e4/CopsonApple1_2k_cropped.jpg",
-    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:Apple_I.jpg">Photo taken by rebelpilot</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via Wikimedia Commons',
-    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:CopsonApple1_2k_cropped.jpg">Achim Baqué</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/2/27/Apple_I.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/e/e4/CopsonApple1_2k_cropped.jpg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Apple_I.jpg">Photo taken by rebelpilot</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:CopsonApple1_2k_cropped.jpg">Achim Baqué</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `Criado por Steve Wozniak e Steve Jobs na garagem de Jobs, o Apple I foi um dos primeiros computadores pessoais vendidos como um kit montado. Embora simples, foi um marco importante na história da computação pessoal e o primeiro produto da Apple Inc.`,
   },
   {
     year: "1977",
     title: "Apple II",
-    shortDescription: "Um dos primeiros computadores pessoais produzidos em massa de sucesso.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:Apple_II_typical_configuration_1977.png">FozzTexx</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
+    shortDescription:
+      "Um dos primeiros computadores pessoais produzidos em massa de sucesso.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:Apple_II_typical_configuration_1977.png">FozzTexx</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O Apple II, lançado em 1977, foi um dos primeiros computadores pessoais produzidos em massa de sucesso. Projetado por Steve Wozniak, o Apple II apresentava gráficos coloridos, som integrado e uma arquitetura expansível, tornando-o popular entre entusiastas de computação e escolas. Ele desempenhou um papel crucial na popularização dos computadores pessoais e estabeleceu a Apple como uma força dominante na indústria de tecnologia.`,
   },
   {
     year: "1980",
     title: "Apple III",
-    shortDescription: "Um computador pessoal voltado para o mercado empresarial.",
-    imageCard: "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
-    imageModal: "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
-    source: '<a href="https://www.computinghistory.org.uk/det/210/Apple-III/">Centre for Computing History, item CH210</a>',
+    shortDescription:
+      "Um computador pessoal voltado para o mercado empresarial.",
+    imageCard:
+      "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
+    imageModal:
+      "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
+    source:
+      '<a href="https://www.computinghistory.org.uk/det/210/Apple-III/">Centre for Computing History, item CH210</a>',
     longDescription: `Em 1980, a Apple lançou o Apple III, um computador pessoal voltado para o mercado empresarial. Projetado para competir com computadores como o IBM PC, o Apple III apresentava melhorias em relação ao Apple II, incluindo uma arquitetura mais robusta e suporte para software de negócios. No entanto, o Apple III enfrentou vários problemas técnicos e de design que afetaram sua popularidade e vendas. Apesar disso, ele marcou um passo importante na evolução dos computadores pessoais da Apple.`,
   },
   {
     year: "1980",
     title: "Microsoft lança o MS-DOS",
-    shortDescription: "O sistema operacional que se tornaria o padrão para PCs.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:StartingMsdos.png">The original uploader was Andrewpmk at English Wikipedia.</a>, Public domain, via Wikimedia Commons',
+    shortDescription:
+      "O sistema operacional que se tornaria o padrão para PCs.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:StartingMsdos.png">The original uploader was Andrewpmk at English Wikipedia.</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 6 de novembro de 1980, a Microsoft fez um acordo com a IBM para fornecer o sistema operacional para o IBM PC. A Microsoft adquiriu um sistema operacional chamado 86-DOS da Seattle Computer Products, adaptou-o para o hardware do IBM PC e o renomeou como MS-DOS (Microsoft Disk Operating System). O MS-DOS se tornou o sistema operacional padrão para PCs baseados em x86 e desempenhou um papel crucial na popularização dos computadores pessoais durante a década de 1980 e início dos anos 1990.`,
   },
   {
     year: "1981",
     title: "IBM PC",
     shortDescription: "O primeiro IBM PC, modelo 5150, é lançado.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
-    source: '<a href="https://commons.wikimedia.org/wiki/File:IBM_PC-IMG_7271_(transparent).png">Rama &amp; Musée Bolo</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en">CC BY-SA 2.0 FR</a>, via Wikimedia Commons',
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
+    source:
+      '<a href="https://commons.wikimedia.org/wiki/File:IBM_PC-IMG_7271_(transparent).png">Rama &amp; Musée Bolo</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en">CC BY-SA 2.0 FR</a>, via Wikimedia Commons',
     longDescription: `O IBM Personal Computer (modelo 5150) foi o computador que definiu o padrão da indústria e popularizou a arquitetura x86. Seu sucesso levou à criação de um vasto ecossistema de hardware e software compatíveis, conhecidos como 'clones de PC', que dominaram o mercado por décadas.`,
   },
   {
@@ -341,11 +378,103 @@ export const timelineItems = [
   {
     year: "1983",
     title: "Microsoft anuncia o Windows",
-    shortDescription: "O sistema operacional com interface gráfica da Microsoft.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Windows_1.0_screenshot.png",
-    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
-    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_Windows_1.0_screenshot.png">Rezonansowy, Microsoft</a>, Public domain, via Wikimedia Commons',
+    shortDescription:
+      "O sistema operacional com interface gráfica da Microsoft.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Windows_1.0_screenshot.png",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_Windows_1.0_screenshot.png">Rezonansowy, Microsoft</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 10 de novembro de 1983, a Microsoft anunciou o Windows, um sistema operacional com interface gráfica. O Windows foi projetado para funcionar como uma camada sobre o MS-DOS, oferecendo uma interface mais amigável e facilitando a multitarefa. A primeira versão do Windows, lançada em 1985, incluía recursos como janelas redimensionáveis, menus suspensos e suporte para mouse, marcando o início de uma nova era na computação pessoal.`,
+  },
+  {
+    year: "1987",
+    title: "Windows 2.0",
+    shortDescription: "A segunda versão do sistema operacional Windows.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/5/50/About_box_Windows_2.03_%28EN%29.png",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:About_box_Windows_2.03_(EN).png">OS: Microsoft CorporationScreenshot: TheCandoRailfan</a>, Public domain, via Wikimedia Commons',
+    longDescription: `Em 9 de dezembro de 1987, a Microsoft lançou o Windows 2.0, a segunda versão do sistema operacional Windows. O Windows 2.0 introduziu várias melhorias em relação à versão anterior, incluindo suporte para sobreposição de janelas, atalhos de teclado e melhor integração com o MS-DOS. Essa versão também viu o lançamento de aplicativos populares como o Microsoft Word e o Excel para Windows, ajudando a estabelecer o Windows como uma plataforma viável para software de produtividade.`,
+  },
+  {
+    year: "1991",
+    title: "Linus Torvalds anuncia o Linux",
+    shortDescription: "O início do sistema operacional Linux.",
+    imageCard: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    imageModal: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Tux.svg">lewing@isc.tamu.edu Larry Ewing and The GIMP</a>, CC0, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:Tux.svg">lewing@isc.tamu.edu Larry Ewing and The GIMP</a>, CC0, via Wikimedia Commons',
+    longDescription: `O Linux é um sistema operacional livre, do tipo UNIX, desenvolvido por Linus Torvalds. É um projeto de código aberto cujo código-fonte é distribuído gratuitamente.
+
+                      Em 25 de agosto de 1991, Linus Torvalds anunciou publicamente seu projeto Linux pela primeira vez com uma postagem no grupo de usuários “comp.os.minix”, pedindo feedback.
+
+                      Linus Torvalds fez o primeiro lançamento do kernel do Linux, a versão 0.01, em 17 de setembro para um grupo de amigos. Este lançamento nunca foi anunciado publicamente. A isso se seguiu um lançamento público do kernel do Linux, a versão 0.02, em 5 de outubro.
+
+                      Em uma postagem na lista de e-mails (mailing list) Linux-Kernel em 17 de setembro de 2021, Torvalds reconheceu esta data como a "verdadeira data do 30º aniversário do código em si".`,
+  },
+  {
+    year: "1993",
+    title: "Intel Pentium",
+    shortDescription: "O processador Intel Pentium é lançado.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/2/29/Intel_Pentium_Processor.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/b/b3/Intel_Pentium_A80501_66_SX950.JPG",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Intel_Pentium_Processor.svg">Intel Corporation</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:Intel_Pentium_A80501_66_SX950.JPG">Pdesousa359</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons',
+    longDescription: `Introduzido em 1993, o Intel Pentium foi um marco na arquitetura de processadores x86, trazendo melhorias significativas de desempenho e eficiência em relação à sua linha anterior. Com uma nova microarquitetura e suporte para instruções de ponto flutuante, o Pentium rapidamente se tornou o processador padrão para PCs, impulsionando a era da computação multimídia.`,
+  },
+  {
+    year: "1993",
+    title: "NVIDIA é fundada",
+    shortDescription: "A NVIDIA Corporation é fundada.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg">Nvidia</a>, <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg">Nvidia</a>, <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>, via Wikimedia Commons',
+    longDescription: `Em 5 de abril de 1993, a empresa de tecnologia Nvidia foi fundada por Jen-Hsun Huang, Chris A. Malachowsky e Curtis Priem com financiamento de capital de risco (venture capital) da Sequoia Capital.
+
+                      A Nvidia começou produzindo unidades de processamento gráfico (GPUs) voltadas para a indústria de jogos, mas depois diversificou para mercados que incluem placas de vídeo, telefones celulares, multimídia e computadores científicos de ponta.
+
+                      Em agosto de 2023, a Nvidia valia mais de 1 trilhão de dólares e era classificada como a sexta maior empresa do mundo. Essa ascensão meteórica no valor da empresa se deve, pelo menos em parte, ao seu domínio no mercado de chips usados para alimentar serviços de IA como o ChatGPT, uma área que se espera ser de grande crescimento no futuro.`,
+  },
+  {
+    year: "1995",
+    title: "Windows 95 é lançado",
+    shortDescription:
+      "O sistema operacional Windows 95 é lançado pela Microsoft.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Windows_95_logo_with_wordmark.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/4/44/Windows_95_stacked_logo.svg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_Windows_95_logo_with_wordmark.svg">Microsoft, flag logo designed by Jonathan D. Cowles and Jeff Boettcher</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:Windows_95_stacked_logo.svg">Microsoft, flag logo designed by Jonathan D. Cowles and Jeff Boettcher</a>, Public domain, via Wikimedia Commons',
+    longDescription: `Em 24 de agosto de 1995, a Microsoft lançou uma nova versão de seu sistema operacional Windows, o Windows 95.
+
+                      O lançamento foi acompanhado por uma enorme campanha de marketing, que contou com o single de 1981 dos Rolling Stones, "Start Me Up", e vídeos promocionais estrelados por Jennifer Aniston e Matthew Perry.
+
+                      O Windows 95 introduziu uma grande variedade de novos recursos, incluindo o botão Iniciar, a barra de tarefas, a lixeira e os atalhos na área de trabalho.
+
+                      Brian Eno compôs uma peça musical de seis segundos para o Windows 95, tocada na inicialização e conhecida como "The Microsoft Sound".
+
+                      O Windows 95 vendeu 7 milhões de cópias nas primeiras cinco semanas de venda.`,
   },
 ];
