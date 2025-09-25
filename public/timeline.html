@@ -19,7 +19,9 @@
     <div id="app" class="relative min-h-screen flex flex-col" v-cloak>
       <div id="header-placeholder"></div>
 
-      <main class="container mx-auto px-6 py-12 flex-grow fade-in">
+      <main
+        class="container mx-auto px-6 py-12 flex-grow timeline-page timeline-page-fade"
+      >
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">
           Linha do Tempo
         </h1>
@@ -131,28 +133,21 @@
               <div
                 v-for="(item, itemIndex) in yearGroup.items"
                 :key="item.title"
-                class="relative mb-12 flex items-start"
+                class="relative mb-12 flex items-start timeline-item"
                 :class="[
                   yearIndex % 2 === 0
-                    ? 'md:flex-row'
-                    : 'md:flex-row-reverse',
+                    ? 'md:flex-row timeline-item-left'
+                    : 'md:flex-row-reverse timeline-item-right',
                 ]"
               >
                 <button
                   @click="openModal($event, item)"
                   class="modal-trigger group w-full cursor-pointer rounded-xl border border-white/10 bg-black/20 p-4 text-left shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/30 hover:shadow-2xl md:w-[calc(50%-2.5rem)]"
-                  :class="{
-                    'timeline-hidden': true,
-                    'timeline-hidden-left': yearIndex % 2 === 0,
-                    'timeline-hidden-right': yearIndex % 2 !== 0
-                  }"
                 >
                   <img
                     :src="item.imageCard"
                     :alt="'Imagem de ' + item.title"
                     class="mb-3 w-full rounded-lg object-cover timeline-image"
-                    loading="lazy"
-                    decoding="async"
                   />
                   <p
                     class="mb-3 text-right text-xs italic text-gray-400"
@@ -228,8 +223,6 @@
             :src="selectedItem.imageModal"
             :alt="'Imagem detalhada de ' + selectedItem.title"
             class="modal-image my-4 rounded-lg"
-            loading="lazy"
-            decoding="async"
           />
           <p
             class="mb-4 text-right text-xs italic text-gray-400"
@@ -265,7 +258,15 @@
 
     <script type="module">
       import { timelineItems } from "./js/timeline-data.js";
-      const { createApp, ref, computed, onMounted, nextTick, watch } = Vue;
+      const {
+        createApp,
+        ref,
+        computed,
+        onMounted,
+        onUnmounted,
+        nextTick,
+        watch,
+      } = Vue;
 
       createApp({
         setup() {
@@ -277,15 +278,6 @@
           const yearNavWrapperEl = ref(null);
           const canScrollLeft = ref(false);
           const canScrollRight = ref(false);
-          const imagesLoaded = ref(new Set());
-
-          const debounce = (func, wait) => {
-            let timeout;
-            return (...args) => {
-              clearTimeout(timeout);
-              timeout = setTimeout(() => func.apply(this, args), wait);
-            };
-          };
 
           const formattedDescription = computed(() => {
             if (!selectedItem.value) return "";
@@ -297,99 +289,92 @@
           });
 
           const years = computed(() => {
-            const yearSet = new Set();
-            for (let i = 0; i < timelineItems.length; i++) {
-              yearSet.add(timelineItems[i].year);
-            }
-            return Array.from(yearSet).sort((a, b) => Number(a) - Number(b));
+            const set = new Set();
+            timelineItems.forEach((i) => set.add(i.year));
+            return Array.from(set).sort((a, b) => parseInt(a) - parseInt(b));
           });
 
           const groupedTimelineItems = computed(() => {
-            const grouped = Object.create(null);
+            const grouped = {};
 
-            for (let i = 0; i < timelineItems.length; i++) {
-              const item = timelineItems[i];
-              const year = item.year;
-
-              if (!grouped[year]) {
-                grouped[year] = {
-                  year,
+            timelineItems.forEach((item) => {
+              if (!grouped[item.year]) {
+                grouped[item.year] = {
+                  year: item.year,
                   items: [],
                 };
               }
-              grouped[year].items.push(item);
-            }
+              grouped[item.year].items.push(item);
+            });
 
             return Object.values(grouped).sort(
-              (a, b) => Number(a.year) - Number(b.year)
+              (a, b) => parseInt(a.year) - parseInt(b.year)
             );
           });
 
-          const sourceCache = new Map();
-          const processSource = (source) => {
-            if (!sourceCache.has(source)) {
-              const processed = source.replace(
-                /<a /g,
-                '<a target="_blank" rel="noopener noreferrer" '
-              );
-              sourceCache.set(source, processed);
-            }
-            return sourceCache.get(source);
-          };
-
           const getCardSource = (item) => {
             const source = item.sourceCard || item.source || "";
-            return processSource(source);
+            return source.replace(
+              /<a /g,
+              '<a target="_blank" rel="noopener noreferrer" '
+            );
           };
 
           const getModalSource = (item) => {
             const source = item.sourceModal || item.source || "";
-            return processSource(source);
-          };
-
-          const loadImage = (src) => {
-            return new Promise((resolve, reject) => {
-              if (imagesLoaded.value.has(src)) {
-                resolve(src);
-                return;
-              }
-
-              const img = new Image();
-              img.onload = () => {
-                imagesLoaded.value.add(src);
-                resolve(src);
-              };
-              img.onerror = reject;
-              img.src = src;
-            });
+            return source.replace(
+              /<a /g,
+              '<a target="_blank" rel="noopener noreferrer" '
+            );
           };
 
           const scrollToYear = (year) => {
             const el = document.getElementById(`year-${year}`);
             if (!el) return;
-
-            activeYear.value = year;
-
             el.scrollIntoView({ behavior: "smooth", block: "start" });
-
+            activeYear.value = year;
             history.replaceState(null, "", `#year-${year}`);
-
-            setTimeout(() => {
-              centerActiveYear("smooth");
-            }, 300);
+            centerActiveYear("smooth");
           };
 
-          const updateScrollShadows = debounce(() => {
+          let shadowFrame = null;
+
+          const updateScrollShadows = () => {
             const el = yearNavEl.value;
             if (!el) return;
+            canScrollLeft.value = el.scrollLeft > 2;
+            canScrollRight.value =
+              el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+          };
 
-            const scrollLeft = el.scrollLeft;
-            const clientWidth = el.clientWidth;
-            const scrollWidth = el.scrollWidth;
+          const scheduleScrollShadowUpdate = () => {
+            if (shadowFrame !== null) return;
+            shadowFrame = requestAnimationFrame(() => {
+              shadowFrame = null;
+              updateScrollShadows();
+            });
+          };
 
-            canScrollLeft.value = scrollLeft > 2;
-            canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 2;
-          }, 16);
+          const computeOffsets = () => {
+            const headerEl = document.getElementById("header-placeholder");
+            const headerFirst =
+              headerEl && headerEl.firstElementChild
+                ? headerEl.firstElementChild
+                : headerEl;
+            const headerH = headerFirst
+              ? headerFirst.getBoundingClientRect().height
+              : 72;
+            document.documentElement.style.setProperty(
+              "--header-offset",
+              `${Math.round(headerH)}px`
+            );
+            const navWrap = yearNavWrapperEl.value;
+            const navH = navWrap ? navWrap.getBoundingClientRect().height : 52;
+            document.documentElement.style.setProperty(
+              "--year-nav-height",
+              `${Math.round(navH)}px`
+            );
+          };
 
           const scrollNav = (dir) => {
             const el = yearNavEl.value;
@@ -397,45 +382,23 @@
             const amount =
               Math.max(200, el.clientWidth * 0.8) * (dir < 0 ? -1 : 1);
             el.scrollBy({ left: amount, behavior: "smooth" });
-            requestAnimationFrame(() => {
-              setTimeout(updateScrollShadows, 200);
-            });
+            setTimeout(() => scheduleScrollShadowUpdate(), 200);
           };
 
-          let navButtonsCache = null;
           const centerActiveYear = (behavior = "auto") => {
             const container = yearNavEl.value;
             if (!container || !activeYear.value) return;
-
-            if (!navButtonsCache) {
-              navButtonsCache = new Map();
-              container.querySelectorAll("[data-year]").forEach((btn) => {
-                navButtonsCache.set(btn.dataset.year, btn);
-              });
-            }
-
-            const btn = navButtonsCache.get(activeYear.value);
-            if (!btn) return;
-
-            const containerScrollLeft = container.scrollLeft;
-            const containerWidth = container.clientWidth;
-            const btnOffsetLeft = btn.offsetLeft;
-            const btnWidth = btn.offsetWidth;
-
-            const targetScrollLeft =
-              btnOffsetLeft - (containerWidth - btnWidth) / 2;
-            const maxScrollLeft = container.scrollWidth - containerWidth;
-            const finalScrollLeft = Math.max(
-              0,
-              Math.min(targetScrollLeft, maxScrollLeft)
+            const btn = container.querySelector(
+              `[data-year="${activeYear.value}"]`
             );
-
-            if (Math.abs(containerScrollLeft - finalScrollLeft) > 10) {
-              container.scrollTo({ left: finalScrollLeft, behavior });
-              if (behavior !== "auto") {
-                setTimeout(updateScrollShadows, 150);
-              }
-            }
+            if (!btn) return;
+            const btnRect = btn.getBoundingClientRect();
+            const contRect = container.getBoundingClientRect();
+            const current = container.scrollLeft;
+            const offset =
+              btn.offsetLeft - (contRect.width / 2 - btnRect.width / 2);
+            container.scrollTo({ left: Math.max(0, offset), behavior });
+            setTimeout(() => scheduleScrollShadowUpdate(), 150);
           };
 
           const openModal = (event, item) => {
@@ -463,196 +426,59 @@
           };
 
           onMounted(async () => {
-            try {
-              const response = await fetch("header.html");
-              if (response.ok) {
-                const headerPlaceholder =
-                  document.getElementById("header-placeholder");
-                if (headerPlaceholder) {
-                  headerPlaceholder.innerHTML = await response.text();
-                }
-
-                await nextTick();
-
-                const initHeader = () => {
-                  if (window.initializeHeaderFunctionality) {
-                    window.initializeHeaderFunctionality();
-                    return true;
-                  }
-                  return false;
-                };
-
-                let attempts = 0;
-                const tryInit = () => {
-                  if (initHeader()) {
-                    return;
-                  }
-                  attempts++;
-                  if (attempts < 5) {
-                    setTimeout(tryInit, attempts * 100);
-                  }
-                };
-
-                tryInit();
+            const handleComponentLoaded = (event) => {
+              if (event.detail?.selector === "#header-placeholder") {
+                scheduleScrollShadowUpdate();
+                computeOffsets();
               }
-            } catch (error) {
-              console.error("Failed to load header:", error);
-            }
+            };
 
-            setTimeout(() => {
-              if (window.initializeVueCompatibleFeatures) {
-                window.initializeVueCompatibleFeatures();
-              }
-            }, 300);
+            document.addEventListener(
+              "component:loaded",
+              handleComponentLoaded
+            );
 
             const handleKeydown = (event) => {
               if (event.key === "Escape" && isModalOpen.value) {
-                event.preventDefault();
                 closeModal();
               }
             };
 
-            document.addEventListener("keydown", handleKeydown, {
-              passive: false,
-            });
+            document.addEventListener("keydown", handleKeydown);
 
             await nextTick();
-
             updateScrollShadows();
             const el = yearNavEl.value;
             if (el) {
-              el.addEventListener("scroll", updateScrollShadows, {
+              el.addEventListener("scroll", scheduleScrollShadowUpdate, {
                 passive: true,
               });
             }
+            window.addEventListener("resize", scheduleScrollShadowUpdate);
 
-            const debouncedResize = debounce(updateScrollShadows, 100);
-            window.addEventListener("resize", debouncedResize, {
-              passive: true,
-            });
-
-            let yearElementsCache = null;
-            const cacheYearElements = () => {
-              if (!yearElementsCache) {
-                yearElementsCache = Array.from(
-                  document.querySelectorAll('.year-anchor[id^="year-"]')
-                );
-              }
-              return yearElementsCache;
-            };
-
-            const optimizedYearDetection = debounce(() => {
-              const yearElements = cacheYearElements();
-              if (yearElements.length === 0) return;
-
-              const viewportHeight = window.innerHeight;
-              const scrollTop = window.pageYOffset;
-              const viewportCenter = scrollTop + viewportHeight * 0.4;
-
-              let closestYear = null;
-              let minDistance = Infinity;
-
-              for (let i = 0; i < yearElements.length; i++) {
-                const el = yearElements[i];
-                const rect = el.getBoundingClientRect();
-                const elementTop = rect.top + scrollTop;
-                const distance = Math.abs(viewportCenter - elementTop);
-
-                if (distance < minDistance) {
-                  minDistance = distance;
-                  closestYear = el.id.slice(5);
-                }
-              }
-
-              if (closestYear && closestYear !== activeYear.value) {
-                activeYear.value = closestYear;
-              }
-            }, 100);
-
-            window.addEventListener("scroll", optimizedYearDetection, {
-              passive: true,
-            });
-
-            const computeOffsets = () => {
-              const headerEl = document.getElementById("header-placeholder");
-              const headerFirst =
-                headerEl && headerEl.firstElementChild
-                  ? headerEl.firstElementChild
-                  : headerEl;
-              const headerH = headerFirst
-                ? headerFirst.getBoundingClientRect().height
-                : 72;
-              document.documentElement.style.setProperty(
-                "--header-offset",
-                `${Math.round(headerH)}px`
-              );
-              const navWrap = yearNavWrapperEl.value;
-              const navH = navWrap
-                ? navWrap.getBoundingClientRect().height
-                : 52;
-              document.documentElement.style.setProperty(
-                "--year-nav-height",
-                `${Math.round(navH)}px`
-              );
-            };
             computeOffsets();
             window.addEventListener("resize", computeOffsets);
 
             const observer = new IntersectionObserver(
               (entries) => {
-                const updateActiveYear = () => {
-                  let bestEntry = null;
-                  let maxRatio = 0;
-
-                  for (const entry of entries) {
-                    if (
-                      entry.isIntersecting &&
-                      entry.intersectionRatio > maxRatio
-                    ) {
-                      bestEntry = entry;
-                      maxRatio = entry.intersectionRatio;
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    if (id && id.startsWith("year-")) {
+                      activeYear.value = id.replace("year-", "");
                     }
                   }
-
-                  if (bestEntry) {
-                    const newYear = bestEntry.target.id.slice(5);
-                    if (activeYear.value !== newYear) {
-                      activeYear.value = newYear;
-                    }
-                  }
-                };
-
-                if (window.requestIdleCallback) {
-                  requestIdleCallback(updateActiveYear);
-                } else {
-                  updateActiveYear();
-                }
+                });
               },
               {
                 root: null,
-                rootMargin: "-30% 0px -30% 0px",
-                threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+                rootMargin: "-60% 0px -35% 0px",
+                threshold: [0, 0.25, 0.5, 0.75, 1],
               }
             );
-
-            setTimeout(() => {
-              const yearElements = document.querySelectorAll(
-                '.year-anchor[id^="year-"]'
-              );
-              if (yearElements.length > 0) {
-                yearElements.forEach((el) => observer.observe(el));
-
-                const currentHash = location.hash;
-                if (currentHash && currentHash.startsWith("#year-")) {
-                  activeYear.value = currentHash.slice(6);
-                } else {
-                  const firstYear = yearElements[0]?.id?.slice(5);
-                  if (firstYear) {
-                    activeYear.value = firstYear;
-                  }
-                }
-              }
-            }, 100);
+            document
+              .querySelectorAll('.year-anchor[id^="year-"]')
+              .forEach((el) => observer.observe(el));
 
             if (location.hash && location.hash.startsWith("#year-")) {
               const target = document.querySelector(location.hash);
@@ -663,36 +489,25 @@
                 }, 100);
               }
             }
-
-            return () => {
+            onUnmounted(() => {
               document.removeEventListener("keydown", handleKeydown);
-              if (el) el.removeEventListener("scroll", updateScrollShadows);
-              window.removeEventListener("resize", debouncedResize);
-              window.removeEventListener("scroll", optimizedYearDetection);
+              document.removeEventListener(
+                "component:loaded",
+                handleComponentLoaded
+              );
+              if (el)
+                el.removeEventListener("scroll", scheduleScrollShadowUpdate);
+              window.removeEventListener("resize", scheduleScrollShadowUpdate);
               window.removeEventListener("resize", computeOffsets);
-              if (observer) observer.disconnect();
-
-              yearElementsCache = null;
-              navButtonsCache = null;
-              if (centerTimeout) {
-                clearTimeout(centerTimeout);
-                centerTimeout = null;
+              if (shadowFrame !== null) {
+                cancelAnimationFrame(shadowFrame);
+                shadowFrame = null;
               }
-            };
+            });
           });
 
-          let centerTimeout = null;
-          watch(activeYear, (newYear, oldYear) => {
-            if (newYear && newYear !== oldYear) {
-              if (centerTimeout) {
-                clearTimeout(centerTimeout);
-              }
-
-              centerTimeout = setTimeout(() => {
-                centerActiveYear("smooth");
-                centerTimeout = null;
-              }, 50);
-            }
+          watch(activeYear, () => {
+            centerActiveYear("smooth");
           });
 
           return {

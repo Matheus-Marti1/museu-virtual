@@ -36,72 +36,101 @@ body {
     display: none;
   }
 
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .timeline-item {
+    transition: transform 0.8s ease-out;
   }
 
   .timeline-hidden {
-    opacity: 0;
     transform: translateY(50px) scale(0.95);
-    transition: all 0.8s ease-out;
+    pointer-events: none;
+  }
+
+  .timeline-page {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: page-fade-in 0.6s ease-out forwards;
+    will-change: opacity;
+  }
+
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .timeline-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+    pointer-events: auto;
+  }
+
+  .timeline-page-fade::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
     opacity: 1;
-    transform: translateY(0) scale(1);
-    transition: all 0.8s ease-out;
+    pointer-events: none;
+    animation: timeline-page-fade-overlay 0.6s ease-out forwards;
+    z-index: 10;
+  }
+
+  @keyframes timeline-page-fade-overlay {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   @media (min-width: 768px) {
-    .timeline-hidden-left {
-      opacity: 0;
-      transform: translateX(-80px) scale(0.95);
-      transition: all 0.8s ease-out;
-    }
-
-    .timeline-visible-left {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-      transition: all 0.8s ease-out;
-    }
-
-    .timeline-hidden-right {
-      opacity: 0;
-      transform: translateX(80px) scale(0.95);
-      transition: all 0.8s ease-out;
-    }
-
-    .timeline-visible-right {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-      transition: all 0.8s ease-out;
-    }
-
-    .timeline-hidden-left,
-    .timeline-hidden-right {
+    .timeline-item-left.timeline-hidden {
       transform: translateX(-80px) scale(0.95);
     }
 
-    .timeline-hidden-right {
+    .timeline-item-right.timeline-hidden {
       transform: translateX(80px) scale(0.95);
     }
   }
 
-  .visible {
-    opacity: 1;
-    transform: translateY(0);
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item {
+      transition: none;
+    }
+
+    .timeline-hidden,
+    .timeline-visible {
+      transform: none;
+    }
+
+    .timeline-hidden {
+      pointer-events: auto;
+    }
+
+    .modal-overlay,
+    .modal-content,
+    .modal-trigger,
+    .fade-in,
+    .timeline-page-fade {
+      transition-duration: 0.01ms !important;
+      transition-property: none !important;
+      animation: none !important;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    .timeline-page-fade::before {
+      content: none;
+    }
   }
 }
 

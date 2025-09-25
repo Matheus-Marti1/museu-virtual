@@ -1,66 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const debounce = (func, wait) => {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  };
-
-  const domCache = new Map();
-  const getCachedElement = (selector) => {
-    if (!domCache.has(selector)) {
-      domCache.set(selector, document.querySelector(selector));
-    }
-    return domCache.get(selector);
-  };
-
   const loadComponent = async (selector, url) => {
     const element = document.querySelector(selector);
-    if (!element) return;
+    if (!element) return null;
 
     try {
       const response = await fetch(url);
-      if (response.ok) {
-        element.innerHTML = await response.text();
-      } else {
+      if (!response.ok) {
         console.error(
           `Erro ao carregar componente de ${url}: ${response.statusText}`
         );
+        return null;
       }
+
+      const markup = await response.text();
+      element.innerHTML = markup;
+      document.dispatchEvent(
+        new CustomEvent("component:loaded", {
+          detail: { selector, url, element },
+        })
+      );
+      return markup;
     } catch (error) {
       console.error(`Falha na requisição para ${url}:`, error);
+      return null;
     }
   };
 
-  const getDOMElements = () => {
-    domCache.clear();
-
-    const elementIds = [
-      "componentesBtn",
-      "componentesDropdown",
-      "mobileMenuBtn",
-      "closeMobileMenuBtn",
-      "mobileMenu",
-      "mobileComponentesBtn",
-      "mobileComponentesSubmenu",
-    ];
-
-    const elements = {};
-    elementIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) {
-        elements[id] = element;
-        domCache.set(`#${id}`, element);
-      }
-    });
-
-    return elements;
-  };
+  const getDOMElements = () => ({
+    componentesBtn: document.getElementById("componentesBtn"),
+    componentesDropdown: document.getElementById("componentesDropdown"),
+    mobileMenuBtn: document.getElementById("mobileMenuBtn"),
+    closeMobileMenuBtn: document.getElementById("closeMobileMenuBtn"),
+    mobileMenu: document.getElementById("mobileMenu"),
+    mobileComponentesBtn: document.getElementById("mobileComponentesBtn"),
+    mobileComponentesSubmenu: document.getElementById(
+      "mobileComponentesSubmenu"
+    ),
+  });
 
   const setActiveNavigation = () => {
     const currentPageFile =
@@ -126,35 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setupDropdownMenu = (elements) => {
     if (elements.componentesBtn && elements.componentesDropdown) {
-      const btn = elements.componentesBtn;
-      const dropdown = elements.componentesDropdown;
-
-      if (btn._clickHandler) {
-        btn.removeEventListener("click", btn._clickHandler);
-      }
-      if (btn._outsideClickHandler) {
-        document.removeEventListener("click", btn._outsideClickHandler);
-      }
-
-      const clickHandler = (event) => {
-        event.preventDefault();
+      elements.componentesBtn.addEventListener("click", (event) => {
         event.stopPropagation();
-        dropdown.classList.toggle("hidden");
-      };
-
-      const outsideClickHandler = (event) => {
-        if (!btn.contains(event.target) && !dropdown.contains(event.target)) {
-          dropdown.classList.add("hidden");
-        }
-      };
-
-      btn.addEventListener("click", clickHandler);
-      document.addEventListener("click", outsideClickHandler, {
-        passive: true,
+        elements.componentesDropdown.classList.toggle("hidden");
       });
 
-      btn._clickHandler = clickHandler;
-      btn._outsideClickHandler = outsideClickHandler;
+      window.addEventListener("click", () => {
+        elements.componentesDropdown?.classList.add("hidden");
+      });
     }
   };
 
@@ -175,36 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (mobileMenuBtn && mobileMenu) {
-      if (mobileMenuBtn._clickHandler) {
-        mobileMenuBtn.removeEventListener("click", mobileMenuBtn._clickHandler);
-      }
-
-      const clickHandler = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        mobileMenu.classList.remove(
-          "pointer-events-none",
-          "opacity-0",
-          "scale-95"
-        );
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("pointer-events-none");
+        mobileMenu.classList.remove("opacity-0", "scale-95");
         mobileMenu.classList.add("opacity-100", "scale-100");
         document.body.style.overflow = "hidden";
-      };
-
-      mobileMenuBtn.addEventListener("click", clickHandler);
-      mobileMenuBtn._clickHandler = clickHandler;
+      });
     }
 
     if (closeMobileMenuBtn && mobileMenu) {
-      const newCloseBtn = closeMobileMenuBtn.cloneNode(true);
-      closeMobileMenuBtn.parentNode.replaceChild(
-        newCloseBtn,
-        closeMobileMenuBtn
-      );
-
-      newCloseBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+      closeMobileMenuBtn.addEventListener("click", () => {
         mobileMenu.classList.add("opacity-0", "scale-95");
         mobileMenu.classList.remove("opacity-100", "scale-100");
 
@@ -213,21 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
           document.body.style.overflow = "";
         }, 300);
       });
-
-      elements.closeMobileMenuBtn = newCloseBtn;
     }
 
     if (mobileComponentesBtn && mobileComponentesSubmenu) {
-      const newMobileCompBtn = mobileComponentesBtn.cloneNode(true);
-      mobileComponentesBtn.parentNode.replaceChild(
-        newMobileCompBtn,
-        mobileComponentesBtn
-      );
-
-      newMobileCompBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
+      mobileComponentesBtn.addEventListener("click", () => {
         if (mobileComponentesIcon) {
           mobileComponentesIcon.style.transform = "rotate(90deg)";
         }
@@ -241,21 +165,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mobileMenu.classList.add("-translate-x-full");
       });
-
-      elements.mobileComponentesBtn = newMobileCompBtn;
     }
 
     if (closeMobileComponentesBtn && mobileComponentesSubmenu && mobileMenu) {
-      const newCloseCompBtn = closeMobileComponentesBtn.cloneNode(true);
-      closeMobileComponentesBtn.parentNode.replaceChild(
-        newCloseCompBtn,
-        closeMobileComponentesBtn
-      );
-
-      newCloseCompBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
+      closeMobileComponentesBtn.addEventListener("click", () => {
         if (mobileComponentesIcon) {
           mobileComponentesIcon.style.transform = "rotate(0deg)";
         }
@@ -274,11 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    document.addEventListener("click", (event) => {
-      if (
-        event.target.matches(".nav-component-link") ||
-        event.target.closest(".nav-component-link")
-      ) {
+    const componentLinks = document.querySelectorAll(".nav-component-link");
+    componentLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if (mobileMenu) {
           mobileMenu.classList.add("opacity-0", "scale-95");
           mobileMenu.classList.remove("opacity-100", "scale-100");
@@ -301,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileComponentesSubmenu.classList.add("pointer-events-none");
           }, 300);
         }
-      }
+      });
     });
   };
 
@@ -314,57 +225,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setupTimelineAnimation = () => {
     const setupObserver = () => {
-      const timelineItems = document.querySelectorAll(
-        ".timeline-item, .modal-trigger"
-      );
+      const timelineItems = document.querySelectorAll(".timeline-item");
       if (timelineItems.length === 0) return false;
 
       const observer = new IntersectionObserver(
         (entries) => {
-          requestAnimationFrame(() => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const target = entry.target;
-                target.classList.add("visible");
-
-                if (target.classList.contains("modal-trigger")) {
-                  const classList = target.classList;
-                  const hasLeftClass = classList.contains(
-                    "timeline-hidden-left"
-                  );
-                  const hasRightClass = classList.contains(
-                    "timeline-hidden-right"
-                  );
-
-                  classList.remove(
-                    "timeline-hidden",
-                    "timeline-hidden-left",
-                    "timeline-hidden-right"
-                  );
-
-                  if (hasLeftClass) {
-                    classList.add("timeline-visible-left");
-                  } else if (hasRightClass) {
-                    classList.add("timeline-visible-right");
-                  } else {
-                    classList.add("timeline-visible");
-                  }
-                }
-                observer.unobserve(target);
-              }
-            });
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              entry.target.classList.remove("timeline-hidden");
+              entry.target.classList.add("timeline-visible");
+              observer.unobserve(entry.target);
+            }
           });
         },
-        {
-          threshold: 0.2,
-          rootMargin: "10px",
-        }
+        { threshold: 0.2 }
       );
 
-      timelineItems.forEach((item) => {
-        if (item.classList.contains("modal-trigger")) {
-          item.classList.add("timeline-hidden");
-        }
+      timelineItems.forEach((item, index) => {
+        item.classList.add("timeline-hidden");
         observer.observe(item);
       });
 
@@ -387,25 +266,29 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setupBackToTop = () => {
-    const backToTopBtn =
-      getCachedElement("#backToTopBtn") ||
-      document.getElementById("backToTopBtn");
+    const backToTopBtn = document.getElementById("backToTopBtn");
     if (!backToTopBtn) return;
 
-    let isVisible = false;
-    const toggleVisibility = () => {
-      const shouldBeVisible = window.scrollY > 300;
-      if (shouldBeVisible !== isVisible) {
-        isVisible = shouldBeVisible;
-        backToTopBtn.classList.toggle("hidden", !isVisible);
-      }
+    let visibilityFrame = null;
+
+    const applyVisibility = () => {
+      const isVisible = window.scrollY > 300;
+      backToTopBtn.classList.toggle("hidden", !isVisible);
     };
 
-    const debouncedToggleVisibility = debounce(toggleVisibility, 16);
-    window.addEventListener("scroll", debouncedToggleVisibility, {
+    const scheduleVisibilityUpdate = () => {
+      if (visibilityFrame !== null) return;
+      visibilityFrame = requestAnimationFrame(() => {
+        visibilityFrame = null;
+        applyVisibility();
+      });
+    };
+
+    applyVisibility();
+
+    window.addEventListener("scroll", scheduleVisibilityUpdate, {
       passive: true,
     });
-
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       if (window.location.hash && window.location.hash.startsWith("#year-")) {
@@ -413,57 +296,43 @@ document.addEventListener("DOMContentLoaded", () => {
         history.replaceState(null, "", cleanUrl);
       }
     });
+    window.addEventListener("resize", scheduleVisibilityUpdate);
   };
 
   const setupModal = () => {
-    const modal =
-      getCachedElement("#timelineModal") ||
-      document.getElementById("timelineModal");
-    const closeModalBtn =
-      getCachedElement("#closeModalBtn") ||
-      document.getElementById("closeModalBtn");
+    const modal = document.getElementById("timelineModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
     const modalTriggers = document.querySelectorAll(".modal-trigger");
 
     if (!modal || !closeModalBtn || modalTriggers.length === 0) return;
 
     const modalElements = {
-      title:
-        getCachedElement("#modalTitle") ||
-        document.getElementById("modalTitle"),
-      year:
-        getCachedElement("#modalYear") || document.getElementById("modalYear"),
-      image:
-        getCachedElement("#modalImage") ||
-        document.getElementById("modalImage"),
-      imageSource:
-        getCachedElement("#modalImageSource") ||
-        document.getElementById("modalImageSource"),
-      description:
-        getCachedElement("#modalDescription") ||
-        document.getElementById("modalDescription"),
+      title: document.getElementById("modalTitle"),
+      year: document.getElementById("modalYear"),
+      image: document.getElementById("modalImage"),
+      imageSource: document.getElementById("modalImageSource"),
+      description: document.getElementById("modalDescription"),
     };
 
     const openModal = (trigger) => {
       const data = trigger.dataset;
 
-      requestAnimationFrame(() => {
-        modalElements.title.textContent = data.title;
-        modalElements.year.textContent = `(${data.year})`;
-        modalElements.image.src = data.imageSrc;
-        modalElements.image.alt = data.imageAlt;
-        modalElements.imageSource.textContent = `Fonte: ${data.imageSource}`;
+      modalElements.title.textContent = data.title;
+      modalElements.year.textContent = `(${data.year})`;
+      modalElements.image.src = data.imageSrc;
+      modalElements.image.alt = data.imageAlt;
+      modalElements.imageSource.textContent = `Fonte: ${data.imageSource}`;
 
-        const formattedDescription = data.description
-          .split("\n")
-          .filter((p) => p.trim() !== "")
-          .map((p) => `<p class="mb-4">${p.trim()}</p>`)
-          .join("");
+      const formattedDescription = data.description
+        .split("\n")
+        .filter((p) => p.trim() !== "")
+        .map((p) => `<p class="mb-4">${p.trim()}</p>`)
+        .join("");
 
-        modalElements.description.innerHTML = formattedDescription;
+      modalElements.description.innerHTML = formattedDescription;
 
-        modal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-      });
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
@@ -471,51 +340,42 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     };
 
-    document.addEventListener("click", (event) => {
-      if (event.target.closest(".modal-trigger")) {
-        openModal(event.target.closest(".modal-trigger"));
-      } else if (event.target === closeModalBtn || event.target === modal) {
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => openModal(trigger));
+    });
+
+    closeModalBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.classList.contains("hidden")) {
         closeModal();
       }
     });
-
-    window.addEventListener(
-      "keydown",
-      (event) => {
-        if (event.key === "Escape" && !modal.classList.contains("hidden")) {
-          event.preventDefault();
-          closeModal();
-        }
-      },
-      { passive: false }
-    );
   };
 
   const adjustLinksForSubfolder = () => {
     const isInSubfolder = window.location.pathname.includes("/componentes/");
 
     if (isInSubfolder) {
-      const selectors = [
-        {
-          selector: 'a[href^="componentes/"]',
-          transform: (href) => href.replace("componentes/", ""),
-        },
-        { selector: 'a[href="index.html"]', transform: () => "../index.html" },
-        {
-          selector: 'a[href="timeline.html"]',
-          transform: () => "../timeline.html",
-        },
-        {
-          selector: 'a[href="membros.html"]',
-          transform: () => "../membros.html",
-        },
-      ];
+      document.querySelectorAll('a[href^="componentes/"]').forEach((link) => {
+        const href = link.getAttribute("href");
+        link.setAttribute("href", href.replace("componentes/", ""));
+      });
 
-      selectors.forEach(({ selector, transform }) => {
-        document.querySelectorAll(selector).forEach((element) => {
-          const currentHref = element.getAttribute("href");
-          element.setAttribute("href", transform(currentHref));
-        });
+      document.querySelectorAll('a[href="index.html"]').forEach((link) => {
+        link.setAttribute("href", "../index.html");
+      });
+
+      document.querySelectorAll('a[href="timeline.html"]').forEach((link) => {
+        link.setAttribute("href", "../timeline.html");
+      });
+
+      document.querySelectorAll('a[href="membros.html"]').forEach((link) => {
+        link.setAttribute("href", "../membros.html");
       });
 
       document
