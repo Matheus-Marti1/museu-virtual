@@ -277,6 +277,19 @@ body {
   color: #fde68a;
 }
 
+.timeline-disclaimer a {
+  color: #facc15;
+  text-decoration: underline;
+  text-decoration-color: rgba(250, 204, 21, 0.75);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.timeline-disclaimer a:hover {
+  color: #fde68a;
+  text-decoration-color: #fde68a;
+}
+
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
