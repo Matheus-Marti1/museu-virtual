@@ -37,11 +37,10 @@ body {
   }
 
   .timeline-item {
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transition: transform 0.8s ease-out;
   }
 
   .timeline-hidden {
-    opacity: 0;
     transform: translateY(50px) scale(0.95);
     pointer-events: none;
   }
@@ -62,7 +61,6 @@ body {
   }
 
   .timeline-visible {
-    opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
     pointer-events: auto;
   }
