@@ -45,6 +45,11 @@ body {
     pointer-events: none;
   }
 
+  .timeline-page {
+    position: relative;
+    isolation: isolate;
+  }
+
   .fade-in {
     opacity: 0;
     animation: page-fade-in 0.6s ease-out forwards;
@@ -63,6 +68,26 @@ body {
   .timeline-visible {
     transform: translate3d(0, 0, 0) scale(1);
     pointer-events: auto;
+  }
+
+  .timeline-page-fade::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    pointer-events: none;
+    animation: timeline-page-fade-overlay 0.6s ease-out forwards;
+    z-index: 10;
+  }
+
+  @keyframes timeline-page-fade-overlay {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   @media (min-width: 768px) {
@@ -92,7 +117,8 @@ body {
     .modal-overlay,
     .modal-content,
     .modal-trigger,
-    .fade-in {
+    .fade-in,
+    .timeline-page-fade {
       transition-duration: 0.01ms !important;
       transition-property: none !important;
       animation: none !important;
@@ -100,6 +126,10 @@ body {
 
     .fade-in {
       opacity: 1;
+    }
+
+    .timeline-page-fade::before {
+      content: none;
     }
   }
 }
