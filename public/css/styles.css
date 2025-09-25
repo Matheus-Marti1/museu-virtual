@@ -1361,10 +1361,16 @@ body {
     .timeline-hidden, .timeline-visible {
       transform: none;
     }
+    .timeline-hidden {
+      pointer-events: auto;
+    }
     .modal-overlay, .modal-content, .modal-trigger, .fade-in {
       transition-duration: 0.01ms !important;
       transition-property: none !important;
       animation: none !important;
+    }
+    .fade-in {
+      opacity: 1;
     }
   }
 }

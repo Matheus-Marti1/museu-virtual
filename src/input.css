@@ -85,6 +85,10 @@ body {
       transform: none;
     }
 
+    .timeline-hidden {
+      pointer-events: auto;
+    }
+
     .modal-overlay,
     .modal-content,
     .modal-trigger,
@@ -92,6 +96,10 @@ body {
       transition-duration: 0.01ms !important;
       transition-property: none !important;
       animation: none !important;
+    }
+
+    .fade-in {
+      opacity: 1;
     }
   }
 }
