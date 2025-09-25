@@ -1,19 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loadComponent = async (selector, url) => {
     const element = document.querySelector(selector);
-    if (!element) return;
+    if (!element) return null;
 
     try {
       const response = await fetch(url);
-      if (response.ok) {
-        element.innerHTML = await response.text();
-      } else {
+      if (!response.ok) {
         console.error(
           `Erro ao carregar componente de ${url}: ${response.statusText}`
         );
+        return null;
       }
+
+      const markup = await response.text();
+      element.innerHTML = markup;
+      document.dispatchEvent(
+        new CustomEvent("component:loaded", {
+          detail: { selector, url, element },
+        })
+      );
+      return markup;
     } catch (error) {
       console.error(`Falha na requisição para ${url}:`, error);
+      return null;
     }
   };
 
@@ -260,12 +269,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.getElementById("backToTopBtn");
     if (!backToTopBtn) return;
 
-    const toggleVisibility = () => {
+    let visibilityFrame = null;
+
+    const applyVisibility = () => {
       const isVisible = window.scrollY > 300;
       backToTopBtn.classList.toggle("hidden", !isVisible);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    const scheduleVisibilityUpdate = () => {
+      if (visibilityFrame !== null) return;
+      visibilityFrame = requestAnimationFrame(() => {
+        visibilityFrame = null;
+        applyVisibility();
+      });
+    };
+
+    applyVisibility();
+
+    window.addEventListener("scroll", scheduleVisibilityUpdate, {
+      passive: true,
+    });
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       if (window.location.hash && window.location.hash.startsWith("#year-")) {
@@ -273,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
         history.replaceState(null, "", cleanUrl);
       }
     });
+    window.addEventListener("resize", scheduleVisibilityUpdate);
   };
 
   const setupModal = () => {

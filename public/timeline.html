@@ -19,7 +19,7 @@
     <div id="app" class="relative min-h-screen flex flex-col" v-cloak>
       <div id="header-placeholder"></div>
 
-      <main class="container mx-auto px-6 py-12 flex-grow fade-in">
+      <main class="container mx-auto px-6 py-12 flex-grow">
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">
           Linha do Tempo
         </h1>
@@ -256,7 +256,15 @@
 
     <script type="module">
       import { timelineItems } from "./js/timeline-data.js";
-      const { createApp, ref, computed, onMounted, nextTick, watch } = Vue;
+      const {
+        createApp,
+        ref,
+        computed,
+        onMounted,
+        onUnmounted,
+        nextTick,
+        watch,
+      } = Vue;
 
       createApp({
         setup() {
@@ -327,6 +335,8 @@
             centerActiveYear("smooth");
           };
 
+          let shadowFrame = null;
+
           const updateScrollShadows = () => {
             const el = yearNavEl.value;
             if (!el) return;
@@ -335,13 +345,42 @@
               el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
           };
 
+          const scheduleScrollShadowUpdate = () => {
+            if (shadowFrame !== null) return;
+            shadowFrame = requestAnimationFrame(() => {
+              shadowFrame = null;
+              updateScrollShadows();
+            });
+          };
+
+          const computeOffsets = () => {
+            const headerEl = document.getElementById("header-placeholder");
+            const headerFirst =
+              headerEl && headerEl.firstElementChild
+                ? headerEl.firstElementChild
+                : headerEl;
+            const headerH = headerFirst
+              ? headerFirst.getBoundingClientRect().height
+              : 72;
+            document.documentElement.style.setProperty(
+              "--header-offset",
+              `${Math.round(headerH)}px`
+            );
+            const navWrap = yearNavWrapperEl.value;
+            const navH = navWrap ? navWrap.getBoundingClientRect().height : 52;
+            document.documentElement.style.setProperty(
+              "--year-nav-height",
+              `${Math.round(navH)}px`
+            );
+          };
+
           const scrollNav = (dir) => {
             const el = yearNavEl.value;
             if (!el) return;
             const amount =
               Math.max(200, el.clientWidth * 0.8) * (dir < 0 ? -1 : 1);
             el.scrollBy({ left: amount, behavior: "smooth" });
-            setTimeout(updateScrollShadows, 200);
+            setTimeout(() => scheduleScrollShadowUpdate(), 200);
           };
 
           const centerActiveYear = (behavior = "auto") => {
@@ -357,7 +396,7 @@
             const offset =
               btn.offsetLeft - (contRect.width / 2 - btnRect.width / 2);
             container.scrollTo({ left: Math.max(0, offset), behavior });
-            setTimeout(updateScrollShadows, 150);
+            setTimeout(() => scheduleScrollShadowUpdate(), 150);
           };
 
           const openModal = (event, item) => {
@@ -385,27 +424,17 @@
           };
 
           onMounted(async () => {
-            const response = await fetch("header.html");
-            if (response.ok) {
-              document.getElementById("header-placeholder").innerHTML =
-                await response.text();
-
-              if (window.initializeHeaderFunctionality) {
-                window.initializeHeaderFunctionality();
-              } else {
-                setTimeout(() => {
-                  if (window.initializeHeaderFunctionality) {
-                    window.initializeHeaderFunctionality();
-                  }
-                }, 100);
+            const handleComponentLoaded = (event) => {
+              if (event.detail?.selector === "#header-placeholder") {
+                scheduleScrollShadowUpdate();
+                computeOffsets();
               }
-            }
+            };
 
-            setTimeout(() => {
-              if (window.initializeVueCompatibleFeatures) {
-                window.initializeVueCompatibleFeatures();
-              }
-            }, 200);
+            document.addEventListener(
+              "component:loaded",
+              handleComponentLoaded
+            );
 
             const handleKeydown = (event) => {
               if (event.key === "Escape" && isModalOpen.value) {
@@ -419,34 +448,12 @@
             updateScrollShadows();
             const el = yearNavEl.value;
             if (el) {
-              el.addEventListener("scroll", updateScrollShadows, {
+              el.addEventListener("scroll", scheduleScrollShadowUpdate, {
                 passive: true,
               });
             }
-            window.addEventListener("resize", updateScrollShadows);
+            window.addEventListener("resize", scheduleScrollShadowUpdate);
 
-            const computeOffsets = () => {
-              const headerEl = document.getElementById("header-placeholder");
-              const headerFirst =
-                headerEl && headerEl.firstElementChild
-                  ? headerEl.firstElementChild
-                  : headerEl;
-              const headerH = headerFirst
-                ? headerFirst.getBoundingClientRect().height
-                : 72;
-              document.documentElement.style.setProperty(
-                "--header-offset",
-                `${Math.round(headerH)}px`
-              );
-              const navWrap = yearNavWrapperEl.value;
-              const navH = navWrap
-                ? navWrap.getBoundingClientRect().height
-                : 52;
-              document.documentElement.style.setProperty(
-                "--year-nav-height",
-                `${Math.round(navH)}px`
-              );
-            };
             computeOffsets();
             window.addEventListener("resize", computeOffsets);
 
@@ -480,12 +487,21 @@
                 }, 100);
               }
             }
-
-            return () => {
+            onUnmounted(() => {
               document.removeEventListener("keydown", handleKeydown);
-              if (el) el.removeEventListener("scroll", updateScrollShadows);
-              window.removeEventListener("resize", updateScrollShadows);
-            };
+              document.removeEventListener(
+                "component:loaded",
+                handleComponentLoaded
+              );
+              if (el)
+                el.removeEventListener("scroll", scheduleScrollShadowUpdate);
+              window.removeEventListener("resize", scheduleScrollShadowUpdate);
+              window.removeEventListener("resize", computeOffsets);
+              if (shadowFrame !== null) {
+                cancelAnimationFrame(shadowFrame);
+                shadowFrame = null;
+              }
+            });
           });
 
           watch(activeYear, () => {

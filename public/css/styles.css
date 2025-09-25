@@ -1330,6 +1330,19 @@ body {
     transform: translateY(50px) scale(0.95);
     pointer-events: none;
   }
+  .fade-in {
+    opacity: 0;
+    animation: page-fade-in 0.6s ease-out forwards;
+    will-change: opacity;
+  }
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   .timeline-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
@@ -1341,6 +1354,19 @@ body {
     }
     .timeline-item-right.timeline-hidden {
       transform: translateX(80px) scale(0.95);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item {
+      transition: none;
+    }
+    .timeline-hidden, .timeline-visible {
+      transform: none;
+    }
+    .modal-overlay, .modal-content, .modal-trigger, .fade-in {
+      transition-duration: 0.01ms !important;
+      transition-property: none !important;
+      animation: none !important;
     }
   }
 }
