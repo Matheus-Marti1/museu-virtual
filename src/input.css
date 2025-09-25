@@ -35,7 +35,6 @@ body {
   .year-nav::-webkit-scrollbar {
     display: none;
   }
-
   .timeline-item {
     transition: transform 0.8s ease-out;
   }

@@ -1397,6 +1397,7 @@ body {
     .timeline-page-fade::before {
       content: none;
     }
+
   }
 }
 .timeline-image {
