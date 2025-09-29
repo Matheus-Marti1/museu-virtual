@@ -19,9 +19,9 @@ export const timelineItems = [
     title: "Computador Atanasoff-Berry",
     shortDescription: "O primeiro computador eletrônico digital.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
+      "./images/timeline/1937-computador-atanasoff-berry-6cf4ceb0.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/0/09/Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_%2830781535612%29.jpg",
+      "./images/timeline/1937-computador-atanasoff-berry-6cf4ceb0.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Atanasoff-Berry_Computer_%E3%83%BC_Computer_History_Museum_(30781535612).jpg">Ik T from Kanagawa, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `Em 1937, o professor de física John Atanasoff e o estudante graduado Clifford Berry fizeram a primeira concepção do que seria o então Computador Atanasoff-Berry.
@@ -33,8 +33,8 @@ export const timelineItems = [
     year: "1939",
     title: "A Hewlett-Packard é fundada",
     shortDescription: "A Hewlett-Packard foi fundada em 1º de janeiro de 1939 pelos graduados da Universidade Stanford, David Packard e Bill Hewlett.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/f/f7/HP-original-logo-1954-trademark.svg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/f/f7/HP-original-logo-1954-trademark.svg",
+    imageCard: "./images/timeline/1939-a-hewlett-packard-e-fundada-7c20492e.svg",
+    imageModal: "./images/timeline/1939-a-hewlett-packard-e-fundada-7c20492e.svg",
     sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:HP-original-logo-1954-trademark.svg">Hydrargyrum</a>, Public domain, via Wikimedia Commons',
     sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:HP-original-logo-1954-trademark.svg">Hydrargyrum</a>, Public domain, via Wikimedia Commons',
     longDescription: `A Hewlett-Packard foi fundada em 1º de janeiro de 1939 pelos graduados da Universidade Stanford, David Packard e Bill Hewlett. Suas instalações iniciais eram uma garagem em Palo Alto, Califórnia, como era o caso de tantas empresas de informática do Vale do Silício da época.
@@ -47,9 +47,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
+      "./images/timeline/1941-konrad-zuse-constroi-o-z3-d73b88f3.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg",
+      "./images/timeline/1941-konrad-zuse-constroi-o-z3-d73b88f3.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Zuse-Museum_Huenfeld_Nachbau_Z3_2017.jpg">DomenikaBo</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `Em 12 de maio de 1941, Konrad Zuse conclui a construção do Z3, a primeira máquina de computação digital programável e totalmente automática do mundo.`,
@@ -60,9 +60,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Em 7 de agosto de 1944, o Harvard Mark I, também conhecido como IBM Automatic Sequence Controlled Calculator (ASCC), é concluído.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg",
+      "./images/timeline/1944-harvard-mark-i-367d0b64.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/1/11/Harvard_Mark_I_Computer_-_Left_Segment.jpg",
+      "./images/timeline/1944-harvard-mark-i-7bead35b.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Harvard_Mark_I_Computer_-_Input-Output_Details.jpg">Daderot at English Wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons',
     sourceModal:
@@ -74,9 +74,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "ENIAC",
     shortDescription: "O primeiro computador eletrônico de grande escala.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg",
+      "./images/timeline/1946-eniac-d1a1934e.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6c/ENIAC_Penn1.jpg",
+      "./images/timeline/1946-eniac-d1a1934e.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:ENIAC_Penn1.jpg">The original uploader was TexasDex at English Wikipedia.</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons',
     longDescription: `Em 14 de Fevereiro de 1946, John Mauchly e J. Presper Eckert anunciaram publicamente o ENIAC na Universidade de Pennsylvania.
@@ -90,9 +90,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Tubo Williams-Kilburn",
     shortDescription: "O tubo Williams-Kilburn, o primeiro RAM, é patenteado",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/3/34/Williams-Kliburn_Tube%2C_Manchester_Mark_I.agr.jpg",
+      "./images/timeline/1946-tubo-williams-kilburn-a167a089.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/3/34/Williams-Kliburn_Tube%2C_Manchester_Mark_I.agr.jpg",
+      "./images/timeline/1946-tubo-williams-kilburn-a167a089.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Williams-Kliburn_Tube,_Manchester_Mark_I.agr.jpg">ArnoldReinhold</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O tubo Williams-Kilburn, o primeiro RAM, é patenteado`,
@@ -103,9 +103,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O Manchester Baby, o primeiro computador com programa armazenado do mundo, executa seu primeiro programa",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3c/Manchester_baby_head_on.JPG",
+      "./images/timeline/1948-manchester-baby-roda-seu-primeiro-programa-d9d63483.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3c/Manchester_baby_head_on.JPG",
+      "./images/timeline/1948-manchester-baby-roda-seu-primeiro-programa-d9d63483.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Manchester_baby_head_on.JPG">Geni</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `Em 21 de junho de 1948, na Universidade de Manchester, um computador recém-construído executou com sucesso seu primeiro programa. O computador era a Máquina Experimental de Pequena Escala, também conhecida como "Bebê de Manchester" e "Protótipo Mark 1".`,
@@ -116,9 +116,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O EDSAC, um dos primeiros computadores a armazenar programas, é concluído.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/2/22/EDSAC_%2819%29.jpg",
+      "./images/timeline/1949-edsac-e267f7c9.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/2/22/EDSAC_%2819%29.jpg",
+      "./images/timeline/1949-edsac-e267f7c9.webp",
     source:
       'Copyright Computer Laboratory, University of Cambridge. <a href="https://www.cl.cam.ac.uk/relics/archive_photos.html#Copyright_Licencing">Reproduced by permission.</a>',
     longDescription: `A Calculadora Automática de Armazenamento Eletrônico com Atraso (EDSAC) foi o primeiro computador prático de programa armazenado a operar um serviço de computação regular.`,
@@ -127,8 +127,8 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     year: "1950",
     title: "Elliott 152",
     shortDescription: "O computador Elliott 152 é completado",
-    imageCard: "https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.jpg",
-    imageModal: "https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.jpg",
+    imageCard: "./images/timeline/1950-elliott-152-dea81534.webp",
+    imageModal: "./images/timeline/1950-elliott-152-dea81534.webp",
     source: '<a href="https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.htm">© Computer Conservation Society.</a>',
     longDescription: `O computador Elliott 152 foi um dos primeiros computadores a utilizar transistores em vez de válvulas. Ele foi projetado para ser um computador de uso geral e foi amplamente utilizado em universidades e instituições de pesquisa.`,
   },
@@ -137,9 +137,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Grace Hopper desenvolve o primeiro compilador",
     shortDescription: "O primeiro compilador é desenvolvido por Grace Hopper.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
+      "./images/timeline/1952-grace-hopper-desenvolve-o-primeiro-compilador-4cb8022a.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg",
+      "./images/timeline/1952-grace-hopper-desenvolve-o-primeiro-compilador-4cb8022a.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg">Flickr: Grace Hopper and UNIVAC</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `O primeiro compilador foi desenvolvido por Grace Hopper na década de 1950. Ele foi projetado para traduzir código fonte escrito em uma linguagem de programação de alto nível para uma linguagem de máquina que o computador pudesse entender. Hopper é frequentemente chamada de "mãe do COBOL" por seu papel no desenvolvimento dessa linguagem de programação.`,
@@ -149,9 +149,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "IBM 650",
     shortDescription: "A IBM anuncia o computador Modelo 650",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
+      "./images/timeline/1953-ibm-650-94f825c2.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/0/07/IBM_650_EMMA.jpg",
+      "./images/timeline/1953-ibm-650-94f825c2.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:IBM_650_EMMA.jpg">Mahlum</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 2 de julho de 1953, a IBM anunciou sua série 650 de computadores.
@@ -163,9 +163,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O primeiro compilador de linguagem de programação de alto nível é desenvolvido.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
+      "./images/timeline/1954-fortran-2cbb694d.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/0/07/Fortran_acs_cover.jpeg",
+      "./images/timeline/1954-fortran-2cbb694d.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Fortran_acs_cover.jpeg">original uploader was en:User:Muhandis</a>, Public domain, via Wikimedia Commons',
     longDescription: `O FORTRAN (Formula Translation) foi o primeiro compilador de linguagem de programação de alto nível a ser desenvolvido. Criado por uma equipe da IBM liderada por John Backus, o FORTRAN foi projetado para facilitar a programação de cálculos científicos e de engenharia. Sua introdução marcou o início da programação de alto nível e teve um impacto duradouro na forma como os programadores escrevem código até hoje.`,
@@ -175,9 +175,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Jack Kilby inventa o circuito integrado",
     shortDescription: "O primeiro circuito integrado é inventado.",
     imageCard:
-      "https://www.thestoryoftexas.com/upload/images/artifact-spotlight/2014-12-12%20microchip/as_microchip_gallery1.jpg",
+      "./images/timeline/1958-jack-kilby-inventa-o-circuito-integrado-f052d894.webp",
     imageModal:
-      "https://www.thestoryoftexas.com/upload/images/artifact-spotlight/2014-12-12%20microchip/as_microchip_gallery3.jpg",
+      "./images/timeline/1958-jack-kilby-inventa-o-circuito-integrado-6030500c.webp",
     source:
       '<a href="https://www.thestoryoftexas.com/discover/artifacts/integratedcircuit_spotlight_121214">Texas State History Museum and Texas Instruments</a>',
     longDescription: `Em 1958, Jack Kilby, um engenheiro da Texas Instruments, inventou o primeiro circuito integrado. Essa inovação permitiu que múltiplos componentes eletrônicos fossem miniaturizados e integrados em um único chip de silício, revolucionando a eletrônica e pavimentando o caminho para o desenvolvimento de computadores mais compactos e poderosos.`,
@@ -187,9 +187,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "DEC PDP-1",
     shortDescription: "O primeiro computador minicomputador é lançado.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/2/23/Spacewar%21-PDP-1-20070512.jpg",
+      "./images/timeline/1960-dec-pdp-1-726f9e9a.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/2/23/Spacewar%21-PDP-1-20070512.jpg",
+      "./images/timeline/1960-dec-pdp-1-726f9e9a.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Spacewar!-PDP-1-20070512.jpg">Joi Ito from Inbamura, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `O DEC PDP-1, lançado em 1960, foi um dos primeiros minicomputadores da história. Ele foi projetado para ser mais acessível e menor do que os computadores mainframe da época, permitindo que mais instituições, como universidades e laboratórios de pesquisa, tivessem acesso à computação. O PDP-1 é frequentemente lembrado por seu papel na popularização da programação interativa e do tempo compartilhado.`,
@@ -199,9 +199,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Lei de Moore",
     shortDescription: "A Lei de Moore é formulada.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
+      "./images/timeline/1965-lei-de-moore-8bba8df9.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6c/Lei_de_moore_2006.png",
+      "./images/timeline/1965-lei-de-moore-8bba8df9.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Lei_de_moore_2006.png">José Maria Silveira Neto</a>, Public domain, via Wikimedia Commons',
     longDescription: `A Lei de Moore, formulada por Gordon Moore, cofundador da Intel, é uma observação de que o número de transistores em um chip de computador dobra aproximadamente a cada dois anos, levando a um aumento exponencial na capacidade de processamento e uma redução nos custos. Essa previsão tem se mostrado verdadeira por várias décadas e é um dos principais motores da evolução da tecnologia da informação.`,
@@ -211,9 +211,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Intel é fundada",
     shortDescription: "A Intel é fundada por Robert Noyce e Gordon Moore.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg",
+      "./images/timeline/1968-intel-e-fundada-1691ef8c.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg",
+      "./images/timeline/1968-intel-e-fundada-1691ef8c.svg",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_logo_(2020,_light_blue).svg">Intel</a>, Public domain, via Wikimedia Commons',
     longDescription: `A Intel Corporation foi fundada em 1968 por Robert Noyce e Gordon Moore, dois pioneiros da indústria de semicondutores. A empresa rapidamente se destacou no desenvolvimento de microprocessadores e memórias, tornando-se uma das principais forças na revolução dos computadores pessoais e na evolução da tecnologia da informação.`,
@@ -223,9 +223,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "ARPANET",
     shortDescription: "A ARPANET, precursora da internet, é criada.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bf/Arpanet_logical_map%2C_march_1977.png",
+      "./images/timeline/1969-arpanet-8ea09c82.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bf/Arpanet_logical_map%2C_march_1977.png",
+      "./images/timeline/1969-arpanet-8ea09c82.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Arpanet_logical_map,_march_1977.png">ARPANET</a>, Public domain, via Wikimedia Commons',
     longDescription: `A ARPANET, ou Advanced Research Projects Agency Network, foi criada em 1969 como um projeto do Departamento de Defesa dos EUA. Ela é considerada a precursora da internet moderna, permitindo a comunicação entre diferentes redes de computadores. A ARPANET introduziu conceitos fundamentais, como o roteamento de pacotes e a arquitetura cliente-servidor, que ainda são utilizados na internet de hoje.`,
@@ -236,9 +236,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O primeiro chip de memória DRAM comercialmente disponível do mundo.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_C1103.jpg",
+      "./images/timeline/1970-intel-1103-6cc0527e.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/5/59/Intel_C1103.jpg",
+      "./images/timeline/1970-intel-1103-6cc0527e.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_C1103.jpg">Stelo.xyz, Pttn, or Thomas Nguyen</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O Intel 1103, lançado em outubro de 1970, foi o primeiro chip de memória dinâmica de acesso aleatório (DRAM) disponível comercialmente do mundo. Ele revolucionou a indústria de computadores, permitindo a criação de sistemas mais compactos e eficientes. O 1103 foi amplamente utilizado em computadores pessoais e estações de trabalho durante a década de 1970.
@@ -249,9 +249,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Intel 4004",
     shortDescription: "O primeiro microprocessador comercialmente disponível.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg",
+      "./images/timeline/1971-intel-4004-615411d4.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/5/52/Intel_4004.jpg",
+      "./images/timeline/1971-intel-4004-615411d4.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_4004.jpg">LucaDetomi at it.wikipedia</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons',
     longDescription: `Lançado pela Intel, o 4004 foi o primeiro microprocessador comercialmente disponível no mundo. Ele integrou todos os componentes de uma CPU em um único chip de silício, uma inovação que pavimentou o caminho para o desenvolvimento dos computadores pessoais e da eletrônica embarcada.`,
@@ -261,9 +261,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Intel 8008",
     shortDescription: "O primeiro microprocessador de 8 bits da Intel.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/b/ba/KL_Intel_C8008-1.jpg",
+      "./images/timeline/1972-intel-8008-280167ca.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/b/ba/KL_Intel_C8008-1.jpg",
+      "./images/timeline/1972-intel-8008-280167ca.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:KL_Intel_C8008-1.jpg">Konstantin Lanzet</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `Lançado pela Intel em 1972, o 8008 foi o primeiro microprocessador de 8 bits da empresa. Ele foi uma evolução do Intel 4004, oferecendo maior capacidade de processamento e memória. O 8008 foi amplamente utilizado em sistemas embarcados e computadores pessoais iniciais, contribuindo para a popularização da computação.`,
@@ -273,9 +273,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Intel 8080",
     shortDescription: "O sucessor do Intel 8008.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
+      "./images/timeline/1974-intel-8080-d8ff4575.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/a/ac/Intel_8080_open-closed.jpg",
+      "./images/timeline/1974-intel-8080-d8ff4575.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_8080_open-closed.jpg">The Science Museum UK</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons',
     longDescription: `Lançado pela Intel em 1974, o 8080 foi o sucessor do 8008 e um dos primeiros microprocessadores de 8 bits a se tornar amplamente utilizado. Ele foi fundamental para o desenvolvimento de computadores pessoais e sistemas embarcados, oferecendo maior desempenho e capacidade de processamento.`,
@@ -285,9 +285,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Microsoft é fundada",
     shortDescription: "A Microsoft foi fundada por Bill Gates e Paul Allen.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      "./images/timeline/1975-microsoft-e-fundada-75b73fd4.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      "./images/timeline/1975-microsoft-e-fundada-75b73fd4.svg",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg">Microsoft</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -300,9 +300,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Steve Wozniak, Steve Jobs, e Ronald Wayne fundam a Apple Computer Inc.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg",
+      "./images/timeline/1976-apple-e-fundada-17353114.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/8/84/Apple_Computer_Logo_rainbow.svg",
+      "./images/timeline/1976-apple-e-fundada-17353114.svg",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg">Rob Janoff</a>, Public domain, via Wikimedia Commons',
     longDescription: ``,
@@ -313,9 +313,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Apple I",
     shortDescription: "Um dos primeiros computadores pessoais.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/2/27/Apple_I.jpg",
+      "./images/timeline/1976-apple-i-9c014fca.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/e/e4/CopsonApple1_2k_cropped.jpg",
+      "./images/timeline/1976-apple-i-6e8342de.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Apple_I.jpg">Photo taken by rebelpilot</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>, via Wikimedia Commons',
     sourceModal:
@@ -328,9 +328,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Um dos primeiros computadores pessoais produzidos em massa de sucesso.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
+      "./images/timeline/1977-apple-ii-c8861456.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/9/98/Apple_II_typical_configuration_1977.png",
+      "./images/timeline/1977-apple-ii-c8861456.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Apple_II_typical_configuration_1977.png">FozzTexx</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O Apple II, lançado em 1977, foi um dos primeiros computadores pessoais produzidos em massa de sucesso. Projetado por Steve Wozniak, o Apple II apresentava gráficos coloridos, som integrado e uma arquitetura expansível, tornando-o popular entre entusiastas de computação e escolas. Ele desempenhou um papel crucial na popularização dos computadores pessoais e estabeleceu a Apple como uma força dominante na indústria de tecnologia.`,
@@ -341,9 +341,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Um computador pessoal voltado para o mercado empresarial.",
     imageCard:
-      "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
+      "./images/timeline/1980-apple-iii-c9b3f9a3.webp",
     imageModal:
-      "https://www.computinghistory.org.uk/userdata/images/large/57/79/product-135779.jpg",
+      "./images/timeline/1980-apple-iii-c9b3f9a3.webp",
     source:
       '<a href="https://www.computinghistory.org.uk/det/210/Apple-III/">Centre for Computing History, item CH210</a>',
     longDescription: `Em 1980, a Apple lançou o Apple III, um computador pessoal voltado para o mercado empresarial. Projetado para competir com computadores como o IBM PC, o Apple III apresentava melhorias em relação ao Apple II, incluindo uma arquitetura mais robusta e suporte para software de negócios. No entanto, o Apple III enfrentou vários problemas técnicos e de design que afetaram sua popularidade e vendas. Apesar disso, ele marcou um passo importante na evolução dos computadores pessoais da Apple.`,
@@ -354,9 +354,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O sistema operacional que se tornaria o padrão para PCs.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
+      "./images/timeline/1980-microsoft-lanca-o-ms-dos-7adf8603.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b6/StartingMsdos.png",
+      "./images/timeline/1980-microsoft-lanca-o-ms-dos-7adf8603.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:StartingMsdos.png">The original uploader was Andrewpmk at English Wikipedia.</a>, Public domain, via Wikimedia Commons',
     longDescription: `Em 6 de novembro de 1980, a Microsoft fez um acordo com a IBM para fornecer o sistema operacional para o IBM PC. A Microsoft adquiriu um sistema operacional chamado 86-DOS da Seattle Computer Products, adaptou-o para o hardware do IBM PC e o renomeou como MS-DOS (Microsoft Disk Operating System). O MS-DOS se tornou o sistema operacional padrão para PCs baseados em x86 e desempenhou um papel crucial na popularização dos computadores pessoais durante a década de 1980 e início dos anos 1990.`,
@@ -366,9 +366,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "IBM PC",
     shortDescription: "O primeiro IBM PC, modelo 5150, é lançado.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
+      "./images/timeline/1981-ibm-pc-ec0ad7e9.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a6/IBM_PC-IMG_7271_%28transparent%29.png",
+      "./images/timeline/1981-ibm-pc-ec0ad7e9.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:IBM_PC-IMG_7271_(transparent).png">Rama &amp; Musée Bolo</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en">CC BY-SA 2.0 FR</a>, via Wikimedia Commons',
     longDescription: `O IBM Personal Computer (modelo 5150) foi o computador que definiu o padrão da indústria e popularizou a arquitetura x86. Seu sucesso levou à criação de um vasto ecossistema de hardware e software compatíveis, conhecidos como 'clones de PC', que dominaram o mercado por décadas.`,
@@ -379,9 +379,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O primeiro computador pessoal com uma interface gráfica.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b9/Apple-lisa-1.jpg",
+      "./images/timeline/1983-apple-lisa-cbddb63d.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b9/Apple-lisa-1.jpg",
+      "./images/timeline/1983-apple-lisa-cbddb63d.webp",
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Apple-lisa-1.jpg">Timothy Colegrove</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O Apple Lisa foi uma máquina de 16-bit, baseado no Motorola 68000, que vinha com um HD Winchester de 5Mb e 1Mb de RAM. O computador tinha uma tela monocromática embutida e um drive duplo de disquetes de 5.25 polegadas. Ele foi lançado nos EUA em 19 de janeiro de 1983.
@@ -393,9 +393,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O sistema operacional com interface gráfica da Microsoft.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
+      "./images/timeline/1983-microsoft-anuncia-o-windows-3199f200.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Windows_1.0_screenshot.png",
+      "./images/timeline/1983-microsoft-anuncia-o-windows-d96ab927.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -407,9 +407,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Windows 2.0",
     shortDescription: "A segunda versão do sistema operacional Windows.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/0/01/Windows_logo_and_wordmark_-_%281985-1989%29.svg",
+      "./images/timeline/1983-microsoft-anuncia-o-windows-3199f200.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/5/50/About_box_Windows_2.03_%28EN%29.png",
+      "./images/timeline/1987-windows-2-0-4cfa2c62.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg">Original work: Microsoft</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -420,8 +420,8 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     year: "1991",
     title: "Linus Torvalds anuncia o Linux",
     shortDescription: "O início do sistema operacional Linux.",
-    imageCard: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
-    imageModal: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    imageCard: "./images/timeline/1991-linus-torvalds-anuncia-o-linux-015e770b.svg",
+    imageModal: "./images/timeline/1991-linus-torvalds-anuncia-o-linux-015e770b.svg",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Tux.svg">lewing@isc.tamu.edu Larry Ewing and The GIMP</a>, CC0, via Wikimedia Commons',
     sourceModal:
@@ -439,9 +439,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "Intel Pentium",
     shortDescription: "O processador Intel Pentium é lançado.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/2/29/Intel_Pentium_Processor.svg",
+      "./images/timeline/1993-intel-pentium-118cf647.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b3/Intel_Pentium_A80501_66_SX950.JPG",
+      "./images/timeline/1993-intel-pentium-0e25d42a.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Intel_Pentium_Processor.svg">Intel Corporation</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -453,9 +453,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     title: "NVIDIA é fundada",
     shortDescription: "A NVIDIA Corporation é fundada.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
+      "./images/timeline/1993-nvidia-e-fundada-0e0acfe8.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
+      "./images/timeline/1993-nvidia-e-fundada-0e0acfe8.svg",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg">Nvidia</a>, <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>, via Wikimedia Commons',
     sourceModal:
@@ -472,9 +472,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "O sistema operacional Windows 95 é lançado pela Microsoft.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Windows_95_logo_with_wordmark.svg",
+      "./images/timeline/1995-windows-95-e-lancado-6fb561f5.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/4/44/Windows_95_stacked_logo.svg",
+      "./images/timeline/1995-windows-95-e-lancado-41c5eb91.svg",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:Microsoft_Windows_95_logo_with_wordmark.svg">Microsoft, flag logo designed by Jonathan D. Cowles and Jeff Boettcher</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -495,9 +495,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Em 2 de setembro de 1997 a IBM anuncia o RS/6000 SP Deep Blue, supercomputador aprimorado para jogar xadrez.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/9/9b/Say_hello_to_Deep_Blue_%282586059148%29.jpg",
+      "./images/timeline/1997-ibm-anuncia-rs-6000-sp-deep-blue-675e2f38.webp",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/9/9b/Say_hello_to_Deep_Blue_%282586059148%29.jpg",
+      "./images/timeline/1997-ibm-anuncia-rs-6000-sp-deep-blue-675e2f38.webp",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">por Erik Pitti, Deep Blue é o computador que em 1997 superou Garry Kasparov</a>,<a href="https://creativecommons.org/licenses/by/2.0/deed.en">CC BY 2.0</a>, via Wikimedia Commons',
     sourceModal:
@@ -511,9 +511,9 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
     shortDescription:
       "Em 2014 O Michigan Micro Mote constitui o primeiro sistema computacional completo e operacional, medindo apenas dois milímetros de diâmetro.",
     imageCard:
-      "https://live.staticflickr.com/7460/16347907406_68128a4093_b.jpg",
+      "./images/timeline/2014-o-micro-mote-da-universidade-de-michigan-997df6db.webp",
     imageModal:
-      "https://live.staticflickr.com/7295/16416302526_3b11118900.jpg",
+      "./images/timeline/2014-o-micro-mote-da-universidade-de-michigan-aaea9fc2.webp",
     sourceCard:
       '<a href="https://ece.engin.umich.edu/stories/michigan-micro-mote-m3-makes-history-as-the-worlds-smallest-computer">por Martin Vloet, Michigan Micro Mote</a>, via <a href="https://www.flickr.com/photos/26556146@N07/albums/72157650084451358/">flickr</a>',
     sourceModal:
@@ -528,9 +528,9 @@ Os grãos de poeira também são conhecidos como "pó inteligente", pois seu tam
     shortDescription:
       "Em 30 de novembro de 2022 OpenAI lança ChatGPT, um chatbot baseado em navegador capaz de responder a uma ampla variedade de perguntas.",
     imageCard:
-      "https://upload.wikimedia.org/wikipedia/commons/9/97/OpenAI_logo_2025.svg",
+      "./images/timeline/2022-openai-lanca-chatgpt-96e7c3ca.svg",
     imageModal:
-      "https://upload.wikimedia.org/wikipedia/commons/6/66/OpenAI_logo_2025_%28symbol%29.svg",
+      "./images/timeline/2022-openai-lanca-chatgpt-6e423ef6.svg",
     sourceCard:
       '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">OpenAI, Logotipo da OpenAI , em uso desde fevereiro de 2025</a>, Public domain, via Wikimedia Commons',
     sourceModal:
@@ -545,8 +545,8 @@ O GPT-4 pode alcançar altas pontuações em testes criados para humanos, inclui
     year: "2025",
     title: "Microsoft revela Majorana 1",
     shortDescription: "Microsoft revela Majorana 1, em 19 de fevereiro de 2025, o primeiro processador quântico do mundo alimentado por qubits topológicos",
-    imageCard: "https://msftstories.thesourcemediaassets.com/sites/661/2025/02/Majorana-1-009-4000px-1-1000x667.jpg",
-    imageModal: "https://msftstories.thesourcemediaassets.com/sites/661/2025/02/Majorana-1-007-4000px-1-1000x667.jpg",
+    imageCard: "./images/timeline/2025-microsoft-revela-majorana-1-e37691c5.webp",
+    imageModal: "./images/timeline/2025-microsoft-revela-majorana-1-8d7a9b3f.webp",
     sourceCard: '<a href="https://azure.microsoft.com/en-us/blog/quantum/2025/02/19/microsoft-unveils-majorana-1-the-worlds-first-quantum-processor-powered-by-topological-qubits">Foto tirada por John Brecher para Microsoft</a> via https://news.microsoft.com/azure-quantum/ ',
     sourceModal: '<a href="https://azure.microsoft.com/en-us/blog/quantum/2025/02/19/microsoft-unveils-majorana-1-the-worlds-first-quantum-processor-powered-by-topological-qubits">Foto tirada por John Brecher para Microsoft</a> via https://news.microsoft.com/azure-quantum/',
     longDescription: `Microsoft revela Majorana 1, a primeira Unidade de Processamento Quântico (QPU) do mundo alimentada por um Núcleo Topológico, projetada para escalar até um milhão de qubits em um único chip.
