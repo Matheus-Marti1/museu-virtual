@@ -29,6 +29,18 @@ export const timelineItems = [
                       Como ele tinha uma função fixa, sem a possibilidade de mudar o seu programa, o ABC não era um computador de propósito geral. Porém, ele introduziu várias ideias que são fundamentais para computadores modernos, notavelmente usando binário para fazer aritmética, e o uso de eletrônicos ao invés de componentes mecânicos.
                       O ABC foi completado em 1942.`,
   },
+   {
+    year: "1939",
+    title: "A Hewlett-Packard é fundada",
+    shortDescription: "A Hewlett-Packard foi fundada em 1º de janeiro de 1939 pelos graduados da Universidade Stanford, David Packard e Bill Hewlett.",
+    imageCard: "https://upload.wikimedia.org/wikipedia/commons/f/f7/HP-original-logo-1954-trademark.svg",
+    imageModal: "https://upload.wikimedia.org/wikipedia/commons/f/f7/HP-original-logo-1954-trademark.svg",
+    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:HP-original-logo-1954-trademark.svg">Hydrargyrum</a>, Public domain, via Wikimedia Commons',
+    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:HP-original-logo-1954-trademark.svg">Hydrargyrum</a>, Public domain, via Wikimedia Commons',
+    longDescription: `A Hewlett-Packard foi fundada em 1º de janeiro de 1939 pelos graduados da Universidade Stanford, David Packard e Bill Hewlett. Suas instalações iniciais eram uma garagem em Palo Alto, Califórnia, como era o caso de tantas empresas de informática do Vale do Silício da época.
+
+O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de áudio de precisão HP 200A, que se tornou um equipamento de teste muito popular entre engenheiros, principalmente devido ao seu design exclusivo e baixo custo. Walt Disney comprou oito unidades do modelo posterior, o HP 200B, que eles usaram para certificar o sistema de som surround Fantasound instalado nos cinemas para seu clássico filme Fantasia , em 1940.`,
+  },
   {
     year: "1941",
     title: "Konrad Zuse constrói o Z3",
@@ -115,9 +127,9 @@ export const timelineItems = [
     year: "1950",
     title: "Elliott 152",
     shortDescription: "O computador Elliott 152 é completado",
-    imageCard: "",
-    imageModal: "",
-    source: "Wikimedia Commons",
+    imageCard: "https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.jpg",
+    imageModal: "https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.jpg",
+    source: '<a href="https://www.ourcomputerheritage.org/Maincomp/Eli/E1_Elliott_152.htm">© Computer Conservation Society.</a>',
     longDescription: `O computador Elliott 152 foi um dos primeiros computadores a utilizar transistores em vez de válvulas. Ele foi projetado para ser um computador de uso geral e foi amplamente utilizado em universidades e instituições de pesquisa.`,
   },
   {
@@ -476,5 +488,68 @@ export const timelineItems = [
                       Brian Eno compôs uma peça musical de seis segundos para o Windows 95, tocada na inicialização e conhecida como "The Microsoft Sound".
 
                       O Windows 95 vendeu 7 milhões de cópias nas primeiras cinco semanas de venda.`,
+  },
+    {
+    year: "1997",
+    title: "IBM anuncia RS/6000 SP Deep Blue",
+    shortDescription:
+      "Em 2 de setembro de 1997 a IBM anuncia o RS/6000 SP Deep Blue, supercomputador aprimorado para jogar xadrez.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9b/Say_hello_to_Deep_Blue_%282586059148%29.jpg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9b/Say_hello_to_Deep_Blue_%282586059148%29.jpg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">por Erik Pitti, Deep Blue é o computador que em 1997 superou Garry Kasparov</a>,<a href="https://creativecommons.org/licenses/by/2.0/deed.en">CC BY 2.0</a>, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">por Erik Pitti, Deep Blue é o computador que em 1997 superou Garry Kasparov</a>,<a href="https://creativecommons.org/licenses/by/2.0/deed.en">CC BY 2.0</a>, via Wikimedia Commons',
+    longDescription: `Em 2 de setembro de 1997 a IBM anuncia o RS/6000 SP Deep Blue, supercomputador aprimorado para jogar xadrez.
+    Após seu computador de xadrez Deep Blue derrotar o campeão mundial de xadrez humano Gary Kasparov em uma partida acompanhada de perto em maio, a empresa pioneira em computadores decidiu tornar a máquina ainda mais rápida e potente. Em 2 de setembro, a IBM anunciou que seu modelo RS/6000 SP, um supercomputador paralelo, estava 58% mais rápido graças a um novo microprocessador e alguns refinamentos de software. Kasparov não estava disponível para comentar`,
+  },
+  {
+    year: "2014",
+    title: "O Micro Mote da Universidade de Michigan",
+    shortDescription:
+      "Em 2014 O Michigan Micro Mote constitui o primeiro sistema computacional completo e operacional, medindo apenas dois milímetros de diâmetro.",
+    imageCard:
+      "https://live.staticflickr.com/7460/16347907406_68128a4093_b.jpg",
+    imageModal:
+      "https://live.staticflickr.com/7295/16416302526_3b11118900.jpg",
+    sourceCard:
+      '<a href="https://ece.engin.umich.edu/stories/michigan-micro-mote-m3-makes-history-as-the-worlds-smallest-computer">por Martin Vloet, Michigan Micro Mote</a>, via <a href="https://www.flickr.com/photos/26556146@N07/albums/72157650084451358/">flickr</a>',
+    sourceModal:
+      '<a href="https://ece.engin.umich.edu/stories/michigan-micro-mote-m3-makes-history-as-the-worlds-smallest-computer">por Ann Arbor, Cross-section of the Michigan Micro Mote</a>, via <a href="https://www.flickr.com/photos/26556146@N07/albums/72157650084451358/">flickr</a>',
+    longDescription: `O Micro Mote da Universidade de Michigan é o menor computador do mundo. Os motes, medindo pouco mais de 1 milímetro cúbico, eram alimentados por uma pequena bateria e podiam coletar luz solar por meio de uma fotocélula, o suficiente para fornecer a pequena quantidade de energia que um mote consome — cerca de um trilionésimo de watt. Três tipos de motes foram inicialmente introduzidos: dois que medem temperatura ou pressão e um que podia capturar imagens. Desde então, foram desenvolvidos motes que reconhecem sons diferentes, medem a luz, rastreiam a posição e registram a atividade cerebral.
+
+Os grãos de poeira também são conhecidos como "pó inteligente", pois seu tamanho minúsculo e baixo custo os tornam baratos o suficiente para serem "espalhados" no mundo real como sensores. Um ecologista, por exemplo, poderia espalhar milhares de grãos de poeira do ar em um campo e medir a temperatura do solo e do ar, a umidade e a luz solar, gerando dados precisos sobre o ambiente em tempo real.`,
+  },
+  {
+    year: "2022",
+    title: "OpenAI lança ChatGPT",
+    shortDescription:
+      "Em 30 de novembro de 2022 OpenAI lança ChatGPT, um chatbot baseado em navegador capaz de responder a uma ampla variedade de perguntas.",
+    imageCard:
+      "https://upload.wikimedia.org/wikipedia/commons/9/97/OpenAI_logo_2025.svg",
+    imageModal:
+      "https://upload.wikimedia.org/wikipedia/commons/6/66/OpenAI_logo_2025_%28symbol%29.svg",
+    sourceCard:
+      '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">OpenAI, Logotipo da OpenAI , em uso desde fevereiro de 2025</a>, Public domain, via Wikimedia Commons',
+    sourceModal:
+      '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg">OpenAI, Símbolo da OpenAI , usado desde fevereiro de 2025</a>, Public domain, via Wikimedia Commons',
+    longDescription: `O ChatGPT (Chat Generative Pre-Trained Transformer) é um chatbot baseado em navegador capaz de responder a uma ampla variedade de perguntas. O lançamento deste aplicativo marca o início da corrida da IA, com diversas grandes empresas iniciando o desenvolvimento e o lançamento de seus próprios modelos de IA generativa, todos utilizando modelos de linguagem de grande porte.
+
+O ChatGPT se destaca por sua facilidade de uso e aplicação de uso geral. A primeira versão disponível publicamente do ChatGPT é chamada GPT-3.5, que utiliza mais de 175 bilhões de parâmetros. Sua versão atualizada, GPT-4, utiliza mais de 1,76 trilhão de parâmetros, tornando-o ainda mais eficiente que seu antecessor.
+
+O GPT-4 pode alcançar altas pontuações em testes criados para humanos, incluindo vestibulares e o Exame Uniforme da Ordem dos Advogados. Espera-se que futuros modelos de linguagem de grande porte sejam capazes de resolver tarefas e desafios ainda mais complexos.`,
+  },
+   {
+    year: "2025",
+    title: "Microsoft revela Majorana 1",
+    shortDescription: "Microsoft revela Majorana 1, em 19 de fevereiro de 2025, o primeiro processador quântico do mundo alimentado por qubits topológicos",
+    imageCard: "https://msftstories.thesourcemediaassets.com/sites/661/2025/02/Majorana-1-009-4000px-1-1000x667.jpg",
+    imageModal: "https://msftstories.thesourcemediaassets.com/sites/661/2025/02/Majorana-1-007-4000px-1-1000x667.jpg",
+    sourceCard: '<a href="https://azure.microsoft.com/en-us/blog/quantum/2025/02/19/microsoft-unveils-majorana-1-the-worlds-first-quantum-processor-powered-by-topological-qubits">Foto tirada por John Brecher para Microsoft</a> via https://news.microsoft.com/azure-quantum/ ',
+    sourceModal: '<a href="https://azure.microsoft.com/en-us/blog/quantum/2025/02/19/microsoft-unveils-majorana-1-the-worlds-first-quantum-processor-powered-by-topological-qubits">Foto tirada por John Brecher para Microsoft</a> via https://news.microsoft.com/azure-quantum/',
+    longDescription: `Microsoft revela Majorana 1, a primeira Unidade de Processamento Quântico (QPU) do mundo alimentada por um Núcleo Topológico, projetada para escalar até um milhão de qubits em um único chip.
+    O topocondutor, ou supercondutor topológico, é uma categoria especial de material capaz de criar um estado inteiramente novo da matéria – não um estado sólido, líquido ou gasoso, mas um estado topológico. Isso é aproveitado para produzir um qubit mais estável, rápido, pequeno e que pode ser controlado digitalmente, sem as desvantagens exigidas pelas alternativas atuais.`,
   },
 ];
