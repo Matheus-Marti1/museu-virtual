@@ -29,7 +29,7 @@ export const timelineItems = [
                       Como ele tinha uma função fixa, sem a possibilidade de mudar o seu programa, o ABC não era um computador de propósito geral. Porém, ele introduziu várias ideias que são fundamentais para computadores modernos, notavelmente usando binário para fazer aritmética, e o uso de eletrônicos ao invés de componentes mecânicos.
                       O ABC foi completado em 1942.`,
   },
-   {
+  {
     year: "1939",
     title: "A Hewlett-Packard é fundada",
     shortDescription: "A Hewlett-Packard foi fundada em 1º de janeiro de 1939 pelos graduados da Universidade Stanford, David Packard e Bill Hewlett.",
@@ -170,6 +170,36 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
       '<a href="https://commons.wikimedia.org/wiki/File:Fortran_acs_cover.jpeg">original uploader was en:User:Muhandis</a>, Public domain, via Wikimedia Commons',
     longDescription: `O FORTRAN (Formula Translation) foi o primeiro compilador de linguagem de programação de alto nível a ser desenvolvido. Criado por uma equipe da IBM liderada por John Backus, o FORTRAN foi projetado para facilitar a programação de cálculos científicos e de engenharia. Sua introdução marcou o início da programação de alto nível e teve um impacto duradouro na forma como os programadores escrevem código até hoje.`,
   },
+  
+  {
+    year: "1956",
+    title: "Primeiro teclado usado para entrada de dados",
+    shortDescription: "Em 4 de julho de 1956, pesquisadores do MIT usaram pela primeira vez um teclado como um dispositivo de entrada direta para um computador.",
+    imageCard: "./images/timeline/1956-Primeiro-teclado-usado.jpg",
+    imageModal: "./images/timeline/1956-Primeiro-teclado-usado.jpg",
+    sourceCard: '<a href="https://www.computerhistory.org/collections/catalog/102732973/">@ Computer History Museum, Whirlwind Flexowriter, catalog number 102732973</a>',
+    sourceModal: '<a href="https://www.computerhistory.org/collections/catalog/102732973/">@ Computer History Museum, Whirlwind Flexowriter, catalog number 102732973</a>',
+    longDescription: `Em 4 de julho de 1956, pesquisadores do MIT usaram pela primeira vez um teclado como um dispositivo de entrada direta para um computador.
+
+Antes disso, os usuários de computador normalmente usavam cartões perfurados ou fita de papel para inserir seus programas nos computadores.
+
+Em fevereiro de 1956, Doug Ross escreveu um memorando argumentando que uma Flexowriter, uma máquina de escrever controlada eletricamente, poderia ser usada como um dispositivo de entrada de computador.
+
+Cinco meses depois, em 4 de julho de 1956, um teclado foi conectado ao computador Whirlwind do MIT, um dos primeiros computadores de alta velocidade em larga escala, como um experimento. O experimento foi um sucesso, confirmando que a entrada de dados pelo teclado era muito mais útil e conveniente.`,
+  },
+  {
+    year: "1956",
+    title: "IBM 305 RAMAC",
+    shortDescription: "Em 13 de setembro de Em 1956, a IBM lançou o computador IBM RAMAC 305. RAMAC significava Método de Acesso Aleatório para Contabilidade e Controle. Incluía o IBM 350 Disk File, o primeiro disco rígido de armazenamento magnético.",
+    imageCard: "./images/timeline/1956-ramac-brochure.webp",
+    imageModal: "./images/timeline/1956-console-gabinetes-IBM-305-ramac.webp",
+    sourceCard: '<a href="https://www.ibm.com/history/ramac">@ IBM</a>',
+    sourceModal: '<a href="https://www.ibm.com/history/ramac">@ IBM</a>',
+    longDescription: `O IBM 305 RAMAC — ou simplesmente RAMAC — foi o primeiro computador a usar uma unidade de disco de acesso aleatório. O progenitor de todas as unidades de disco rígido criadas desde então, tornou possível para qualquer usuário de computador armazenar, acessar, alterar e apagar dados de forma rápida e fácil, sem treinamento técnico ou intervenção manual. Ele abriu caminho para a invenção do banco de dados relacional , capacitou as empresas a pensar sobre dados de novas maneiras e, finalmente, lançou as bases para tudo, desde voos espaciais e caixas eletrônicos até mecanismos de busca e comércio eletrônico.
+
+Antes do RAMAC, a recuperação de informações por meio de um computador levava horas ou até dias. O RAMAC conseguia acessar e manipular dados exponencialmente mais rápido — em segundos. A máquina ocupava a maior parte de uma sala e armazenava uma quantidade irrisória para os padrões atuais — apenas 5 megabytes — e, ainda assim, representava um enorme salto em velocidade e eficiência que tornou o banco de dados relacional possível e mudou a forma como as empresas coletavam, utilizavam e aplicavam informações. Na época, a empresa descreveu o processo subjacente do RAMAC como "memória milagrosa".
+O RAMAC resolveu imediatamente a sobrecarga paralisante de dados analógicos nas empresas, possibilitando o acesso ao equivalente a 64.000 cartões perfurados quase instantaneamente.`,
+  },
   {
     year: "1958",
     title: "Jack Kilby inventa o circuito integrado",
@@ -194,6 +224,31 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
       '<a href="https://commons.wikimedia.org/wiki/File:Spacewar!-PDP-1-20070512.jpg">Joi Ito from Inbamura, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `O DEC PDP-1, lançado em 1960, foi um dos primeiros minicomputadores da história. Ele foi projetado para ser mais acessível e menor do que os computadores mainframe da época, permitindo que mais instituições, como universidades e laboratórios de pesquisa, tivessem acesso à computação. O PDP-1 é frequentemente lembrado por seu papel na popularização da programação interativa e do tempo compartilhado.`,
   },
+  {
+    year: "1964",
+    title: "Douglas Engelbart inventa o mouse",
+    shortDescription: "Por volta de 1964, Douglas Engelbart inventou o mouse. Seu protótipo consistia em uma estrutura de madeira com duas rodas finas de metal que entravam em contato com a superfície em que era usado.",
+    imageCard: "./images/timeline/1964-prototype-The_First_Mouse.jpg",
+    imageModal: "./images/timeline/1964-prototype-The_First_Mouse.jpg",
+    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:The_First_Mouse,_1964_-_prototype,_invented_by_Douglas_Engelbart_and_built_by_Bill_English_at_the_Stanford_Research_Institute_%28SRI%29_-_National_Museum_of_American_History_%282015-10-13_by_Kazuhisa_OTSUBO%29.jpg">Kazuhisa OTSUBO from Tokyo, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
+    sourceModal: '',
+    longDescription: `Douglas Engelbart trabalhou na SRI International desenvolvendo ferramentas para facilitar o uso de computadores. Naquela época, os computadores não tinham interface gráfica de usuário — todo o trabalho era feito digitando comandos em um teclado.
+
+Por volta de 1964, Douglas Engelbart inventou o mouse. Seu protótipo consistia em uma estrutura de madeira com duas rodas finas de metal que entravam em contato com a superfície em que era usado.
+
+Em 1967, Engelbart solicitou e, em 1970, recebeu a patente americana 3.541.541 para sua invenção. Esta patente não menciona a palavra "mouse", descrevendo o dispositivo como um "indicador de posição XY para um sistema de exibição".
+
+Quando perguntaram a Engelbart de onde veio o nome, ele disse:
+
+"Ninguém consegue se lembrar. Parecia apenas um rato com rabo, e todos nós o chamávamos assim."
+
+Engelbart nunca recebeu royalties por sua invenção do mouse, dizendo:
+
+"A SRI patenteou o mouse, mas não tinha ideia do seu valor. Alguns anos depois, descobriu-se que eles o haviam licenciado para a Apple por algo em torno de US$ 40.000."
+
+O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferência Conjunta de Computadores de Outono de 1968.`,
+  },
+
   {
     year: "1965",
     title: "Lei de Moore",
@@ -489,7 +544,7 @@ O primeiro produto da HP, não foi um computador, mas na verdade o oscilador de 
 
                       O Windows 95 vendeu 7 milhões de cópias nas primeiras cinco semanas de venda.`,
   },
-    {
+  {
     year: "1997",
     title: "IBM anuncia RS/6000 SP Deep Blue",
     shortDescription:
@@ -541,7 +596,7 @@ O ChatGPT se destaca por sua facilidade de uso e aplicação de uso geral. A pri
 
 O GPT-4 pode alcançar altas pontuações em testes criados para humanos, incluindo vestibulares e o Exame Uniforme da Ordem dos Advogados. Espera-se que futuros modelos de linguagem de grande porte sejam capazes de resolver tarefas e desafios ainda mais complexos.`,
   },
-   {
+  {
     year: "2025",
     title: "Microsoft revela Majorana 1",
     shortDescription: "Microsoft revela Majorana 1, em 19 de fevereiro de 2025, o primeiro processador quântico do mundo alimentado por qubits topológicos",
