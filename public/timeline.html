@@ -11,86 +11,204 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   </head>
   <body class="text-white">
     <div class="fixed inset-0 bg-main-background -z-10"></div>
 
-    <div id="app" class="relative min-h-screen flex flex-col">
+    <div id="app" class="relative min-h-screen flex flex-col" v-cloak>
       <div id="header-placeholder"></div>
 
-      <main class="container mx-auto px-6 py-12 flex-grow fade-in">
+      <main
+        class="container mx-auto px-6 py-12 flex-grow timeline-page timeline-page-fade"
+      >
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">
           Linha do Tempo
         </h1>
 
-        <div class="relative wrap overflow-hidden p-10 md:p-10 h-full">
+        <nav aria-label="Navegação por anos" class="mb-10 year-nav-sticky">
           <div
-            class="absolute hidden md:block border-2 border-white/30 h-full"
-            style="left: 50%"
-          ></div>
-
-          <div
-            v-for="(item, index) in timelineItems"
-            :key="item.title"
-            class="mb-8 md:flex justify-between items-center w-full"
-            :class="{ 'md:flex-row-reverse': index % 2 !== 0 }"
+            ref="yearNavWrapperEl"
+            class="year-nav-wrapper relative border border-white/10 bg-white/5 backdrop-blur-md rounded-xl"
           >
-            <div class="hidden md:block order-1 w-5/12"></div>
-            <div class="z-20 hidden md:flex items-center order-1">
-              <div
-                class="w-8 h-0.5"
-                :class="{ 'bg-white/50': index % 2 !== 0 }"
-              ></div>
-              <div
-                class="flex items-center justify-center w-20 h-20 bg-gray-800 border-2 border-white/50 rounded-full shadow-xl"
+            <button
+              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -left-1 z-10 items-center justify-center w-9 h-9 rounded-full backdrop-blur-md border border-white/25 bg-white/10 text-white transition hover:scale-105 hover:bg-white/20 hover:border-white/40 cursor-pointer"
+              type="button"
+              aria-label="Rolar anos para a esquerda"
+              v-show="canScrollLeft"
+              @click="scrollNav(-1)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <span class="font-bold text-white text-xl"
-                  >{{ item.year }}</span
-                >
-              </div>
-              <div
-                class="w-8 h-0.5"
-                :class="{ 'bg-white/50': index % 2 === 0 }"
-              ></div>
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            <div
+              ref="yearNavEl"
+              class="year-nav overflow-x-auto scroll-smooth cursor-grab flex gap-3 md:gap-4 items-center py-2 pl-10 pr-10 md:pl-12 md:pr-12"
+              :class="{ 'pl-12 md:pl-16': !canScrollLeft, 'pr-12 md:pr-16': !canScrollRight }"
+            >
+              <button
+                v-for="year in years"
+                :key="'nav-' + year"
+                type="button"
+                @click="scrollToYear(year)"
+                class="whitespace-nowrap cursor-pointer border border-white/25 bg-white/10 text-white rounded-full px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base shadow-sm transition transform hover:-translate-y-0.5 hover:bg-white/20 hover:border-white/40"
+                :data-year="year"
+                :class="{ 'bg-white/30 border-white/60 text-gray-900 font-bold': activeYear === year }"
+              >
+                {{ year }}
+              </button>
             </div>
 
             <button
-              @click="openModal(item)"
-              class="modal-trigger order-1 bg-white/90 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 text-gray-800 text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              class="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-1 z-10 items-center justify-center w-9 h-9 rounded-full backdrop-blur-md border border-white/25 bg-white/10 text-white transition hover:scale-105 hover:bg-white/20 hover:border-white/40 cursor-pointer"
+              type="button"
+              aria-label="Rolar anos para a direita"
+              v-show="canScrollRight"
+              @click="scrollNav(1)"
             >
-              <img
-                :src="item.imageCard"
-                :alt="'Imagem de ' + item.title"
-                class="w-full h-auto rounded-md"
-              />
-              <p class="text-xs italic text-gray-600 mt-1 mb-3 text-right">
-                Fonte: {{ item.source }}
-              </p>
-              <h3 class="font-bold text-xl mb-1">{{ item.title }}</h3>
-              <p class="text-sm">{{ item.shortDescription }}</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
             </button>
+
+            <div
+              class="absolute inset-y-0 left-0 w-12 pointer-events-none transition-opacity bg-gradient-to-r from-black/70 to-transparent"
+              :class="{ hidden: !canScrollLeft }"
+            ></div>
+            <div
+              class="absolute inset-y-0 right-0 w-12 pointer-events-none transition-opacity bg-gradient-to-l from-black/70 to-transparent"
+              :class="{ hidden: !canScrollRight }"
+            ></div>
+          </div>
+        </nav>
+
+        <section class="mb-12">
+          <p
+            class="timeline-disclaimer mx-auto max-w-3xl text-center text-sm text-gray-200 opacity-90 italic leading-relaxed"
+          >            
+            <a
+              href="fontes.html"
+              >Fontes utilizadas</a
+            >
+          </p>
+        </section>
+
+        <div class="relative mx-auto max-w-5xl px-4 sm:px-6">
+          <div
+            class="absolute left-1/2 top-0 -ml-px h-full w-0.5 bg-white/20"
+            aria-hidden="true"
+          ></div>
+
+          <div
+            v-for="(yearGroup, yearIndex) in groupedTimelineItems"
+            :key="yearGroup.year"
+            class="relative year-anchor"
+            :id="'year-' + yearGroup.year"
+          >
+            <div
+              class="z-20 flex items-center"
+              :class="[
+                yearIndex % 2 === 0
+                  ? 'justify-start'
+                  : 'md:justify-end',
+              ]"
+            >
+              <h2
+                class="w-20 rounded-full border border-white/30 bg-gray-900/80 px-4 py-2 text-center text-sm font-semibold text-white backdrop-blur-sm"
+              >
+                {{ yearGroup.year }}
+              </h2>
+            </div>
+
+            <div class="mt-6 md:mt-8">
+              <div
+                v-for="(item, itemIndex) in yearGroup.items"
+                :key="item.title"
+                class="relative mb-12 flex items-start timeline-item"
+                :class="[
+                  yearIndex % 2 === 0
+                    ? 'md:flex-row timeline-item-left'
+                    : 'md:flex-row-reverse timeline-item-right',
+                ]"
+              >
+                <button
+                  @click="openModal($event, item)"
+                  class="modal-trigger group w-full cursor-pointer rounded-xl border border-white/10 bg-black/20 p-4 text-left shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/30 hover:shadow-2xl md:w-[calc(50%-2.5rem)]"
+                >
+                  <img
+                    :src="item.imageCard"
+                    :alt="'Imagem de ' + item.title"
+                    class="mb-3 w-full rounded-lg object-cover timeline-image"
+                  />
+                  <p
+                    class="mb-3 text-right text-xs italic text-gray-400"
+                    v-html="'Fonte: ' + getCardSource(item)"
+                  ></p>
+                  <h3 class="mb-1 text-lg font-bold text-white">
+                    {{ item.title }}
+                  </h3>
+                  <p class="text-sm text-gray-200">
+                    {{ item.shortDescription }}
+                  </p>
+                </button>
+
+                <div
+                  class="absolute top-8 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700 ring-4 ring-gray-900/80"
+                  :class="[
+                    yearIndex % 2 === 0
+                      ? 'right-full mr-4 md:left-1/2 md:-ml-2.5 md:mr-0'
+                      : 'right-full mr-4 md:right-auto md:left-1/2 md:-ml-2.5',
+                  ]"
+                >
+                  <div class="h-2 w-2 rounded-full bg-white"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
       <div
         v-if="isModalOpen"
+        v-show="selectedItem"
         @click.self="closeModal"
         class="modal-overlay"
         :class="{
           'modal-entering': modalState === 'entering',
           'modal-visible': modalState === 'visible',
-          'modal-leaving': modalState === 'leaving'
+          'modal-leaving': modalState === 'leaving',
         }"
       >
-        <div class="modal-content">
+        <div
+          class="modal-content relative mx-4 my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl border border-white/20 bg-gray-900/80 p-6 text-gray-300 shadow-2xl backdrop-blur-lg sm:p-8"
+        >
           <button
             @click="closeModal"
-            class="modal-trigger absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors z-10"
+            class="absolute right-4 top-4 z-20 cursor-pointer rounded-full p-2 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
+            aria-label="Fechar modal"
           >
             <svg
-              class="w-8 h-8"
+              class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -104,21 +222,27 @@
               ></path>
             </svg>
           </button>
-          <div class="flex items-center mb-4">
-            <h2 class="text-3xl font-bold">{{ selectedItem.title }}</h2>
-            <span class="ml-4 text-2xl font-semibold text-gray-500"
-              >({{ selectedItem.year }})</span
-            >
+          <div class="pr-12 mb-2">
+            <h2 class="text-2xl font-bold text-white sm:text-3xl">
+              {{ selectedItem.title }}
+              <span class="text-xl font-semibold text-gray-400"
+                >({{ selectedItem.year }})</span
+              >
+            </h2>
           </div>
           <img
             :src="selectedItem.imageModal"
             :alt="'Imagem detalhada de ' + selectedItem.title"
-            class="w-full h-auto max-h-80 object-cover rounded-lg mb-1"
+            class="modal-image my-4 rounded-lg"
           />
-          <p class="text-xs italic text-gray-600 mb-4 text-right">
-            Fonte: {{ selectedItem.source }}
-          </p>
-          <div v-html="formattedDescription"></div>
+          <p
+            class="mb-4 text-right text-xs italic text-gray-400"
+            v-html="'Fonte: ' + getModalSource(selectedItem)"
+          ></p>
+          <div
+            class="prose prose-invert max-w-none text-gray-300"
+            v-html="formattedDescription"
+          ></div>
         </div>
       </div>
 
@@ -145,13 +269,26 @@
 
     <script type="module">
       import { timelineItems } from "./js/timeline-data.js";
-      const { createApp, ref, computed, onMounted } = Vue;
+      const {
+        createApp,
+        ref,
+        computed,
+        onMounted,
+        onUnmounted,
+        nextTick,
+        watch,
+      } = Vue;
 
       createApp({
         setup() {
           const isModalOpen = ref(false);
           const selectedItem = ref(null);
           const modalState = ref("hidden");
+          const activeYear = ref(null);
+          const yearNavEl = ref(null);
+          const yearNavWrapperEl = ref(null);
+          const canScrollLeft = ref(false);
+          const canScrollRight = ref(false);
 
           const formattedDescription = computed(() => {
             if (!selectedItem.value) return "";
@@ -162,7 +299,123 @@
               .join("");
           });
 
-          const openModal = (item) => {
+          const years = computed(() => {
+            const set = new Set();
+            timelineItems.forEach((i) => set.add(i.year));
+            return Array.from(set).sort((a, b) => parseInt(a) - parseInt(b));
+          });
+
+          const groupedTimelineItems = computed(() => {
+            const grouped = {};
+
+            timelineItems.forEach((item) => {
+              if (!grouped[item.year]) {
+                grouped[item.year] = {
+                  year: item.year,
+                  items: [],
+                };
+              }
+              grouped[item.year].items.push(item);
+            });
+
+            return Object.values(grouped).sort(
+              (a, b) => parseInt(a.year) - parseInt(b.year)
+            );
+          });
+
+          const getCardSource = (item) => {
+            const source = item.sourceCard || item.source || "";
+            return source.replace(
+              /<a /g,
+              '<a target="_blank" rel="noopener noreferrer" '
+            );
+          };
+
+          const getModalSource = (item) => {
+            const source = item.sourceModal || item.source || "";
+            return source.replace(
+              /<a /g,
+              '<a target="_blank" rel="noopener noreferrer" '
+            );
+          };
+
+          const scrollToYear = (year) => {
+            const el = document.getElementById(`year-${year}`);
+            if (!el) return;
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            activeYear.value = year;
+            history.replaceState(null, "", `#year-${year}`);
+            centerActiveYear("smooth");
+          };
+
+          let shadowFrame = null;
+
+          const updateScrollShadows = () => {
+            const el = yearNavEl.value;
+            if (!el) return;
+            canScrollLeft.value = el.scrollLeft > 2;
+            canScrollRight.value =
+              el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+          };
+
+          const scheduleScrollShadowUpdate = () => {
+            if (shadowFrame !== null) return;
+            shadowFrame = requestAnimationFrame(() => {
+              shadowFrame = null;
+              updateScrollShadows();
+            });
+          };
+
+          const computeOffsets = () => {
+            const headerEl = document.getElementById("header-placeholder");
+            const headerFirst =
+              headerEl && headerEl.firstElementChild
+                ? headerEl.firstElementChild
+                : headerEl;
+            const headerH = headerFirst
+              ? headerFirst.getBoundingClientRect().height
+              : 72;
+            document.documentElement.style.setProperty(
+              "--header-offset",
+              `${Math.round(headerH)}px`
+            );
+            const navWrap = yearNavWrapperEl.value;
+            const navH = navWrap ? navWrap.getBoundingClientRect().height : 52;
+            document.documentElement.style.setProperty(
+              "--year-nav-height",
+              `${Math.round(navH)}px`
+            );
+          };
+
+          const scrollNav = (dir) => {
+            const el = yearNavEl.value;
+            if (!el) return;
+            const amount =
+              Math.max(200, el.clientWidth * 0.8) * (dir < 0 ? -1 : 1);
+            el.scrollBy({ left: amount, behavior: "smooth" });
+            setTimeout(() => scheduleScrollShadowUpdate(), 200);
+          };
+
+          const centerActiveYear = (behavior = "auto") => {
+            const container = yearNavEl.value;
+            if (!container || !activeYear.value) return;
+            const btn = container.querySelector(
+              `[data-year="${activeYear.value}"]`
+            );
+            if (!btn) return;
+            const btnRect = btn.getBoundingClientRect();
+            const contRect = container.getBoundingClientRect();
+            const current = container.scrollLeft;
+            const offset =
+              btn.offsetLeft - (contRect.width / 2 - btnRect.width / 2);
+            container.scrollTo({ left: Math.max(0, offset), behavior });
+            setTimeout(() => scheduleScrollShadowUpdate(), 150);
+          };
+
+          const openModal = (event, item) => {
+            if (event.target.closest("a")) {
+              return;
+            }
             selectedItem.value = item;
             isModalOpen.value = true;
             modalState.value = "entering";
@@ -184,27 +437,17 @@
           };
 
           onMounted(async () => {
-            const response = await fetch("header.html");
-            if (response.ok) {
-              document.getElementById("header-placeholder").innerHTML =
-                await response.text();
-
-              if (window.initializeHeaderFunctionality) {
-                window.initializeHeaderFunctionality();
-              } else {
-                setTimeout(() => {
-                  if (window.initializeHeaderFunctionality) {
-                    window.initializeHeaderFunctionality();
-                  }
-                }, 100);
+            const handleComponentLoaded = (event) => {
+              if (event.detail?.selector === "#header-placeholder") {
+                scheduleScrollShadowUpdate();
+                computeOffsets();
               }
-            }
+            };
 
-            setTimeout(() => {
-              if (window.initializeVueCompatibleFeatures) {
-                window.initializeVueCompatibleFeatures();
-              }
-            }, 200);
+            document.addEventListener(
+              "component:loaded",
+              handleComponentLoaded
+            );
 
             const handleKeydown = (event) => {
               if (event.key === "Escape" && isModalOpen.value) {
@@ -214,17 +457,87 @@
 
             document.addEventListener("keydown", handleKeydown);
 
-            return () => {
+            await nextTick();
+            updateScrollShadows();
+            const el = yearNavEl.value;
+            if (el) {
+              el.addEventListener("scroll", scheduleScrollShadowUpdate, {
+                passive: true,
+              });
+            }
+            window.addEventListener("resize", scheduleScrollShadowUpdate);
+
+            computeOffsets();
+            window.addEventListener("resize", computeOffsets);
+
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    if (id && id.startsWith("year-")) {
+                      activeYear.value = id.replace("year-", "");
+                    }
+                  }
+                });
+              },
+              {
+                root: null,
+                rootMargin: "-60% 0px -35% 0px",
+                threshold: [0, 0.25, 0.5, 0.75, 1],
+              }
+            );
+            document
+              .querySelectorAll('.year-anchor[id^="year-"]')
+              .forEach((el) => observer.observe(el));
+
+            if (location.hash && location.hash.startsWith("#year-")) {
+              const target = document.querySelector(location.hash);
+              if (target) {
+                setTimeout(() => {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => centerActiveYear("smooth"), 150);
+                }, 100);
+              }
+            }
+            onUnmounted(() => {
               document.removeEventListener("keydown", handleKeydown);
-            };
+              document.removeEventListener(
+                "component:loaded",
+                handleComponentLoaded
+              );
+              if (el)
+                el.removeEventListener("scroll", scheduleScrollShadowUpdate);
+              window.removeEventListener("resize", scheduleScrollShadowUpdate);
+              window.removeEventListener("resize", computeOffsets);
+              if (shadowFrame !== null) {
+                cancelAnimationFrame(shadowFrame);
+                shadowFrame = null;
+              }
+            });
+          });
+
+          watch(activeYear, () => {
+            centerActiveYear("smooth");
           });
 
           return {
             timelineItems,
+            groupedTimelineItems,
+            years,
             isModalOpen,
             selectedItem,
             modalState,
+            activeYear,
+            yearNavEl,
+            yearNavWrapperEl,
+            canScrollLeft,
+            canScrollRight,
             formattedDescription,
+            getCardSource,
+            getModalSource,
+            scrollToYear,
+            scrollNav,
             openModal,
             closeModal,
           };
