@@ -231,7 +231,7 @@ O RAMAC resolveu imediatamente a sobrecarga paralisante de dados analógicos nas
     imageCard: "./images/timeline/1964-prototype-The_First_Mouse.jpg",
     imageModal: "./images/timeline/1964-prototype-The_First_Mouse.jpg",
     sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:The_First_Mouse,_1964_-_prototype,_invented_by_Douglas_Engelbart_and_built_by_Bill_English_at_the_Stanford_Research_Institute_%28SRI%29_-_National_Museum_of_American_History_%282015-10-13_by_Kazuhisa_OTSUBO%29.jpg">Kazuhisa OTSUBO from Tokyo, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
-    sourceModal: '',
+    sourceModal: '<a href="https://commons.wikimedia.org/wiki/File:The_First_Mouse,_1964_-_prototype,_invented_by_Douglas_Engelbart_and_built_by_Bill_English_at_the_Stanford_Research_Institute_%28SRI%29_-_National_Museum_of_American_History_%282015-10-13_by_Kazuhisa_OTSUBO%29.jpg">Kazuhisa OTSUBO from Tokyo, Japan</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `Douglas Engelbart trabalhou na SRI International desenvolvendo ferramentas para facilitar o uso de computadores. Naquela época, os computadores não tinham interface gráfica de usuário — todo o trabalho era feito digitando comandos em um teclado.
 
 Por volta de 1964, Douglas Engelbart inventou o mouse. Seu protótipo consistia em uma estrutura de madeira com duas rodas finas de metal que entravam em contato com a superfície em que era usado.
@@ -248,7 +248,6 @@ Engelbart nunca recebeu royalties por sua invenção do mouse, dizendo:
 
 O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferência Conjunta de Computadores de Outono de 1968.`,
   },
-
   {
     year: "1965",
     title: "Lei de Moore",
@@ -260,6 +259,18 @@ O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferên
     source:
       '<a href="https://commons.wikimedia.org/wiki/File:Lei_de_moore_2006.png">José Maria Silveira Neto</a>, Public domain, via Wikimedia Commons',
     longDescription: `A Lei de Moore, formulada por Gordon Moore, cofundador da Intel, é uma observação de que o número de transistores em um chip de computador dobra aproximadamente a cada dois anos, levando a um aumento exponencial na capacidade de processamento e uma redução nos custos. Essa previsão tem se mostrado verdadeira por várias décadas e é um dos principais motores da evolução da tecnologia da informação.`,
+  },
+  {
+    year: "1965",
+    title: "Primeira tela sensível ao toque acionada por dedo",
+    shortDescription: "A Eric Arthur Johnson desenvolve a primeira tela sensível ao toque acionada pelos dedos.",
+    imageCard: "./images/timeline/1965-touch.jpg",
+    imageModal: "./images/timeline/1965-touch.jpg",
+    sourceCard: '<a href="http://mraths.org.uk/?page_id=531">© MRATHS 2016.</a>',
+    sourceModal: '<a href="http://mraths.org.uk/?page_id=531">© MRATHS 2016.</a>',
+    longDescription: `A ideia de uma interface touchscreen para um computador surgiu porque, nas funções de Controle de Tráfego Aéreo, decisões rápidas e precisas, e a consequente comunicação, são necessárias. Isso era cada vez mais necessário para controlar a Força de Defesa Aérea do Reino Unido ao reagir a ameaças de jatos rápidos.
+
+Trabalhando na RRE Malvern, Eric Johnson percebeu que uma interface sensível ao toque para uma tela de computador, oferecendo opções ao operador, tinha um potencial significativo para melhorar a carga de trabalho e a capacidade de resposta dos operadores de ATC. Ele utilizou finos fios de cobre em um CRT de computador e desenvolveu circuitos para detectar de forma confiável quando estes fossem tocados. Seu conceito baseava-se na premissa elegante de que a maioria das interações com um computador de ATC envolve fazer escolhas. Ele também previu que o design poderia funcionar como um teclado para inserir caracteres.`,
   },
   {
     year: "1968",
@@ -429,6 +440,18 @@ O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferên
     longDescription: `O IBM Personal Computer (modelo 5150) foi o computador que definiu o padrão da indústria e popularizou a arquitetura x86. Seu sucesso levou à criação de um vasto ecossistema de hardware e software compatíveis, conhecidos como 'clones de PC', que dominaram o mercado por décadas.`,
   },
   {
+    year: "1981",
+    title: "O primeiro computador portátil, o Osborne 1",
+    shortDescription: "Em 3 de abril de 1981, Adam Osborne revelou o primeiro computador portátil de sucesso comercial na West Coast Computer Faire, em São Francisco.",
+    imageCard: "./images/timeline/1981-Osborne_1_open.jpg",
+    imageModal: "./images/timeline/1981-Osborne_1_open.jpg",
+    sourceCard: '<a href="https://en.wikipedia.org/wiki/File:Osborne_1_open.jpg">Bilby</a>, <a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0 Unported</a>, via Wikimedia Commons',
+    sourceModal: '<a href="https://en.wikipedia.org/wiki/File:Osborne_1_open.jpg">Bilby</a>, <a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0 Unported</a>, via Wikimedia Commons',
+    longDescription: `Em 3 de abril de 1981, Adam Osborne revelou o primeiro computador portátil de sucesso comercial na West Coast Computer Faire, em São Francisco.
+
+O Osborne 1 era um computador portátil do tamanho de uma mala de 10 kg, baseado na CPU Z80A, e incluía um monitor de 5 polegadas, duas unidades de disquete de 5,25 polegadas e um teclado de tamanho normal. No entanto, não incluía bateria e precisava ser conectado a uma tomada elétrica. Mais tarde, foi disponibilizada uma bateria com duração de uma hora.`,
+  },
+  {
     year: "1983",
     title: "Apple Lisa",
     shortDescription:
@@ -441,6 +464,19 @@ O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferên
       '<a href="https://commons.wikimedia.org/wiki/File:Apple-lisa-1.jpg">Timothy Colegrove</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons',
     longDescription: `O Apple Lisa foi uma máquina de 16-bit, baseado no Motorola 68000, que vinha com um HD Winchester de 5Mb e 1Mb de RAM. O computador tinha uma tela monocromática embutida e um drive duplo de disquetes de 5.25 polegadas. Ele foi lançado nos EUA em 19 de janeiro de 1983.
                       Foi o primeiro computador pessoal a utilizar uma Interface Gráfica de Usuário (GUI). Até esse ponto, todos os computadores eram controlados digitando comandos com o teclado. O Lisa vinha com um mouse, permitindo que o usuário apontasse e clicasse em ícones, janelas e menus.`,
+  },
+  {
+    year: "1983",
+    title: "Lançado o PC com tela sensível ao toque HP-150",
+    shortDescription: "Em 1983, a Hewlett-Packard lançou o que pode ter sido o primeiro computador pessoal do mundo com tela sensível ao toque integrada.",
+    imageCard: "./images/timeline/1983-hp150_small.jpg",
+    imageModal: "./images/timeline/1983-150_touchscreen_20081129.jpg",
+    sourceCard: '<a href="https://www.vintagecomputing.com/wp-content/images/retroscan/hp150_small.jpg">From Personal Computing, December 1983 </a>, via https://www.vintagecomputing.com/',
+    sourceModal: '<a href="https://en.wikipedia.org/wiki/File:Hp150_touchscreen_20081129.jpg">MyName (Cinecol)</a>, <a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0 Unported</a>, via Wikimedia Commons',
+    longDescription: `Em 1983, a Hewlett-Packard lançou o que pode ter sido o primeiro computador pessoal do mundo com tela sensível ao toque integrada. O HP-150 era um PC compatível com MS-DOS baseado no 8088, com alguns recursos avançados para a época. Infelizmente, a arquitetura de hardware do 150 provou ser tão diferente que ele não era compatível com a maioria dos programas para IBM PC.
+O HP-150 utiliza um método rudimentar e de baixa resolução para detectar a posição dos dedos na tela. A unidade projeta uma grade de feixes infravermelhos sobre a superfície da tela. Ao detectar quais feixes estão obstruídos por um objeto, o computador consegue calcular as coordenadas do toque.
+
+Além da tela sensível ao toque, o HP-150 se destaca por ser o primeiro computador nos EUA a utilizar o formato de disquete "micro-floppy" de 3 1/2 polegadas da Sony, além de oferecer suporte a redes Ethernet, discos rígidos e à primeira impressora LaserJet da HP (por meio de uma interface HP-IB). Nada mal para 1983.`,
   },
   {
     year: "1983",
@@ -559,6 +595,20 @@ O mouse de Engelbart foi demonstrado publicamente pela primeira vez na Conferên
       '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">por Erik Pitti, Deep Blue é o computador que em 1997 superou Garry Kasparov</a>,<a href="https://creativecommons.org/licenses/by/2.0/deed.en">CC BY 2.0</a>, via Wikimedia Commons',
     longDescription: `Em 2 de setembro de 1997 a IBM anuncia o RS/6000 SP Deep Blue, supercomputador aprimorado para jogar xadrez.
     Após seu computador de xadrez Deep Blue derrotar o campeão mundial de xadrez humano Gary Kasparov em uma partida acompanhada de perto em maio, a empresa pioneira em computadores decidiu tornar a máquina ainda mais rápida e potente. Em 2 de setembro, a IBM anunciou que seu modelo RS/6000 SP, um supercomputador paralelo, estava 58% mais rápido graças a um novo microprocessador e alguns refinamentos de software. Kasparov não estava disponível para comentar`,
+  },
+   {
+    year: "2008",
+    title: "HTC lança o primeiro smartphone Android",
+    shortDescription: "O primeiro smartphone Android disponível ao público foi o HTC Dream, também conhecido como T-Mobile G1, lançado em 20 de outubro de 2008 nos EUA.",
+    imageCard: "./images/timeline/2008-Android_robot.png",
+    imageModal: "./images/timeline/2008-T-Mobile_G1_launch_event_2.jpg",
+    sourceCard: '<a href="https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025.svg">@ Google, Android logo</a>,<a href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0 Unported</a>, via Wikimedia Commons',
+    sourceModal: '<a href="https://en.wikipedia.org/wiki/File:T-Mobile_G1_launch_event_2.jpg">Michael Oryl</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/deed.en">CC BY-SA 2.0</a>, via Wikimedia Commons',
+    longDescription: `O Android é um sistema operacional móvel desenvolvido para dispositivos com tela sensível ao toque, como smartphones e tablets. Baseado no Linux, o desenvolvimento do Android começou em 2003 pela Android Inc., que foi comprada pelo Google em 2005.
+
+O primeiro smartphone Android disponível ao público foi o HTC Dream, também conhecido como T-Mobile G1, lançado em 20 de outubro de 2008 nos EUA. Ele utilizava um sistema Qualcomm MSM7201A de 528 MHz com 192 MB de RAM e 256 MB de armazenamento interno, expansível em até 16 GB usando um slot para cartão Micro SD. Também possuía tela sensível ao toque.
+
+O Android se tornou o sistema operacional móvel mais popular do mundo. Em agosto de 2023, o sistema operacional Android estava instalado em 70% dos dispositivos móveis, enquanto o iOS da Apple representava 28%.`,
   },
   {
     year: "2014",
