@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Componente: Fonte - Museu Virtual de Hardware</title>
+  <link href="../css/styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="text-white">
+  <div class="fixed inset-0 bg-main-background -z-10"></div>
+
+  <div class="relative min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow flex justify-center items-center py-12 px-4 fade-in">
+      <div
+        class="w-full max-w-6xl mx-auto bg-black/30 backdrop-blur-md rounded-2xl border border-white/20 p-8 md:p-12 shadow-lg">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          <div>
+            <img src="https://www.i-tecnico.pt/wp-content/uploads/2021/07/Fonte-de-alimentacao-001.png"
+              alt="Imagem de uma Fonte de alimentacao"
+              class="w-full h-auto rounded-lg shadow-lg border border-white/10" />
+            <p class="text-xs italic text-gray-300 mt-2">
+              Imagem retirada da internet: i-tecnico.pt
+            </p>
+          </div>
+          <div class="text-justify min-w-0">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+              Fonte de alimentação do PC
+            </h1>
+            <p class="text-base md:text-lg leading-relaxed mb-4">
+              A fonte de alimentação, ou PSU (Power Supply Unit), é o componente responsável por converter a energia da
+              tomada (AC) em energia utilizável pelos componentes do computador (DC). Ela alimenta processador,
+              placa-mãe, memória, placa de vídeo e discos, sendo essencial para o funcionamento seguro e estável do
+              sistema. Sem essa conversão adequada, os componentes internos poderiam sofrer danos sérios devido à tensão
+              inadequada.
+            </p>
+            <p class="text-xs italic text-gray-300 mt-2 break-all">
+              Fonte: Intel - https://www.intel.com.br/content/www/br/pt/gaming/resources/power-supply.html
+            </p>
+          </div>
+        </div>
+
+        <hr class="my-8 md:my-12 border-white/20" />
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+          <div class="text-justify min-w-0">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+              Cabos e conectores
+            </h2>
+            <p class="text-base md:text-lg leading-relaxed">
+              As fontes de alimentação contam com diferentes conectores para distribuir energia. O principal é o cabo de
+              24 pinos que conecta a placa-mãe, responsável por fornecer energia para o chipset e portas PCI. Há ainda o
+              cabo de 4 ou 8 pinos que alimenta diretamente o processador (CPU), essencial para modelos mais potentes
+              que exigem maior consumo energético.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed">
+              Outros conectores importantes são os de 6 ou 8 pinos PCIe, usados para alimentar placas de vídeo; o
+              conector SATA, que alimenta HDs, SSDs e controladores RGB; e o antigo conector Molex, presente em
+              computadores antigos.
+            </p>
+            <p class="text-xs italic text-gray-300 mt-2 break-all">
+              Fonte: Intel - https://www.intel.com.br/content/www/br/pt/gaming/resources/power-supply.html
+            </p>
+          </div>
+          <div>
+            <img
+              src="https://s2-techtudo.glbimg.com/P8X3JYfrSwFvVIqUPtprycrgAD0=/0x0:3000x3000/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2025/l/S/7gE6HOQL6A4PWFptpFAw/3cb8c402e5a7bc6a9497a06dd06b791f.jpg"
+              alt="Exemplos de cabos e conectores" class="w-full h-auto rounded-lg shadow-lg border border-white/10" />
+            <p class="text-xs italic text-gray-300 mt-2">
+              Imagem retirada da internet: techtudo.com.br
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/main.js" defer></script>
+</body>
+
+</html>

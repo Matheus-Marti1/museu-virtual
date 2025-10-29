@@ -1,19 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loadComponent = async (selector, url) => {
     const element = document.querySelector(selector);
-    if (!element) return;
+    if (!element) return null;
 
     try {
       const response = await fetch(url);
-      if (response.ok) {
-        element.innerHTML = await response.text();
-      } else {
+      if (!response.ok) {
         console.error(
           `Erro ao carregar componente de ${url}: ${response.statusText}`
         );
+        return null;
       }
+
+      const markup = await response.text();
+      element.innerHTML = markup;
+      document.dispatchEvent(
+        new CustomEvent("component:loaded", {
+          detail: { selector, url, element },
+        })
+      );
+      return markup;
     } catch (error) {
       console.error(`Falha na requisição para ${url}:`, error);
+      return null;
     }
   };
 
@@ -37,7 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelectorAll(".nav-link, .nav-component-link")
       .forEach((link) => {
-        if (link.getAttribute("href") === effectivePage) {
+        link.classList.remove(
+          "font-bold",
+          "text-white",
+          "border-b-2",
+          "border-white",
+          "bg-white/30",
+          "ring-2",
+          "ring-white/50"
+        );
+
+        const href = link.getAttribute("href");
+        const linkFile = href ? href.split("/").pop() : "";
+
+        if (linkFile === effectivePage) {
           link.classList.add(
             "font-bold",
             "text-white",
@@ -62,7 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
-            if (link.classList.contains("nav-component-link")) {
+            if (link.closest("#mobileComponentesSubmenu")) {
+              link.classList.add("bg-white/30", "ring-2", "ring-white/50");
+              link.classList.remove(
+                "border-b-2",
+                "border-white",
+                "bg-white/10"
+              );
+            } else if (link.classList.contains("nav-component-link")) {
               link.classList.add("bg-white/10");
               link.classList.remove("border-b-2", "border-white");
             }
@@ -93,23 +122,98 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileComponentesSubmenu,
     } = elements;
 
+    const closeMobileComponentesBtn = document.getElementById(
+      "closeMobileComponentesBtn"
+    );
+    const mobileComponentesIcon = document.getElementById(
+      "mobileComponentesIcon"
+    );
+
     if (mobileMenuBtn && mobileMenu) {
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.remove("pointer-events-none");
+        mobileMenu.classList.remove("opacity-0", "scale-95");
+        mobileMenu.classList.add("opacity-100", "scale-100");
+        document.body.style.overflow = "hidden";
       });
     }
 
     if (closeMobileMenuBtn && mobileMenu) {
       closeMobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.add("opacity-0", "scale-95");
+        mobileMenu.classList.remove("opacity-100", "scale-100");
+
+        setTimeout(() => {
+          mobileMenu.classList.add("pointer-events-none");
+          document.body.style.overflow = "";
+        }, 300);
       });
     }
 
     if (mobileComponentesBtn && mobileComponentesSubmenu) {
       mobileComponentesBtn.addEventListener("click", () => {
-        mobileComponentesSubmenu.classList.toggle("hidden");
+        if (mobileComponentesIcon) {
+          mobileComponentesIcon.style.transform = "rotate(90deg)";
+        }
+
+        mobileComponentesSubmenu.classList.remove("pointer-events-none");
+        mobileComponentesSubmenu.classList.remove(
+          "opacity-0",
+          "translate-x-full"
+        );
+        mobileComponentesSubmenu.classList.add("opacity-100", "translate-x-0");
+
+        mobileMenu.classList.add("-translate-x-full");
       });
     }
+
+    if (closeMobileComponentesBtn && mobileComponentesSubmenu && mobileMenu) {
+      closeMobileComponentesBtn.addEventListener("click", () => {
+        if (mobileComponentesIcon) {
+          mobileComponentesIcon.style.transform = "rotate(0deg)";
+        }
+
+        mobileComponentesSubmenu.classList.add("opacity-0", "translate-x-full");
+        mobileComponentesSubmenu.classList.remove(
+          "opacity-100",
+          "translate-x-0"
+        );
+
+        mobileMenu.classList.remove("-translate-x-full");
+
+        setTimeout(() => {
+          mobileComponentesSubmenu.classList.add("pointer-events-none");
+        }, 300);
+      });
+    }
+
+    const componentLinks = document.querySelectorAll(".nav-component-link");
+    componentLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (mobileMenu) {
+          mobileMenu.classList.add("opacity-0", "scale-95");
+          mobileMenu.classList.remove("opacity-100", "scale-100");
+          setTimeout(() => {
+            mobileMenu.classList.add("pointer-events-none");
+            document.body.style.overflow = "";
+          }, 300);
+        }
+
+        if (mobileComponentesSubmenu) {
+          mobileComponentesSubmenu.classList.add(
+            "opacity-0",
+            "translate-x-full"
+          );
+          mobileComponentesSubmenu.classList.remove(
+            "opacity-100",
+            "translate-x-0"
+          );
+          setTimeout(() => {
+            mobileComponentesSubmenu.classList.add("pointer-events-none");
+          }, 300);
+        }
+      });
+    });
   };
 
   const initializeHeaderFunctionality = () => {
@@ -121,9 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setupTimelineAnimation = () => {
     const setupObserver = () => {
-      const timelineItems = document.querySelectorAll(
-        ".timeline-item, .modal-trigger"
-      );
+      const timelineItems = document.querySelectorAll(".timeline-item");
       if (timelineItems.length === 0) return false;
 
       const observer = new IntersectionObserver(
@@ -131,10 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              if (entry.target.classList.contains("modal-trigger")) {
-                entry.target.classList.remove("timeline-hidden");
-                entry.target.classList.add("timeline-visible");
-              }
+              entry.target.classList.remove("timeline-hidden");
+              entry.target.classList.add("timeline-visible");
               observer.unobserve(entry.target);
             }
           });
@@ -143,9 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       timelineItems.forEach((item, index) => {
-        if (item.classList.contains("modal-trigger")) {
-          item.classList.add("timeline-hidden");
-        }
+        item.classList.add("timeline-hidden");
         observer.observe(item);
       });
 
@@ -171,15 +269,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.getElementById("backToTopBtn");
     if (!backToTopBtn) return;
 
-    const toggleVisibility = () => {
+    let visibilityFrame = null;
+
+    const applyVisibility = () => {
       const isVisible = window.scrollY > 300;
       backToTopBtn.classList.toggle("hidden", !isVisible);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    const scheduleVisibilityUpdate = () => {
+      if (visibilityFrame !== null) return;
+      visibilityFrame = requestAnimationFrame(() => {
+        visibilityFrame = null;
+        applyVisibility();
+      });
+    };
+
+    applyVisibility();
+
+    window.addEventListener("scroll", scheduleVisibilityUpdate, {
+      passive: true,
+    });
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash && window.location.hash.startsWith("#year-")) {
+        const cleanUrl = window.location.pathname + window.location.search;
+        history.replaceState(null, "", cleanUrl);
+      }
     });
+    window.addEventListener("resize", scheduleVisibilityUpdate);
   };
 
   const setupModal = () => {
@@ -240,8 +357,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const adjustLinksForSubfolder = () => {
+    const isInSubfolder = window.location.pathname.includes("/componentes/");
+
+    if (isInSubfolder) {
+      document.querySelectorAll('a[href^="componentes/"]').forEach((link) => {
+        const href = link.getAttribute("href");
+        link.setAttribute("href", href.replace("componentes/", ""));
+      });
+
+      document.querySelectorAll('a[href="index.html"]').forEach((link) => {
+        link.setAttribute("href", "../index.html");
+      });
+
+      document.querySelectorAll('a[href="timeline.html"]').forEach((link) => {
+        link.setAttribute("href", "../timeline.html");
+      });
+
+      document.querySelectorAll('a[href="membros.html"]').forEach((link) => {
+        link.setAttribute("href", "../membros.html");
+      });
+
+      document
+        .querySelectorAll('img[src="images/logo_fatec.png"]')
+        .forEach((img) => {
+          img.setAttribute("src", "../images/logo_fatec.png");
+        });
+    }
+  };
+
   const initializeApp = async () => {
-    await loadComponent("#header-placeholder", "header.html");
+    const isInSubfolder = window.location.pathname.includes("/componentes/");
+    const headerPath = isInSubfolder ? "../header.html" : "header.html";
+
+    await loadComponent("#header-placeholder", headerPath);
+
+    adjustLinksForSubfolder();
 
     initializeHeaderFunctionality();
     initializeVueCompatibleFeatures();
